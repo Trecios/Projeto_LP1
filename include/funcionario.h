@@ -27,7 +27,7 @@ namespace PetFera{
         public:
   
             /**
-             * @brief Contrutor da classe Funcionário.
+             * @brief Construtor da classe Funcionário.
              */
             Funcionario(int id_, std::string nome_, std::string cpf_, short idade_, short tipo_sanguineo_,
                     char fator_rh_, std::sting especialidade_);
@@ -81,3 +81,5 @@ namespace PetFera{
     }
 
 }
+
+#endif
