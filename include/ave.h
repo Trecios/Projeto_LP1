@@ -48,7 +48,7 @@ namespace PetFera{
              * @return m_envergadura.
              */
             string getEnvergadura();
-    }
+    };
 }
 
 #endif

@@ -40,8 +40,7 @@ namespace PetFera{
              * @return m_cor.
              */
             string getCor();
-    }
-
+    };
 }
 
 #endif

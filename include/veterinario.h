@@ -28,8 +28,7 @@ namespace PetFera{
              * @brief Destrutor da classe Veterinário.
              */
             ~Veterinario();
-    }
-
+    };
 }
 
 #endif

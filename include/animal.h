@@ -103,9 +103,7 @@ namespace PetFera{
              * @return m_batismo.
              */
             string getBatismo();
-        }
-    }
-
+    };
 }
 
 #endif

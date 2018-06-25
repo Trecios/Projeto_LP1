@@ -37,7 +37,7 @@ namespace PetFera{
              * @return m_ibama.
              */
             string getIbama();
-    }
+    };
 }
 
 #endif

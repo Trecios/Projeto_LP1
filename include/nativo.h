@@ -44,7 +44,7 @@ namespace PetFera{
              * @return m_uf_autorizacao.
              */
             string getAutorizacao();
-    }
+    };
 }
 
 #endif

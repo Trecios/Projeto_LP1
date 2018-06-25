@@ -8,6 +8,8 @@
 #ifndef EXOTICO_H
 #define EXOTICO_H
 
+#include <iostream>
+#include "animal_silvestre.h"
 
 using namespace std;
 
@@ -37,7 +39,7 @@ namespace PetFera{
              * @return m_pais_origem.
              */
             string getPais();
-    }
+    };
 }
 
 #endif

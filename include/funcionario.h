@@ -79,8 +79,7 @@ namespace PetFera{
              * @return m_especialidade.
              */
             string getEspecialidade();
-    }
-
+    };
 }
 
 #endif

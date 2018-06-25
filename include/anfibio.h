@@ -58,6 +58,6 @@ namespace PetFera{
              * @brief Método set do atributo m_ultima_muda.
              */
             void setUltimaMuda(string data_);
-    }
+    };
 }
 #endif

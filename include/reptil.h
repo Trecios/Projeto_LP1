@@ -48,7 +48,7 @@ namespace PetFera{
              * @return m_tipo_veneno.
              */
             string getTipoVeneno();
-    }
+    };
 }
 
 #endif
