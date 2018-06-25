@@ -8,6 +8,7 @@
 #ifndef FUNCIONARIO_H
 #define FUNCIONARIO_H
 
+using namespace std;
 
 namespace PetFera{
 
@@ -17,20 +18,20 @@ namespace PetFera{
     class Funcionario{
         protected:
             int m_id;
-            std::string m_nome;
-            std::string m_cpf;
+            string m_nome;
+            string m_cpf;
             short m_idade;
             short m_tipo_sanguineo; // A, B, AB, O
             char m_fator_rh; // +, -
-            std::string m_especialidade;
+            string m_especialidade;
 
         public:
   
             /**
              * @brief Construtor da classe Funcionário.
              */
-            Funcionario(int id_, std::string nome_, std::string cpf_, short idade_, short tipo_sanguineo_,
-                    char fator_rh_, std::sting especialidade_);
+            Funcionario(int id_, string nome_, string cpf_, short idade_, short tipo_sanguineo_, char fator_rh_, 
+                    sting especialidade_);
 
             /**
              * @brief Destrutor da classe Funcionário.
@@ -47,13 +48,13 @@ namespace PetFera{
              * @brief Método get do atributo m_nome.
              * @return m_nome.
              */
-            std::string getNome();
+            string getNome();
 
             /**
              * @brief Método get do atributo m_cpf.
              * @return m_cpf.
              */
-            std::string getCpf();
+            string getCpf();
 
             /**
              * @brief Método get do atributo m_idade.
@@ -77,7 +78,7 @@ namespace PetFera{
              * @brief Método get do atributo m_especialidade.
              * @return m_especialidade.
              */
-            std::string getEspecialidade();
+            string getEspecialidade();
     }
 
 }
