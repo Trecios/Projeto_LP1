@@ -18,7 +18,17 @@ all: \
 	prog_dinamico
 
 include: \
-	$(BUILD)/mathbasic.o \
+	$(BUILD)/anfibio.o \
+	$(BUILD)/animal.o \
+	$(BUILD)/animal_silvestre.o \
+	$(BUILD)/ave.o \
+	$(BUILD)/exotico.o \
+	$(BUILD)/funcionario.o \
+	$(BUILD)/mamifero.o \
+	$(BUILD)/nativo.o \
+	$(BUILD)/reptil.o \
+	$(BUILD)/tratador.o \
+	$(BUILD)/veterinario.o \
 	lib	
 
 app: \
@@ -30,9 +40,31 @@ prog_estatico:
 prog_dinamico: 
 	$(CC) $(SRC)/main.cpp $(LIB)/*.so -I $(INCLUDE) $(FLAGS) -o $(BIN)/prog_dinamico
 
-lib: \
-	$(LIB)/mathbasic.a \
-	$(LIB)/mathbasic.so
+lib:
+# Bibliotecas estáticas. 
+	$(LIB)/anfibio.a \
+	$(LIB)/animal.a \
+	$(LIB)/animal_silvestre.a \
+	$(LIB)/ave.a \
+	$(LIB)/exotico.a \
+	$(LIB)/funcionario.a \
+	$(LIB)/mamifero.a \
+	$(LIB)/nativo.a \
+	$(LIB)/reptil.a \
+	$(LIB)/tratador.a \
+	$(LIB)/veterinario.a \
+# Bibliotecas dinâmicas.
+	$(LIB)/anfibio.so \
+	$(LIB)/animal.so \
+	$(LIB)/animal_silvestre.so \
+	$(LIB)/ave.so \
+	$(LIB)/exotico.so \
+	$(LIB)/funcionario.so \
+	$(LIB)/mamifero.so \
+	$(LIB)/nativo.so \
+	$(LIB)/reptil.so \
+	$(LIB)/tratador.so \
+	$(LIB)/veterinario.so \
 
 debug: FLAGS += $(DEBUG)
 
