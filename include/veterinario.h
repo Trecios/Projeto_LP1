@@ -1,6 +1,6 @@
 /**
  * @file veterinario.h
- * @brief Declaração da classe Funcionário e seus métodos.
+ * @brief Declaração da classe Veterinário.
  * @author Bryan Brito
  * @author Leonardo Matos
  */
