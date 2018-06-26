@@ -18,10 +18,9 @@ namespace PetFera{
      */
 
 	Funcionario::Funcionario(int id_, string nome_, string cpf_, short idade_, 
-								short tipo_sanguineo_, char fator_rh_, 
-                    			string especialidade_) : m_id(id_), m_nome(nome_), m_cpf(cpf_),
-															m_tipo_sanquineo(tipo_sanguineo_), m_fator_rh(fator_rh_), 
-															m_especialidade(especialidade_){}
+							short tipo_sanguineo_, char fator_rh_, string especialidade_):
+                            m_id(id_), m_nome(nome_), m_cpf(cpf_), m_tipo_sanguineo(tipo_sanguineo_), 
+                            m_fator_rh(fator_rh_), m_especialidade(especialidade_){}
 
     /**
      * @brief Destrutor da classe Funcionario.
@@ -65,7 +64,7 @@ namespace PetFera{
      * @return Valor do atributo m_tipo_sanguineo.
      */
     short Funcionario::getTipoSanguineo(){
-    	return m_tipo_sanquineo;
+    	return m_tipo_sanguineo;
     }
 
     /**

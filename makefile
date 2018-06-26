@@ -21,14 +21,14 @@ include: \
 	$(BUILD)/anfibio.o \
 	$(BUILD)/exotico.o \
 	$(BUILD)/animal.o \
+	$(BUILD)/funcionario.o \
+	$(BUILD)/tratador.o \
+	$(BUILD)/veterinario.o \
 	$(BUILD)/animal_silvestre.o \
 	$(BUILD)/ave.o \
-	$(BUILD)/funcionario.o \
 	$(BUILD)/mamifero.o \
 	$(BUILD)/nativo.o \
 	$(BUILD)/reptil.o \
-	$(BUILD)/tratador.o \
-	$(BUILD)/veterinario.o \
 	lib	
 
 app: \
