@@ -15,7 +15,7 @@ namespace PetFera{
      * @brief Construtor da classe Mamífero.
      * @details O construtor chama primeiro o construtor da classe Animal com os parâmetros
      * id_, classe_, nome_, cientifico_, sexo_, tamanho_, dieta_, veterinario_, tratador_, batismo_
-     * e depois armazena o valore do parâmetro cor_ no atributo m_cor.
+     * e depois armazena o valor do parâmetro cor_ no atributo m_cor.
      */
     Mamifero::Mamifero(int id_, string classe_, string nome_, string cientifico_, char sexo_,
                         float tamanho_, string dieta_, shared_ptr<Veterinario> veterinario_,
