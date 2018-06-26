@@ -87,7 +87,7 @@ namespace PetFera{
              * @brief Método get do atributo m_dieta.
              * @return m_dieta.
              */
-            string dieta();
+            string getDieta();
 
             /**
              * @brief Método get do ponteiro m_veterinario.
@@ -106,6 +106,26 @@ namespace PetFera{
              * @return m_batismo.
              */
             string getBatismo();
+            
+            /**
+             * @brief Método set do atributo m_tamanho.
+             */
+            void setTamanho(float tamanho_);
+
+            /**
+             * @brief Método set do atributo m_dieta.
+             */
+            void setDieta(string dieta_);
+
+            /**
+             * @brief Método set do atributo m_veterinario.
+             */
+            void setVeterinario(shared_ptr<Veterinario> veterinario_);
+
+            /**
+             * @brief Método set do atributo m_tratador.
+             */
+            void setTratador(shared_ptr<Tratador> tratador_);
     };
 }
 
