@@ -17,8 +17,8 @@ namespace PetFera{
      * especialidade_ em m_especialidade.
      */
 
-	Funcionario::Funcionario(int id_, string nome_, string cpf_, short idade_, 
-							short tipo_sanguineo_, char fator_rh_, string especialidade_):
+	Funcionario::Funcionario(int id_, string nome_, string cpf_, short idade_,
+                            short tipo_sanguineo_, char fator_rh_, string especialidade_):
                             m_id(id_), m_nome(nome_), m_cpf(cpf_), m_tipo_sanguineo(tipo_sanguineo_), 
                             m_fator_rh(fator_rh_), m_especialidade(especialidade_){}
 
