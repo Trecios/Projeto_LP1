@@ -26,6 +26,8 @@ include: \
 	$(BUILD)/veterinario.o \
 	$(BUILD)/animal_silvestre.o \
 	$(BUILD)/ave.o \
+	$(BUILD)/ave_nativa.o \
+	$(BUILD)/ave_exotica.o \
 	$(BUILD)/mamifero.o \
 	$(BUILD)/nativo.o \
 	$(BUILD)/reptil.o \
@@ -46,6 +48,8 @@ lib:
 	$(LIB)/animal.a \
 	$(LIB)/animal_silvestre.a \
 	$(LIB)/ave.a \
+	$(LIB)/ave_nativa.a \
+	$(LIB)/ave_exotica.a \
 	$(LIB)/exotico.a \
 	$(LIB)/funcionario.a \
 	$(LIB)/mamifero.a \
@@ -58,6 +62,8 @@ lib:
 	$(LIB)/animal.so \
 	$(LIB)/animal_silvestre.so \
 	$(LIB)/ave.so \
+	$(LIB)/ave_nativa.so \
+	$(LIB)/ave_exotica.so \
 	$(LIB)/exotico.so \
 	$(LIB)/funcionario.so \
 	$(LIB)/mamifero.so \
