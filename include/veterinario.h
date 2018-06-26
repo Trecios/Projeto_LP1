@@ -21,7 +21,7 @@ namespace PetFera{
             /**
              * @brief Construtor da classe Veterinário.
              */
-            Veterinario(int id_, string nome_, string cpf_, short idade_, short tipo_sanguineo_, char fator_rh,
+            Veterinario(int id_, string nome_, string cpf_, short idade_, short tipo_sanguineo_, char fator_rh_,
                     string especialidade_);
 
             /**
