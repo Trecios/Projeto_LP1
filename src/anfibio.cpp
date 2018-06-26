@@ -47,7 +47,7 @@ namespace PetFera{
 
     /**
      * @brief Método set do atributo m_total_mudas.
-     * @return Altera o valor do atributo m_total_mudas.
+     * @details Altera o valor do atributo m_total_mudas.
      */
     void Anfibio::setTotalMuda(int total_mudas_){
         m_total_mudas = total_mudas_;
@@ -55,7 +55,7 @@ namespace PetFera{
 
     /**
      * @brief Método set do atributo m_ultima_muda.
-     * @return Altera o valor do atributo m_ultima_muda.
+     * @details Altera o valor do atributo m_ultima_muda.
      */
     void Anfibio::setUltimaMuda(string ultima_muda_){
         m_ultima_muda = ultima_muda_;
