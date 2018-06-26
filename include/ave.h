@@ -28,9 +28,9 @@ namespace PetFera{
              * @brief Construtor da classe Ave.
              */
             Ave(int id_, string classe_, string nome_, string cientifico_, char sexo_, 
-                    float tamanho_, string dieta_, share_ptr<PetFera::Veterinario> veterinario_,
-                    share_ptr<PetFera::Tratador> tratador_, string batismo_, int tamanho_bico_,
-                    int envergadura_);
+                float tamanho_, string dieta_, shared_ptr<Veterinario> veterinario_,
+                shared_ptr<Tratador> tratador_, string batismo_, int tamanho_bico_,
+                int envergadura_);
 
             /**
              * @brief Destrutor da classe Ave.
@@ -41,13 +41,13 @@ namespace PetFera{
              * @brief Método get do atributo m_tamanho_bico.
              * @return m_tamanho_bico.
              */
-            bool getTamanhoBico();
+            int getTamanhoBico();
 
             /**
              * @brief Método get do atributo m_envergadura.
              * @return m_envergadura.
              */
-            string getEnvergadura();
+            int getEnvergadura();
     };
 }
 
