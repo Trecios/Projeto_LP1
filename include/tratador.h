@@ -22,7 +22,7 @@ namespace PetFera{
              * @brief Construtor da classe Tratador.
              */
             Tratador(int id_, string nome_, string cpf_, short idade_, short tipo_sanguineo_, char fator_rh_, 
-                    sting especialidade_);
+                    string especialidade_);
 
             /**
              * @brief Destrutor da classe Tratador.

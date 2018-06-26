@@ -8,6 +8,7 @@
 #ifndef ANIMAL_SILVESTRE_H
 #define ANIMAL_SILVESTRE_H
 
+#include <iostream>
 
 using namespace std;
 

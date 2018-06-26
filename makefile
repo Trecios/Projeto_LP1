@@ -19,10 +19,10 @@ all: \
 
 include: \
 	$(BUILD)/anfibio.o \
+	$(BUILD)/exotico.o \
 	$(BUILD)/animal.o \
 	$(BUILD)/animal_silvestre.o \
 	$(BUILD)/ave.o \
-	$(BUILD)/exotico.o \
 	$(BUILD)/funcionario.o \
 	$(BUILD)/mamifero.o \
 	$(BUILD)/nativo.o \
@@ -106,6 +106,6 @@ doc:
 	doxygen
 
 clean:
-	rm $(BIN)/*
 	rm $(BUILD)/*
+	rm $(BIN)/*
 	rm $(LIB)/*

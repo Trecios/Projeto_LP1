@@ -8,9 +8,9 @@
 #ifndef ANFIBIO_H
 #define ANFIBIO_H
 
-#include "Animal.h"
 
-using namespace std;
+#include "animal.h"
+
 
 namespace PetFera{
 
@@ -28,8 +28,8 @@ namespace PetFera{
              * @brief Construtor da classe Anfíbio.
              */
             Anfibio(int id_, string classe_, string nome_, string cientifico_, char sexo_,
-                    float tamanho_, string dieta_, share_ptr<PetFera::Veterinario> veterinario_,
-                    share_ptr<PetFera::Tratador> tratador_, string batismo_, int total_mudas_,
+                    float tamanho_, string dieta_, shared_ptr<Veterinario> veterinario_,
+                    shared_ptr<Tratador> tratador_, string batismo_, int total_mudas_,
                     string ultima_muda_);
 
             /**
@@ -50,14 +50,14 @@ namespace PetFera{
             string getUltimaMuda();
 
             /**
-             * @brief Método set do atributo m_total_muda.
+             * @brief Método set do atributo m_total_mudas.
              */
             void setTotalMuda(int total_mudas_);
 
             /**
              * @brief Método set do atributo m_ultima_muda.
              */
-            void setUltimaMuda(string data_);
+            void setUltimaMuda(string ultima_muda_);
     };
 }
 #endif

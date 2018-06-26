@@ -8,6 +8,8 @@
 #ifndef FUNCIONARIO_H
 #define FUNCIONARIO_H
 
+#include <iostream>
+
 using namespace std;
 
 namespace PetFera{
@@ -31,7 +33,7 @@ namespace PetFera{
              * @brief Construtor da classe Funcionário.
              */
             Funcionario(int id_, string nome_, string cpf_, short idade_, short tipo_sanguineo_, char fator_rh_, 
-                    sting especialidade_);
+                    string especialidade_);
 
             /**
              * @brief Destrutor da classe Funcionário.

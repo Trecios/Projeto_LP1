@@ -8,7 +8,7 @@
 #ifndef MAMIFERO_H
 #define MAMIFERO_H
 
-#include "Animal.h"
+#include "animal.h"
 
 using namespace std;
 

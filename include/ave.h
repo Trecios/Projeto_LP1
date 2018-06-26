@@ -8,7 +8,7 @@
 #ifndef AVE_H
 #define AVE_H
 
-#include "Animal.h"
+#include "animal.h"
 
 using namespace std;
 

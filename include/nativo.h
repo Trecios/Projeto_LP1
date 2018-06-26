@@ -8,6 +8,7 @@
 #ifndef NATIVO_H
 #define NATIVO_H
 
+#include "animal_silvestre.h"
 
 using namespace std;
 

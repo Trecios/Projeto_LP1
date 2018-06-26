@@ -8,9 +8,12 @@
 #ifndef ANIMAL_H
 #define ANIMAL_H
 
-
+#include <iostream>
 #include <memory>
-#include "funcionario.h"
+#include "veterinario.h"
+#include "tratador.h"
+
+using namespace std;
 
 namespace PetFera{
 
@@ -26,8 +29,8 @@ namespace PetFera{
             char m_sexo;
             float m_tamanho;
             string m_dieta;
-            share_ptr<PetFera::Veterinario> m_veterinario;
-            share_ptr<PetFera::Tratador> m_tratador;
+            shared_ptr<Veterinario> m_veterinario;
+            shared_ptr<Tratador> m_tratador;
             string m_batismo;
 
         public:
@@ -36,8 +39,8 @@ namespace PetFera{
              * @brief Construtor da classe Animal.
              */
             Animal(int id_, string classe_, string nome_, string cientifico_, char sexo_,
-                    float tamanho_, string dieta_, share_ptr<PetFera::Veterinario> veterinario_,
-                    share_ptr<PetFera::Tratador> tratador_, string batismo_);
+                    float tamanho_, string dieta_, shared_ptr<Veterinario> veterinario_,
+                    shared_ptr<Tratador> tratador_, string batismo_);
 
             /**
              * @brief Destrutor da classe Funcionário.
@@ -90,13 +93,13 @@ namespace PetFera{
              * @brief Método get do ponteiro m_veterinario.
              * @return ponteiro m_veterinario.
              */
-            share_ptr<PetFera::Veterinario> getVeterinario();
+            shared_ptr<Veterinario> getVeterinario();
 
             /**
              * @brief Método get do ponteiro m_tratador.
              * @return ponteiro m_tratador.
              */
-            share_ptr<PetFera::Tratador> getTratador();
+            shared_ptr<Tratador> getTratador();
 
             /**
              * @brief Método get do atributo m_batismo.

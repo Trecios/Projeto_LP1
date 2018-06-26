@@ -8,7 +8,6 @@
 #ifndef EXOTICO_H
 #define EXOTICO_H
 
-#include <iostream>
 #include "animal_silvestre.h"
 
 using namespace std;
