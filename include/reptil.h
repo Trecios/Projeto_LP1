@@ -28,8 +28,8 @@ namespace PetFera{
              * @brief Construtor da classe Réptil.
              */
             Reptil(int id_, string classe_, string nome_, string cientifico_, char sexo_,
-                    float tamanho_, string dieta_, share_ptr<PetFera::Veterinario> veterinario_,
-                    share_ptr<PetFera::Tratador> tratador_, string batismo_, bool veneno_,
+                    float tamanho_, string dieta_, shared_ptr<Veterinario> veterinario_,
+                    shared_ptr<Tratador> tratador_, string batismo_, bool veneno_,
                     string tipo_veneno_);
 
             /**
