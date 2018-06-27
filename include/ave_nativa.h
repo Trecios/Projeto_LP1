@@ -9,7 +9,7 @@
 #define AVE_NATIVA_H
 
 #include "ave.h"
-#include "animal_silvestre.h"
+#include "nativo.h"
 
 namespace PetFera{
     
@@ -27,7 +27,7 @@ namespace PetFera{
 		     * @brief      Destrutor da classe AveNativa.
 		     */
             ~AveNativa();
-    }
+    };
     
 }
 

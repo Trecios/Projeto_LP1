@@ -21,9 +21,8 @@ namespace PetFera{
                 float tamanho_, string dieta_, shared_ptr<Veterinario> veterinario_,
                 shared_ptr<Tratador> tratador_, string batismo_, int tamanho_bico_,
                 int envergadura_, string ibama_, string pais_origem_) : 
-                Ave(id_, classe, nome_, cientifico_, sexo_, tamanho_,dieta_, veterinario_, tratador_,
-                        batismo_, tamanho_bico_, envergadura_),
-                Exotico(ibama_, pais_origem_){}
+                Ave(id_, classe_, nome_, cientifico_, sexo_, tamanho_,dieta_, veterinario_, tratador_,
+                batismo_, tamanho_bico_, envergadura_), Exotico(ibama_, pais_origem_){}
                 
     /**
      * @brief      Destrutor da classe AveExotica.

@@ -9,7 +9,7 @@
 #define AVE_EXOTICA_H
 
 #include "ave.h"
-#include "animal_silvestre.h"
+#include "exotico.h"
 
 namespace PetFera{
     
@@ -27,7 +27,7 @@ namespace PetFera{
 		     * @brief      Destrutor da classe AveExotica.
 		     */
             ~AveExotica();
-    }
+    };
     
 }
 
