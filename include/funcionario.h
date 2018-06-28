@@ -20,10 +20,11 @@ namespace PetFera{
     class Funcionario{
         protected:
             int m_id;
+            string funcao;
             string m_nome;
             string m_cpf;
             short m_idade;
-            short m_tipo_sanguineo; // A, B, AB, O
+            string m_tipo_sanguineo; // A, B, AB, O
             char m_fator_rh; // +, -
             string m_especialidade;
 
@@ -32,7 +33,7 @@ namespace PetFera{
             /**
              * @brief Construtor da classe Funcionário.
              */
-            Funcionario(int id_, string nome_, string cpf_, short idade_, short tipo_sanguineo_, char fator_rh_, 
+            Funcionario(int id_, string funcao, string nome_, string cpf_, short idade_, string tipo_sanguineo_, char fator_rh_, 
                     string especialidade_);
 
             /**
@@ -68,7 +69,7 @@ namespace PetFera{
              * @brief Método get do atributo m_tipo_sanguineo.
              * @return m_tipo_sanguineo.
              */
-            short getTipoSanguineo();
+            string getTipoSanguineo();
 
             /**
              * @brief Método get do atributo m_fator_rh.
