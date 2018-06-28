@@ -20,7 +20,10 @@ namespace PetFera{
 	*/
 	Gerencia::~Gerencia(){}
 
-
+	/**
+	* @brief 	Método que cadastra funcionário pela sua função
+	* @params	String funcao referente a função do funcionário
+	*/
 	void Gerencia::cadastrar_funcionario(string funcao)
 	{
 		string aux;
@@ -75,6 +78,10 @@ namespace PetFera{
 		cout << endl <<"Cadastro feito com sucesso!" << endl;
 	}
 
+	/**
+	* @brief	Métodd que busca um funcionário pelo seu ID
+	* @params	Int id referente ao id de um funcionário cadastrado 
+	*/
 	void Gerencia::buscar_funcionario(int id)
 	{
 		map<int, Funcionario*>::iterator func = m_lista_funcionario.find(id);

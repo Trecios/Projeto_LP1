@@ -51,7 +51,7 @@ namespace PetFera{
 
             /**
              * @brief Método get do atributo m_funcao.
-             * @return m_id.
+             * @return m_funcao.
              */
             string getFuncao();
 
@@ -91,6 +91,11 @@ namespace PetFera{
              */
             string getEspecialidade();
 
+
+            /**
+             * @brief Método operator<< sobrecarregado.
+             * @return ostream o.
+             */
             friend ostream& operator<<(ostream &o, Funcionario const f);
     };
 

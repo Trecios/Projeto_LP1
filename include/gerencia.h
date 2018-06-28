@@ -45,9 +45,16 @@ namespace PetFera{
 		 */
 		~Gerencia();
 		
-
+		/**
+		* @brief 	Método que cadastra funcionário pela sua função
+		* @params	String funcao referente a função do funcionário
+		*/
 		void cadastrar_funcionario(string funcao);
 
+		/**
+		* @brief	Métodd que busca um funcionário pelo seu ID
+		* @params	Int id referente ao id de um funcionário cadastrado 
+		*/
 		void buscar_funcionario(int id);
 	};
 }
