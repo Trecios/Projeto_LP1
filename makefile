@@ -29,7 +29,7 @@ include: \
 		$(BUILD)/mamifero.o \
 		$(BUILD)/nativo.o \
 		$(BUILD)/reptil.o \
-		$(BUILD)/cadastro.o
+		$(BUILD)/gerencia.o
 
 # Flag para gerar executável do Windows.
 windows: \
@@ -58,7 +58,7 @@ lib_windows: \
 		$(LIB)/tratador.dll \
 		$(LIB)/veterinario.dll \
 		$(LIB)/funcionario.dll \
-		$(LIB)/cadastro.dll
+		$(LIB)/gerencia.dll
 
 # Flag para gerar bibliotecas dinâmicas para o Linux.
 lib_linux: \
@@ -75,7 +75,7 @@ lib_linux: \
 		$(LIB)/tratador.so \
 		$(LIB)/veterinario.so \
 		$(LIB)/funcionario.so \
-		$(LIB)/cadastro.so 
+		$(LIB)/gerencia.so 
 
 debug: FLAGS += $(DEBUG)
 

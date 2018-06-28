@@ -1,5 +1,5 @@
 #include <iostream>
-#include "cadastro.h"
+#include "gerencia.h"
 
 using namespace PetFera;
 
@@ -7,7 +7,7 @@ int main(){
 
     cout << "OK" << endl;
 
-    Cadastro c;
+    Gerencia c;
 
     c.cadastrar_funcionario("Tratador");
 

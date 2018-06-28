@@ -5,8 +5,8 @@
  * @author Leonardo Matos
  */
 
-#ifndef CADASTRO_H
-#define CADASTRO_H
+#ifndef GERENCIA_H
+#define GERENCIA_H
 
 
 #include <iostream>
@@ -25,7 +25,7 @@
 using namespace std;
 
 namespace PetFera{
-	class Cadastro
+	class Gerencia
 	{
 	protected:
 		map<int, Anfibio> m_lista_anfibio;
@@ -38,12 +38,12 @@ namespace PetFera{
 		/**
 		 * @brief Construtor padrão da classe Cadastrar
 		 */
-		Cadastro();
+		Gerencia();
 
 		/**
 		 * @brief Destrutor padrão da classe Cadastrar
 		 */
-		~Cadastro();
+		~Gerencia();
 		
 
 		void cadastrar_funcionario(string funcao);

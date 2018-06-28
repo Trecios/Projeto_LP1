@@ -5,7 +5,7 @@
  * @author Leonardo Matos
  */
 
-#include "cadastro.h"
+#include "gerencia.h"
 
 using namespace std;
 
@@ -13,15 +13,15 @@ namespace PetFera{
 	/**
 	* @brief Construtor padrão da classe Cadastrar
 	*/
-	Cadastro::Cadastro(){}
+	Gerencia::Gerencia(){}
 
 	/**
 	* @brief Destrutor padrão da classe Cadastrar
 	*/
-	Cadastro::~Cadastro(){}
+	Gerencia::~Gerencia(){}
 
 
-	void Cadastro::cadastrar_funcionario(string funcao)
+	void Gerencia::cadastrar_funcionario(string funcao)
 	{
 		string aux;
 		int id;
