@@ -17,9 +17,9 @@ namespace PetFera{
      * especialidade_ em m_especialidade.
      */
 
-	Funcionario::Funcionario(int id_, string funcao, string nome_, string cpf_, short idade_,
+	Funcionario::Funcionario(int id_, string funcao_, string nome_, string cpf_, short idade_,
                             string tipo_sanguineo_, char fator_rh_, string especialidade_):
-                            m_id(id_), m_nome(nome_), m_cpf(cpf_), m_tipo_sanguineo(tipo_sanguineo_), 
+                            m_id(id_), m_funcao(funcao_), m_nome(nome_), m_cpf(cpf_), m_idade(idade_), m_tipo_sanguineo(tipo_sanguineo_), 
                             m_fator_rh(fator_rh_), m_especialidade(especialidade_){}
 
     /**
@@ -33,6 +33,10 @@ namespace PetFera{
      */
     int Funcionario::getId(){
     	return m_id;
+    }
+
+    string Funcionario::getFuncao(){
+        return m_funcao;
     }
 
     /**
@@ -81,6 +85,23 @@ namespace PetFera{
      */
     string Funcionario::getEspecialidade(){
     	return m_especialidade;
+    }
+
+    ostream& operator<<(ostream &o, Funcionario const f)
+    {
+         o << endl;
+        o << ">>>>> Ficha do Funcionario <<<<<" << endl;
+        o << "ID" << setfill ('.') << setw (20) << "> " << f.m_id << endl;
+        o << "Funcao" << setfill ('.') << setw (16) << "> " << f.m_funcao << endl;
+        o << "Nome" << setfill ('.') << setw (18) << "> " << f.m_nome << endl;
+        o << "CPF" << setfill ('.') << setw (19) << "> " << f.m_cpf << endl;
+        o << "Idade" << setfill ('.') << setw (17) << "> " << f.m_idade << endl;
+        o << "Tipo Sanguineo" << setfill ('.') << setw (8) << "> " << f.m_tipo_sanguineo << endl;
+        o << "Fator RH" << setfill ('.') << setw (14) << "> " << f.m_fator_rh << endl;
+        o << "Especialidade" << setfill ('.') << setw (9) << "> " << f.m_especialidade << endl;
+        o << endl;
+
+        return o;
     }
 
 }

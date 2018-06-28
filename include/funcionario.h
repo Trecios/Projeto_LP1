@@ -9,6 +9,8 @@
 #define FUNCIONARIO_H
 
 #include <iostream>
+#include <iomanip>
+#include <string>
 
 using namespace std;
 
@@ -20,7 +22,7 @@ namespace PetFera{
     class Funcionario{
         protected:
             int m_id;
-            string funcao;
+            string m_funcao;
             string m_nome;
             string m_cpf;
             short m_idade;
@@ -33,7 +35,7 @@ namespace PetFera{
             /**
              * @brief Construtor da classe Funcionário.
              */
-            Funcionario(int id_, string funcao, string nome_, string cpf_, short idade_, string tipo_sanguineo_, char fator_rh_, 
+            Funcionario(int id_, string funcao_, string nome_, string cpf_, short idade_, string tipo_sanguineo_, char fator_rh_, 
                     string especialidade_);
 
             /**
@@ -46,6 +48,12 @@ namespace PetFera{
              * @return m_id.
              */
             int getId();
+
+            /**
+             * @brief Método get do atributo m_funcao.
+             * @return m_id.
+             */
+            string getFuncao();
 
             /**
              * @brief Método get do atributo m_nome.
@@ -82,7 +90,10 @@ namespace PetFera{
              * @return m_especialidade.
              */
             string getEspecialidade();
+
+            friend ostream& operator<<(ostream &o, Funcionario const f);
     };
+
 }
 
 #endif
