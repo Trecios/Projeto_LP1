@@ -29,7 +29,7 @@ namespace PetFera{
 		short idade;
 		char fator_rh;
 
-		cout << "Numero de identificação (ID): ";
+		cout << "Numero de identificação do funcionário (ID): ";
 		getline(cin, aux);
 		id = stoi(aux);
 
@@ -58,10 +58,14 @@ namespace PetFera{
 
 		if(funcao.compare("Tratador") == 0)
 		{
+			cout << "entrou no if" << endl;
+			cout << "idade: " << idade << endl;
+			cout << "funcao: " << funcao << endl;
+
 			novoFuncionario = new Tratador(id, funcao, nome, cpf, idade, tipo_sanguineo, fator_rh, especialidade);
 
 		}
-		else
+		else if(funcao.compare("Veterinario") == 0)
 		{
 			novoFuncionario = new Veterinario(id, funcao, nome, cpf, idade, tipo_sanguineo, fator_rh, especialidade);
 		}
@@ -69,6 +73,23 @@ namespace PetFera{
 		m_lista_funcionario.insert(pair<int, Funcionario*>(id, novoFuncionario));
 
 		cout << endl <<"Cadastro feito com sucesso!" << endl;
+	}
+
+	void Gerencia::buscar_funcionario(int id)
+	{
+		map<int, Funcionario*>::iterator func = m_lista_funcionario.find(id);
+		
+		cout << endl << m_lista_funcionario.size() << endl;
+
+		if(func != m_lista_funcionario.end())
+		{
+
+			cout << *(func -> second);
+		}
+		else
+		{
+			cout << "Funcionario nao encontrado" << endl;
+		}
 	}
 	
 }

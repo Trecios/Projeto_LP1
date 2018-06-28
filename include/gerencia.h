@@ -47,6 +47,8 @@ namespace PetFera{
 		
 
 		void cadastrar_funcionario(string funcao);
+
+		void buscar_funcionario(int id);
 	};
 }
 
