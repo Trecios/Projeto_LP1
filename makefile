@@ -28,7 +28,8 @@ include: \
 		$(BUILD)/ave_exotica.o \
 		$(BUILD)/mamifero.o \
 		$(BUILD)/nativo.o \
-		$(BUILD)/reptil.o 
+		$(BUILD)/reptil.o \
+		$(BUILD)/cadastro.o
 
 # Flag para gerar executável do Windows.
 windows: \
@@ -51,12 +52,13 @@ lib_windows: \
 		$(LIB)/ave_nativa.dll \
 		$(LIB)/ave_exotica.dll \
 		$(LIB)/exotico.dll \
-		$(LIB)/funcionario.dll \
 		$(LIB)/mamifero.dll \
 		$(LIB)/nativo.dll \
 		$(LIB)/reptil.dll \
 		$(LIB)/tratador.dll \
-		$(LIB)/veterinario.dll
+		$(LIB)/veterinario.dll \
+		$(LIB)/funcionario.dll \
+		$(LIB)/cadastro.dll
 
 # Flag para gerar bibliotecas dinâmicas para o Linux.
 lib_linux: \
@@ -67,12 +69,13 @@ lib_linux: \
 		$(LIB)/ave_nativa.so \
 		$(LIB)/ave_exotica.so \
 		$(LIB)/exotico.so \
-		$(LIB)/funcionario.so \
 		$(LIB)/mamifero.so \
 		$(LIB)/nativo.so \
 		$(LIB)/reptil.so \
 		$(LIB)/tratador.so \
-		$(LIB)/veterinario.so 
+		$(LIB)/veterinario.so \
+		$(LIB)/funcionario.so \
+		$(LIB)/cadastro.so 
 
 debug: FLAGS += $(DEBUG)
 
