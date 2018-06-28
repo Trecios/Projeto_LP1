@@ -12,19 +12,21 @@ Para gerar todos os diretórios necessários para compilação, no terminal, dig
 ```bash
 $ make config
 ```
-e então, digite:
+Utilizando o comando abaixo, por default e compilado o programa para o Linux:
 ```bash
 $ make
 ```
-O makefile está configurado para compilar com todas as flags de warnings e ao final gera um arquivo executável no diretório /bin.
+para compilar programa para windows:
+```bash
+$ make windows
+```
+O makefile está configurado para compilar com todas as flags de warnings e ao final gera um arquivo 
+executável no diretório /bin.
 
 ## Como executar
 No terminal, digite:
 ```bash
-$ ./bin/prog_estatico
-```
-```bash
-$ ./bin/prog_dinamico
+$ make run
 ```
 
 ## Dificuldades
