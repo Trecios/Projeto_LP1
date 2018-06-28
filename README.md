@@ -16,7 +16,7 @@ Utilizando o comando abaixo, por default e compilado o programa para o Linux:
 ```bash
 $ make
 ```
-para compilar programa para windows:
+para compilar programa para Windows:
 ```bash
 $ make windows
 ```
