@@ -99,4 +99,24 @@ namespace PetFera{
 		}
 	}
 	
+	/**
+	* @brief	Método que remove um funcionário pelo seu ID
+	* @params	Int id referente ao id de um funcionário cadastrado 
+	*/
+	void Gerencia::remover_funcionario(int id)
+	{
+		map< int, Funcionario* >::iterator func =  m_lista_funcionario.find(id);
+
+		if(func != m_lista_funcionario.end())
+		{
+	
+			m_lista_funcionario.erase(func);
+			cout << "Removido com sucesso!" << endl;
+	
+		}
+		else
+		{
+			cout << "Funcionario não encontrado" << endl;
+		}
+	}
 }

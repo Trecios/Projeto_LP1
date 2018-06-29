@@ -10,8 +10,9 @@
 
 
 #include <iostream>
-#include <map>
 #include <fstream>
+#include <sstream>
+#include <map>
 #include <string>
 
 #include "anfibio.h"
@@ -52,10 +53,16 @@ namespace PetFera{
 		void cadastrar_funcionario(string funcao);
 
 		/**
-		* @brief	Métodd que busca um funcionário pelo seu ID
+		* @brief	Método que busca um funcionário pelo seu ID
 		* @params	Int id referente ao id de um funcionário cadastrado 
 		*/
 		void buscar_funcionario(int id);
+		
+		/**
+		* @brief	Método que remove um funcionário pelo seu ID
+		* @params	Int id referente ao id de um funcionário cadastrado 
+		*/
+		void remover_funcionario(int id);
 	};
 }
 
