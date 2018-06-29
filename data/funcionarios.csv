@@ -1,0 +1,22 @@
+ID;Profissao;Nome;CPF;Idade;Tipo Sanguineo;Fator RH;Especialidade
+1;Tratador;Peter Park;123.126.731-10;30;O;+;Felinos;
+2;Veterinario;Carol Denvers;431.547.819-18;42;AB;+;Caninos;
+3;Tratador;Frank Castle;545.291.432-70;24;O;+;Marsupiais;
+4;Veterinario;Bruce Banner;424.129.732-03;25;AB;-;Bovinos;
+5;Tratador;Clark Kent;941.654.023-99;27;A;-;Equinos;
+6;Veterinario;Diana Prince;863.437.211-04;34;B;+;Caprinos;
+7;Tratador;Matthew Murdok;824.235.431-89;18;AB;+;Marinhos;
+8;Veterinario;Saori Kido;800.666.999-28;34;O;-;Repteis;
+9;Tratador;Monica Geller;884.263.778-08;53;O;+;Repteis Venenosos;
+10;Veterinario;Ross Geller;500.100.147-25;73;O;-;Suinos;
+11;Tratador;Rachel Green;324.194.472-82;42;A;+;Serpentes;
+12;Veterinario;Chandler Bing;317.782.928-07;34;AB;-;Cursoriais;
+13;Tratador;Joey Tribbiani;233.636.712-80;35;O;-;Plantígrados;
+14;Veterinario;Phoebe Buffay;774.773.103-11;21;B;+;Fossoriais;
+15;Tratador;Mary Jane;448.226.777-30;24;O;+;Arbícolas;
+16;Veterinario;Anthony Stark;444.785.885-83;34;O;+;Roedores;
+17;Tratador;John Snow;599.195.979-99;31;B;-;Planadores;
+18;Veterinario;Annabeth Chase;125.691.044-40;36;A;-;Aves;
+19;Tratador;Percy Jackson;526.832.625-95;39;O;-;Anfibios;
+20;Veterinario;Grover Underwood;528.522.794-05;62;O;+;Mamíferos;
+21;Tratador;Natasha Romanoff;131.473.536-76;23;A;-;Saltadores;

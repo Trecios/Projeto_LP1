@@ -119,4 +119,46 @@ namespace PetFera{
 			cout << "Funcionario não encontrado" << endl;
 		}
 	}
+	
+	/**
+	* @brief	Método que le dados de funcionários de um aquivo .csv 
+	*/
+	void Gerencia::ler_funcionarios()
+	{
+		ifstream func;
+	    func.open("data/funcionarios.csv");
+	    if(func.bad())
+	    {
+	        cerr << "ERRO! Nao foi possivel abrir o arquivo" << endl;
+	        exit(EXIT_FAILURE);
+	    }
+	    
+	    string cabecalho, linha;
+	    getline(func, cabecalho); //Para ler o cabeçalho do arquivo
+	    
+	    while(getline(func, linha))
+	    {
+	        stringstream aux(linha);
+	        string id, funcao, nome, cpf, idade, tipo_sang, fator_rh, especialidade;
+	        
+	        getline(aux, id, ';');
+	        getline(aux, funcao, ';');
+	        getline(aux, nome, ';');
+	        getline(aux, cpf, ';');
+	        getline(aux, idade,';');
+	        getline(aux, tipo_sang, ';');
+	        getline(aux, fator_rh, ';');
+	        getline(aux, especialidade, ';');
+	        
+	        if(funcao == "Veterinario")
+	        {
+	    		m_lista_funcionario.insert(pair<int, Funcionario*>(stoi(id), new Veterinario(stoi(id), funcao, nome, cpf, (short)stoi(idade), tipo_sang, fator_rh[0], especialidade)));
+	        }
+	        else
+	        {
+	        	m_lista_funcionario.insert(pair<int, Funcionario*>(stoi(id), new Tratador(stoi(id), funcao, nome, cpf, (short)stoi(idade), tipo_sang, fator_rh[0], especialidade)));
+	        }
+	    }
+	    cout << endl << "Leitura bem sucedida!" << endl;
+	}
 }

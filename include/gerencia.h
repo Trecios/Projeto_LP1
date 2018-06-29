@@ -63,6 +63,11 @@ namespace PetFera{
 		* @params	Int id referente ao id de um funcionário cadastrado 
 		*/
 		void remover_funcionario(int id);
+		
+		/**
+		* @brief	Método que le dados de funcionários de um aquivo .csv 
+		*/
+		void ler_funcionarios();
 	};
 }
 

@@ -10,7 +10,9 @@ int main(int argc, char const *argv[])
 
     Gerencia c;
     
-    c.cadastrar_funcionario("Veterinario");
+    c.ler_funcionarios();
+    
+    // c.cadastrar_funcionario("Veterinario");
 
     c.buscar_funcionario(3);
     c.remover_funcionario(3);
