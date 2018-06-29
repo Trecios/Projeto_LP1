@@ -57,7 +57,7 @@ namespace PetFera{
 		cout << "\nEspecialidade do funcionário: ";
 		getline(cin, especialidade);
 
-		Funcionario *novoFuncionario;
+		shared_ptr<Funcionario> novoFuncionario;
 
 		if(funcao.compare("Tratador") == 0)
 		{
@@ -65,15 +65,15 @@ namespace PetFera{
 			cout << "idade: " << idade << endl;
 			cout << "funcao: " << funcao << endl;
 
-			novoFuncionario = new Tratador(id, funcao, nome, cpf, idade, tipo_sanguineo, fator_rh, especialidade);
+			novoFuncionario = make_shared<Tratador>(id, funcao, nome, cpf, idade, tipo_sanguineo, fator_rh, especialidade);
 
 		}
 		else if(funcao.compare("Veterinario") == 0)
 		{
-			novoFuncionario = new Veterinario(id, funcao, nome, cpf, idade, tipo_sanguineo, fator_rh, especialidade);
+			novoFuncionario = make_shared<Veterinario>(id, funcao, nome, cpf, idade, tipo_sanguineo, fator_rh, especialidade);
 		}
 
-		m_lista_funcionario.insert(pair<int, Funcionario*>(id, novoFuncionario));
+		m_lista_funcionario.insert(pair<int, shared_ptr<Funcionario>>(id, novoFuncionario));
 
 		cout << endl <<"Cadastro feito com sucesso!" << endl;
 	}
@@ -84,7 +84,7 @@ namespace PetFera{
 	*/
 	void Gerencia::buscar_funcionario(int id)
 	{
-		map<int, Funcionario*>::iterator func = m_lista_funcionario.find(id);
+		map<int, shared_ptr<Funcionario>>::iterator func = m_lista_funcionario.find(id);
 		
 		cout << endl << m_lista_funcionario.size() << endl;
 
@@ -105,7 +105,7 @@ namespace PetFera{
 	*/
 	void Gerencia::remover_funcionario(int id)
 	{
-		map< int, Funcionario* >::iterator func =  m_lista_funcionario.find(id);
+		map<int, shared_ptr<Funcionario>>::iterator func =  m_lista_funcionario.find(id);
 
 		if(func != m_lista_funcionario.end())
 		{
@@ -152,11 +152,11 @@ namespace PetFera{
 	        
 	        if(funcao == "Veterinario")
 	        {
-	    		m_lista_funcionario.insert(pair<int, Funcionario*>(stoi(id), new Veterinario(stoi(id), funcao, nome, cpf, (short)stoi(idade), tipo_sang, fator_rh[0], especialidade)));
+	    		m_lista_funcionario.insert(pair<int, shared_ptr<Funcionario>>(stoi(id), make_shared<Veterinario>(stoi(id), funcao, nome, cpf, (short)stoi(idade), tipo_sang, fator_rh[0], especialidade)));
 	        }
 	        else
 	        {
-	        	m_lista_funcionario.insert(pair<int, Funcionario*>(stoi(id), new Tratador(stoi(id), funcao, nome, cpf, (short)stoi(idade), tipo_sang, fator_rh[0], especialidade)));
+	        	m_lista_funcionario.insert(pair<int, shared_ptr<Funcionario>>(stoi(id), make_shared<Tratador>(stoi(id), funcao, nome, cpf, (short)stoi(idade), tipo_sang, fator_rh[0], especialidade)));
 	        }
 	    }
 	    cout << endl << "Leitura bem sucedida!" << endl;

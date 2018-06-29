@@ -13,6 +13,7 @@
 #include <fstream>
 #include <sstream>
 #include <map>
+#include <memory>
 #include <string>
 
 #include "anfibio.h"
@@ -29,11 +30,7 @@ namespace PetFera{
 	class Gerencia
 	{
 	protected:
-		map<int, Anfibio> m_lista_anfibio;
-		map<int, Ave> m_lista_ave;
-		map<int, Mamifero> m_lista_mamifero;
-		map<int, Reptil> m_lista_reptil;
-		map<int, Funcionario*> m_lista_funcionario;
+		map<int, shared_ptr<Funcionario>> m_lista_funcionario;
 
 	public:
 		/**
