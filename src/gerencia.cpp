@@ -6,11 +6,12 @@
  */
 
 #include "gerencia.h"
-#include "execoes.h"
+#include "excecoes.h"
 
 using namespace std;
 
 namespace PetFera{
+
 	/**
 	* @brief Construtor padrão da classe Cadastrar
 	*/
