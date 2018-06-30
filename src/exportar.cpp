@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "execoes.h"
+#include "excecoes.h"
 
 using namespace std;
 
