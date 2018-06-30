@@ -9,8 +9,8 @@ int main(int argc, char const *argv[]){
 
     try{
         // Checa se não foi passado parâmetros ou se o único parâmetro foi o "-h"(help).
-        if(argc == 1) throw erroEntrada();
-        if(argv[1] == string("-h")) throw erroEntrada();
+        if(argc == 1) throw ErroEntrada();
+        if(argv[1] == string("-h")) throw ErroEntrada();
 
         else{
             // Percorre o array argv é armazena os devidos parâmetros nas variáveis para chamar o
@@ -22,16 +22,16 @@ int main(int argc, char const *argv[]){
                     tratador = argv[i + 1];
                     // Caso o valor de (i + 3) seja maior que o argc mostra que não foi passado o
                     // ultimo parâmetro, no caso o de arquivo de saída e assim e chamada a exceção.
-                    if((i + 3) > argc) throw erroEntrada();
+                    if((i + 3) > argc) throw ErroEntrada();
                     else saida = argv[i + 2];
                 }
             }
-            // Checa se todos os parârametros foram passados.
-            if(classe == "" || veterinario == "" || tratador == "" ) throw erroEntrada();
+            // Checa se todos os parâmetros foram passados.
+            if(classe == "" || veterinario == "" || tratador == "" ) throw ErroEntrada();
         }
     }
-    catch(erroEntrada &ex){
-        cerr << ex.what() << endl;
+    catch(ErroEntrada &erro){
+        cerr << erro.what() << endl;
         exit(1);
     }
     

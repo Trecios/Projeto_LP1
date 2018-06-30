@@ -6,8 +6,6 @@ using namespace PetFera;
 int main(int argc, char const *argv[])
 {
 	/* code */
-    cout << "OK" << endl;
-
     Gerencia c;
     
     c.ler_funcionarios();
