@@ -329,4 +329,22 @@ namespace PetFera{
 		m_lista_animal.insert(pair<int, shared_ptr<Animal>>(id, novoAnimal));
 	}
 
+
+	void Gerencia::exibir_animal(int id)
+	{
+		map<int, shared_ptr<Animal>>::iterator animal = m_lista_animal.find(id);
+		
+		cout << endl << m_lista_animal.size() << endl;
+
+		if(animal != m_lista_animal.end())
+		{
+
+			cout << *(animal -> second);
+		}
+		else
+		{
+			cout << "Animal nao encontrado" << endl;
+		}
+	}
+
 }

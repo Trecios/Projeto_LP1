@@ -89,6 +89,8 @@ namespace PetFera{
 
 			void cadastrar_reptil(int id, string nome, string nome_cientifico, char sexo, float tamanho, string dieta, 
 								shared_ptr<Funcionario> veterinario, shared_ptr<Funcionario> tratador, string batismo);
+
+			void exibir_animal(int id);
 	};
 }
 
