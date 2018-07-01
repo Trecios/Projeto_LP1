@@ -6,10 +6,12 @@
  */
 
 #include "gerencia.h"
+#include "excecoes.h"
 
 using namespace std;
 
 namespace PetFera{
+
 	/**
 	* @brief Construtor padrão da classe Cadastrar
 	*/
@@ -61,15 +63,17 @@ namespace PetFera{
 
 		if(funcao.compare("Tratador") == 0)
 		{
+
 			cout << "idade: " << idade << endl;
 			cout << "funcao: " << funcao << endl;
 
-			novoFuncionario = make_shared<Tratador>(id, funcao, nome, cpf, idade, tipo_sanguineo, fator_rh, especialidade);
-
+			novoFuncionario = make_shared<Tratador>(id, funcao, nome, cpf, idade, tipo_sanguineo,
+                    fator_rh, especialidade);
 		}
 		else if(funcao.compare("Veterinario") == 0)
 		{
-			novoFuncionario = make_shared<Veterinario>(id, funcao, nome, cpf, idade, tipo_sanguineo, fator_rh, especialidade);
+			novoFuncionario = make_shared<Veterinario>(id, funcao, nome, cpf, idade, tipo_sanguineo, 
+                    fator_rh, especialidade);
 		}
 
 		m_lista_funcionario.insert(pair<int, shared_ptr<Funcionario>>(id, novoFuncionario));
@@ -94,7 +98,7 @@ namespace PetFera{
 		}
 		else
 		{
-			cout << "Funcionario nao encontrado" << endl;
+			cout << "Funcionário não encontrado" << endl;
 		}
 	}
 	
@@ -115,7 +119,7 @@ namespace PetFera{
 		}
 		else
 		{
-			cout << "Funcionario não encontrado" << endl;
+			cout << "Funcionário não encontrado" << endl;
 		}
 	}
 	
@@ -124,41 +128,48 @@ namespace PetFera{
 	*/
 	void Gerencia::ler_funcionarios()
 	{
-		ifstream func;
-	    func.open("data/funcionarios.csv");
-	    if(func.bad())
-	    {
-	        cerr << "ERRO! Nao foi possivel abrir o arquivo" << endl;
-	        exit(EXIT_FAILURE);
-	    }
-	    
-	    string cabecalho, linha;
-	    getline(func, cabecalho); //Para ler o cabeçalho do arquivo
-	    
-	    while(getline(func, linha))
-	    {
-	        stringstream aux(linha);
-	        string id, funcao, nome, cpf, idade, tipo_sang, fator_rh, especialidade;
-	        
-	        getline(aux, id, ';');
-	        getline(aux, funcao, ';');
-	        getline(aux, nome, ';');
-	        getline(aux, cpf, ';');
-	        getline(aux, idade,';');
-	        getline(aux, tipo_sang, ';');
-	        getline(aux, fator_rh, ';');
-	        getline(aux, especialidade, ';');
-	        
-	        if(funcao == "Veterinario")
-	        {
-	    		m_lista_funcionario.insert(pair<int, shared_ptr<Funcionario>>(stoi(id), make_shared<Veterinario>(stoi(id), funcao, nome, cpf, (short)stoi(idade), tipo_sang, fator_rh[0], especialidade)));
-	        }
-	        else
-	        {
-	        	m_lista_funcionario.insert(pair<int, shared_ptr<Funcionario>>(stoi(id), make_shared<Tratador>(stoi(id), funcao, nome, cpf, (short)stoi(idade), tipo_sang, fator_rh[0], especialidade)));
-	        }
-	    }
-	    cout << endl << "Leitura bem sucedida!" << endl;
+        ifstream func("data/funcionarios.csv");
+
+        try{
+    	    if(!func.is_open()) throw ErroLeitura();
+
+            else{
+                string cabecalho, linha;
+                getline(func, cabecalho); //Para ler o cabeçalho do arquivo
+            
+                while(getline(func, linha))
+                {
+                    stringstream aux(linha);
+                    string id, funcao, nome, cpf, idade, tipo_sang, fator_rh, especialidade;
+                    
+                    getline(aux, id, ';');
+                    getline(aux, funcao, ';');
+                    getline(aux, nome, ';');
+                    getline(aux, cpf, ';');
+                    getline(aux, idade,';');
+                    getline(aux, tipo_sang, ';');
+                    getline(aux, fator_rh, ';');
+                    getline(aux, especialidade, ';');
+                    
+                    if(funcao == "Veterinario")
+                    {
+                        m_lista_funcionario.insert(pair<int, shared_ptr<Funcionario>>(stoi(id),
+                                    make_shared<Veterinario>(stoi(id), funcao, nome, cpf, (short)stoi(idade), 
+                                    tipo_sang, fator_rh[0], especialidade)));
+                    }
+                    else
+                    {
+                        m_lista_funcionario.insert(pair<int, shared_ptr<Funcionario>>(stoi(id),
+                                    make_shared<Tratador>(stoi(id), funcao, nome, cpf, (short)stoi(idade),
+                                    tipo_sang, fator_rh[0], especialidade)));
+                    }
+                }
+            }
+        }
+        catch(ErroLeitura &erro){
+            cerr << erro.what() << endl;
+            exit(1);
+        }
 	}
 
 
