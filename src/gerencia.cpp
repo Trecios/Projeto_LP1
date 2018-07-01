@@ -347,4 +347,21 @@ namespace PetFera{
 		}
 	}
 
+	void Gerencia::remover_animal(int id)
+	{
+		map<int, shared_ptr<Animal>>::iterator animal =  m_lista_animal.find(id);
+
+		if(animal != m_lista_animal.end())
+		{
+	
+			m_lista_animal.erase(animal);
+			cout << "Removido com sucesso!" << endl;
+	
+		}
+		else
+		{
+			cout << "Animal não encontrado" << endl;
+		}
+	}
+
 }

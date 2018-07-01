@@ -91,6 +91,8 @@ namespace PetFera{
 								shared_ptr<Funcionario> veterinario, shared_ptr<Funcionario> tratador, string batismo);
 
 			void exibir_animal(int id);
+
+			void remover_animal(int id);
 	};
 }
 

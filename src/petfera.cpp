@@ -57,6 +57,8 @@ int main(int argc, char const *argv[])
 
     c.cadastrar_animal("Mamifero");
     c.exibir_animal(1);
+    c.remover_animal(1);
+    c.exibir_animal(1);
 
 	return 0;
 }
