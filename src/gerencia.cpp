@@ -252,6 +252,18 @@ namespace PetFera{
 
 	}
 
+	/**
+	* @brief	Método auxiliar que cadastra um animal do tipo anfibio
+	* @params	Int id referente a id de um animal
+	* @params	String nome referente a nome de um animal
+	* @params	String nome_cintifico referente a nome_cintifico de um animal
+	* @params	char sexo referente a sexo de um animal
+	* @params	float tamanho referente a tamanho de um animal
+	* @params	String dieta referente a dieta de um animal
+	* @params	shared_ptr<Funcionario> veterinario referente a veterinario de um animal
+	* @params	shared_ptr<Funcionario> tratador referente a tratador de um animal
+	* @params	String batismo referente a batismo de um animal
+	*/
 	void Gerencia::cadastrar_anfibio(int id, string nome, string nome_cientifico, char sexo, float tamanho, string dieta, 
 							shared_ptr<Funcionario> veterinario, shared_ptr<Funcionario> tratador, string batismo)
 	{
@@ -270,6 +282,18 @@ namespace PetFera{
 		m_lista_animal.insert(pair<int, shared_ptr<Animal>>(id, novoAnimal));
 	}
 
+	/**
+	* @brief	Método auxiliar que cadastra um animal do tipo ave
+	* @params	Int id referente a id de um animal
+	* @params	String nome referente a nome de um animal
+	* @params	String nome_cintifico referente a nome_cintifico de um animal
+	* @params	char sexo referente a sexo de um animal
+	* @params	float tamanho referente a tamanho de um animal
+	* @params	String dieta referente a dieta de um animal
+	* @params	shared_ptr<Funcionario> veterinario referente a veterinario de um animal
+	* @params	shared_ptr<Funcionario> tratador referente a tratador de um animal
+	* @params	String batismo referente a batismo de um animal
+	*/
 	void Gerencia::cadastrar_ave(int id, string nome, string nome_cientifico, char sexo, float tamanho, string dieta, 
 							shared_ptr<Funcionario> veterinario, shared_ptr<Funcionario> tratador, string batismo)
 	{
@@ -290,6 +314,18 @@ namespace PetFera{
 
 	}
 
+	/**
+	* @brief	Método auxiliar que cadastra um animal do tipo mamifero
+	* @params	Int id referente a id de um animal
+	* @params	String nome referente a nome de um animal
+	* @params	String nome_cintifico referente a nome_cintifico de um animal
+	* @params	char sexo referente a sexo de um animal
+	* @params	float tamanho referente a tamanho de um animal
+	* @params	String dieta referente a dieta de um animal
+	* @params	shared_ptr<Funcionario> veterinario referente a veterinario de um animal
+	* @params	shared_ptr<Funcionario> tratador referente a tratador de um animal
+	* @params	String batismo referente a batismo de um animal
+	*/
 	void Gerencia::cadastrar_mamifero(int id, string nome, string nome_cientifico, char sexo, float tamanho, string dieta, 
 							shared_ptr<Funcionario> veterinario, shared_ptr<Funcionario> tratador, string batismo)
 	{
@@ -303,6 +339,18 @@ namespace PetFera{
 		m_lista_animal.insert(pair<int, shared_ptr<Animal>>(id, novoAnimal));
 	}
 
+	/**
+	* @brief	Método auxiliar que cadastra um animal do tipo reptil
+	* @params	Int id referente a id de um animal
+	* @params	String nome referente a nome de um animal
+	* @params	String nome_cintifico referente a nome_cintifico de um animal
+	* @params	char sexo referente a sexo de um animal
+	* @params	float tamanho referente a tamanho de um animal
+	* @params	String dieta referente a dieta de um animal
+	* @params	shared_ptr<Funcionario> veterinario referente a veterinario de um animal
+	* @params	shared_ptr<Funcionario> tratador referente a tratador de um animal
+	* @params	String batismo referente a batismo de um animal
+	*/
 	void Gerencia::cadastrar_reptil(int id, string nome, string nome_cientifico, char sexo, float tamanho, string dieta, 
 							shared_ptr<Funcionario> veterinario, shared_ptr<Funcionario> tratador, string batismo)
 	{
@@ -329,7 +377,10 @@ namespace PetFera{
 		m_lista_animal.insert(pair<int, shared_ptr<Animal>>(id, novoAnimal));
 	}
 
-
+	/**
+	* @brief	Método que exibe um animal pelo seu ID
+	* @params	Int id referente ao id de um animal cadastrado 
+	*/
 	void Gerencia::exibir_animal(int id)
 	{
 		map<int, shared_ptr<Animal>>::iterator animal = m_lista_animal.find(id);
@@ -347,6 +398,10 @@ namespace PetFera{
 		}
 	}
 
+	/**
+	* @brief	Método que remove um animal pelo seu ID
+	* @params	Int id referente ao id de um animal cadastrado 
+	*/
 	void Gerencia::remover_animal(int id)
 	{
 		map<int, shared_ptr<Animal>>::iterator animal =  m_lista_animal.find(id);

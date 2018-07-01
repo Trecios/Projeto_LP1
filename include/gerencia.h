@@ -52,7 +52,7 @@ namespace PetFera{
 			void cadastrar_funcionario(string funcao);
 
 			/**
-			* @brief	Método que busca um funcionário pelo seu ID
+			* @brief	Método que exibe um funcionário pelo seu ID
 			* @params	Int id referente ao id de um funcionário cadastrado 
 			*/
 			void exibir_funcionario(int id);
@@ -74,24 +74,76 @@ namespace PetFera{
 			*/
 			void cadastrar_animal(string classe);
 
-
+			/**
+			* @brief	Método auxiliar que cadastra um animal do tipo anfibio
+			* @params	Int id referente a id de um animal
+			* @params	String nome referente a nome de um animal
+			* @params	String nome_cintifico referente a nome_cintifico de um animal
+			* @params	char sexo referente a sexo de um animal
+			* @params	float tamanho referente a tamanho de um animal
+			* @params	String dieta referente a dieta de um animal
+			* @params	shared_ptr<Funcionario> veterinario referente a veterinario de um animal
+			* @params	shared_ptr<Funcionario> tratador referente a tratador de um animal
+			* @params	String batismo referente a batismo de um animal
+			*/
 			void cadastrar_anfibio(int id, string nome, string nome_cientifico, char sexo, float tamanho, string dieta, 
 								shared_ptr<Funcionario> veterinario, shared_ptr<Funcionario> tratador, string batismo);
 
-
+			/**
+			* @brief	Método auxiliar que cadastra um animal do tipo ave
+			* @params	Int id referente a id de um animal
+			* @params	String nome referente a nome de um animal
+			* @params	String nome_cintifico referente a nome_cintifico de um animal
+			* @params	char sexo referente a sexo de um animal
+			* @params	float tamanho referente a tamanho de um animal
+			* @params	String dieta referente a dieta de um animal
+			* @params	shared_ptr<Funcionario> veterinario referente a veterinario de um animal
+			* @params	shared_ptr<Funcionario> tratador referente a tratador de um animal
+			* @params	String batismo referente a batismo de um animal
+			*/
 			void cadastrar_ave(int id, string nome, string nome_cientifico, char sexo, float tamanho, string dieta, 
 								shared_ptr<Funcionario> veterinario, shared_ptr<Funcionario> tratador, string batismo);
 
-
+			/**
+			* @brief	Método auxiliar que cadastra um animal do tipo mamifero
+			* @params	Int id referente a id de um animal
+			* @params	String nome referente a nome de um animal
+			* @params	String nome_cintifico referente a nome_cintifico de um animal
+			* @params	char sexo referente a sexo de um animal
+			* @params	float tamanho referente a tamanho de um animal
+			* @params	String dieta referente a dieta de um animal
+			* @params	shared_ptr<Funcionario> veterinario referente a veterinario de um animal
+			* @params	shared_ptr<Funcionario> tratador referente a tratador de um animal
+			* @params	String batismo referente a batismo de um animal
+			*/
 			void cadastrar_mamifero(int id, string nome, string nome_cientifico, char sexo, float tamanho, string dieta, 
 								shared_ptr<Funcionario> veterinario, shared_ptr<Funcionario> tratador, string batismo);
 
-
+			/**
+			* @brief	Método auxiliar que cadastra um animal do tipo reptil
+			* @params	Int id referente a id de um animal
+			* @params	String nome referente a nome de um animal
+			* @params	String nome_cintifico referente a nome_cintifico de um animal
+			* @params	char sexo referente a sexo de um animal
+			* @params	float tamanho referente a tamanho de um animal
+			* @params	String dieta referente a dieta de um animal
+			* @params	shared_ptr<Funcionario> veterinario referente a veterinario de um animal
+			* @params	shared_ptr<Funcionario> tratador referente a tratador de um animal
+			* @params	String batismo referente a batismo de um animal
+			*/
 			void cadastrar_reptil(int id, string nome, string nome_cientifico, char sexo, float tamanho, string dieta, 
 								shared_ptr<Funcionario> veterinario, shared_ptr<Funcionario> tratador, string batismo);
 
+			/**
+			* @brief	Método que exibe um animal pelo seu ID
+			* @params	Int id referente ao id de um animal cadastrado 
+			*/
 			void exibir_animal(int id);
 
+			/**
+			* @brief	Método que remove um animal pelo seu ID
+			* @params	Int id referente ao id de um animal cadastrado 
+			*/
 			void remover_animal(int id);
 	};
 }
