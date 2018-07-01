@@ -97,7 +97,7 @@ namespace PetFera{
      */
     ostream& operator<<(ostream &o, Funcionario const f)
     {
-         o << endl;
+        o << endl;
         o << ">>>>> Ficha do Funcionario <<<<<" << endl;
         o << "ID" << setfill ('.') << setw (20) << "> " << f.m_id << endl;
         o << "Funcao" << setfill ('.') << setw (16) << "> " << f.m_funcao << endl;

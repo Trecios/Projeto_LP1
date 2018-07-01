@@ -6,6 +6,7 @@
  */
 
 #include "anfibio.h"
+#include <memory>
 
 
 namespace PetFera{
@@ -18,8 +19,8 @@ namespace PetFera{
      * ultima_muda_ em m_ultima_muda.
      */
     Anfibio::Anfibio(int id_, string classe_, string nome_, string cientifico_, char sexo_,
-                    float tamanho_, string dieta_, shared_ptr<Veterinario> veterinario_,
-                    shared_ptr<Tratador> tratador_, string batismo_, int total_mudas_,
+                    float tamanho_, string dieta_, shared_ptr<Funcionario> veterinario_,
+                    shared_ptr<Funcionario> tratador_, string batismo_, int total_mudas_,
                     string ultima_muda_): Animal(id_, classe_, nome_, cientifico_, sexo_, tamanho_,
                     dieta_, veterinario_, tratador_, batismo_), m_total_mudas(total_mudas_),
                     m_ultima_muda(ultima_muda_) {}

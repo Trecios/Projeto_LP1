@@ -27,8 +27,8 @@ namespace PetFera{
              * @brief Construtor da classe Mamífero.
              */
             Mamifero(int id_, string classe_, string nome_, string cientifico_, char sexo_,
-                    float tamanho_, string dieta_, shared_ptr<Veterinario> veterinario_,
-                    shared_ptr<Tratador> tratador_, string batismo_, string cor_);
+                    float tamanho_, string dieta_, shared_ptr<Funcionario> veterinario_,
+                    shared_ptr<Funcionario> tratador_, string batismo_, string cor_);
 
             /**
              * @brief Destrutor da classe Mamífero.

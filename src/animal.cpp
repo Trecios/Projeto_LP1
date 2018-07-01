@@ -17,8 +17,8 @@ namespace PetFera{
      * batismo_ em m_batismo.
      */
     Animal::Animal(int id_, string classe_, string nome_, string cientifico_, char sexo_,
-                    float tamanho_, string dieta_, shared_ptr<Veterinario> veterinario_,
-                    shared_ptr<Tratador> tratador_, string batismo_): m_id(id_), m_classe(classe_),
+                    float tamanho_, string dieta_, shared_ptr<Funcionario> veterinario_,
+                    shared_ptr<Funcionario> tratador_, string batismo_): m_id(id_), m_classe(classe_),
                     m_nome(nome_), m_cientifico(cientifico_), m_sexo(sexo_), m_tamanho(tamanho_),
                     m_dieta(dieta_), m_veterinario(veterinario_), m_tratador(tratador_), 
                     m_batismo(batismo_) {}
@@ -88,7 +88,7 @@ namespace PetFera{
      * @brief Método get do atributo m_veterinario.
      * @return Valor do atributo m_veterinario.
      */
-    shared_ptr<Veterinario> Animal::getVeterinario(){
+    shared_ptr<Funcionario> Animal::getVeterinario(){
         return m_veterinario;
     }
 
@@ -96,7 +96,7 @@ namespace PetFera{
      * @brief Método get do atributo m_tratador.
      * @return Valor do atributo m_tratador.
      */
-    shared_ptr<Tratador> Animal::getTratador(){
+    shared_ptr<Funcionario> Animal::getTratador(){
         return m_tratador;
     }
 
@@ -128,7 +128,7 @@ namespace PetFera{
      * @brief Método set do atributo m_veterinario.
      * @details Altera o valor do atributo m_veterinario.
      */
-    void Animal::setVeterinario(shared_ptr<Veterinario> veterinario_){
+    void Animal::setVeterinario(shared_ptr<Funcionario> veterinario_){
         m_veterinario = veterinario_;
     }
 
@@ -136,7 +136,9 @@ namespace PetFera{
      * @brief Método set do atributo m_tratador.
      * @details Altera o valor do atributo m_tratador.
      */
-    void Animal::setTratador(shared_ptr<Tratador> tratador_){
+    void Animal::setTratador(shared_ptr<Funcionario> tratador_){
         m_tratador = tratador_;
     }
+    
+
 }

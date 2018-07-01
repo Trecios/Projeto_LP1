@@ -9,9 +9,9 @@
 #define ANIMAL_H
 
 #include <iostream>
+#include <iomanip>
 #include <memory>
-#include "veterinario.h"
-#include "tratador.h"
+#include "funcionario.h"
 
 using namespace std;
 
@@ -29,8 +29,8 @@ namespace PetFera{
             char m_sexo;
             float m_tamanho;
             string m_dieta;
-            shared_ptr<Veterinario> m_veterinario;
-            shared_ptr<Tratador> m_tratador;
+            shared_ptr<Funcionario> m_veterinario;
+            shared_ptr<Funcionario> m_tratador;
             string m_batismo;
 
         public:
@@ -39,8 +39,8 @@ namespace PetFera{
              * @brief Construtor da classe Animal.
              */
             Animal(int id_, string classe_, string nome_, string cientifico_, char sexo_,
-                    float tamanho_, string dieta_, shared_ptr<Veterinario> veterinario_,
-                    shared_ptr<Tratador> tratador_, string batismo_);
+                    float tamanho_, string dieta_, shared_ptr<Funcionario> veterinario_,
+                    shared_ptr<Funcionario> tratador_, string batismo_);
 
             /**
              * @brief Destrutor da classe Funcionário.
@@ -93,13 +93,13 @@ namespace PetFera{
              * @brief Método get do ponteiro m_veterinario.
              * @return ponteiro m_veterinario.
              */
-            shared_ptr<Veterinario> getVeterinario();
+            shared_ptr<Funcionario> getVeterinario();
 
             /**
              * @brief Método get do ponteiro m_tratador.
              * @return ponteiro m_tratador.
              */
-            shared_ptr<Tratador> getTratador();
+            shared_ptr<Funcionario> getTratador();
 
             /**
              * @brief Método get do atributo m_batismo.
@@ -120,12 +120,13 @@ namespace PetFera{
             /**
              * @brief Método set do atributo m_veterinario.
              */
-            void setVeterinario(shared_ptr<Veterinario> veterinario_);
+            void setVeterinario(shared_ptr<Funcionario> veterinario_);
 
             /**
              * @brief Método set do atributo m_tratador.
              */
-            void setTratador(shared_ptr<Tratador> tratador_);
+            void setTratador(shared_ptr<Funcionario> tratador_);
+
     };
 }
 

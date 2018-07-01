@@ -19,8 +19,8 @@ namespace PetFera{
      * envergadura_ em m_envergadura.
      */
     Ave::Ave(int id_, string classe_, string nome_, string cientifico_, char sexo_, 
-            float tamanho_, string dieta_, shared_ptr<Veterinario> veterinario_,
-            shared_ptr<Tratador> tratador_, string batismo_, int tamanho_bico_,
+            float tamanho_, string dieta_, shared_ptr<Funcionario> veterinario_,
+            shared_ptr<Funcionario> tratador_, string batismo_, int tamanho_bico_,
             int envergadura_): Animal(id_, classe_, nome_, cientifico_, sexo_, 
             tamanho_, dieta_, veterinario_, tratador_, batismo_), m_tamanho_bico(tamanho_bico_),
             m_envergadura(envergadura_) {}
