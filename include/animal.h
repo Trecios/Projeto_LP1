@@ -127,6 +127,8 @@ namespace PetFera{
              */
             void setTratador(shared_ptr<Funcionario> tratador_);
 
+            friend ostream& operator<<(ostream &o, Animal const a);
+
     };
 }
 

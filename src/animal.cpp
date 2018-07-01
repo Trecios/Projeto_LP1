@@ -140,5 +140,22 @@ namespace PetFera{
         m_tratador = tratador_;
     }
     
+    ostream& operator<<(ostream &o, Animal const a)
+    {
+        o << endl;
+        o << ">>>>> Ficha do Animal <<<<<" << endl;
+        o << "ID" << setfill ('.') << setw (20) << "> " << a.m_id << endl;
+        o << "Classe" << setfill ('.') << setw (16) << "> " << a.m_classe << endl;
+        o << "Nome" << setfill ('.') << setw (18) << "> " << a.m_nome << endl;
+        o << "Nome Científico" << setfill ('.') << setw (7) << "> " << a.m_cientifico << endl;
+        o << "Sexo" << setfill ('.') << setw (18) << "> " << a.m_sexo << endl;
+        o << "Tamanho" << setfill ('.') << setw (15) << "> " << a.m_tamanho << endl;
+        o << "Dieta" << setfill ('.') << setw (17) << "> " << a.m_dieta << endl;
+        o << "Tratador" << setfill ('.') << setw (14) << "> " << a.m_tratador << endl;
+        o << "Veterinário" << setfill ('.') << setw (11) << "> " << a.m_veterinario << endl;
+        o << "Nome de batismo" << setfill ('.') << setw (7) << "> " << a.m_batismo << endl;
+        o << endl;
 
+        return o;
+    }
 }
