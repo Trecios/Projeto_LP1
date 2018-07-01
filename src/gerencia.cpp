@@ -61,7 +61,6 @@ namespace PetFera{
 
 		if(funcao.compare("Tratador") == 0)
 		{
-			cout << "entrou no if" << endl;
 			cout << "idade: " << idade << endl;
 			cout << "funcao: " << funcao << endl;
 
@@ -82,7 +81,7 @@ namespace PetFera{
 	* @brief	Métodd que busca um funcionário pelo seu ID
 	* @params	Int id referente ao id de um funcionário cadastrado 
 	*/
-	void Gerencia::buscar_funcionario(int id)
+	void Gerencia::exibir_funcionario(int id)
 	{
 		map<int, shared_ptr<Funcionario>>::iterator func = m_lista_funcionario.find(id);
 		
@@ -161,4 +160,162 @@ namespace PetFera{
 	    }
 	    cout << endl << "Leitura bem sucedida!" << endl;
 	}
+
+
+	/**
+	* @brief	Método que cadastra um animal pela sua classe
+	* @params	String classe referente a classe de um animal
+	*/
+	void Gerencia::cadastrar_animal(string classe)
+	{
+		string aux;
+		int id, veterinario_resp_id, tratador_resp_id;
+		string nome, nome_cientifico, dieta, batismo;
+		char sexo;
+		double tamanho;
+
+		cout << "Numero de identificação do animal (ID): ";
+		getline(cin, aux);
+		id = stoi(aux);
+
+		cout << "\nNome do animal: ";
+		getline(cin, nome);
+
+		cout << "\nNome científico do animal: ";
+		getline(cin, nome_cientifico);
+
+		cout << "\nSexo do animal: ";
+		getline(cin, aux);
+		sexo = aux[0];
+
+		cout << "\nTamanho em métros do animal: ";
+		getline(cin, aux);
+		tamanho = stof(aux);
+
+		cout << "\nDieta predominante do animal: ";
+		getline(cin, dieta);
+
+		cout << "\nVeterinário associado do animal: ";
+		getline(cin, aux);
+		veterinario_resp_id = stoi(aux);
+
+		cout << "\nTratador associado do animal: ";
+		getline(cin, aux);
+		tratador_resp_id = stoi(aux);
+
+		cout << "\nNome de batismo do animal: ";
+		getline(cin, batismo);
+	
+		shared_ptr<Funcionario> veterinario = nullptr;
+		shared_ptr<Funcionario> tratador = nullptr;
+
+		if(m_lista_funcionario.find(veterinario_resp_id) != m_lista_funcionario.end())
+		{
+			veterinario = m_lista_funcionario[veterinario_resp_id];
+		}
+
+		if(m_lista_funcionario.find(tratador_resp_id) != m_lista_funcionario.end())
+		{
+			tratador = m_lista_funcionario[tratador_resp_id];
+		}
+
+
+		if(classe.compare("Anfibio") == 0)
+		{
+			cadastrar_anfibio(id, nome, nome_cientifico, sexo, tamanho, dieta, veterinario, tratador, batismo);
+		}
+		else if(classe.compare("Ave") == 0)
+		{
+			cadastrar_ave(id, nome, nome_cientifico, sexo, tamanho, dieta, veterinario, tratador, batismo);
+		}
+		else if(classe.compare("Mamifero") == 0)
+		{
+			cadastrar_mamifero(id, nome, nome_cientifico, sexo, tamanho, dieta, veterinario, tratador, batismo);
+		}
+		else if(classe.compare("Reptil") == 0)
+		{
+			cadastrar_reptil(id, nome, nome_cientifico, sexo, tamanho, dieta, veterinario, tratador, batismo);
+		}
+
+		cout << "Cdastro realizado com sucesso." << endl;
+
+	}
+
+	void Gerencia::cadastrar_anfibio(int id, string nome, string nome_cientifico, char sexo, float tamanho, string dieta, 
+							shared_ptr<Funcionario> veterinario, shared_ptr<Funcionario> tratador, string batismo)
+	{
+		int total_mudas;
+		string aux, ultima_muda;
+
+		cout << "\nTotal de mudas: ";
+		getline(cin, aux);
+		total_mudas = stoi(aux);
+
+		cout << "\nData da ultima muda (dd/mm/aa): ";
+		getline(cin, ultima_muda);
+
+		shared_ptr<Animal> novoAnimal = make_shared<Anfibio>(id, "Anfibio", nome, nome_cientifico, sexo, tamanho, dieta, veterinario, tratador, batismo, total_mudas, ultima_muda);
+
+		m_lista_animal.insert(pair<int, shared_ptr<Animal>>(id, novoAnimal));
+	}
+
+	void Gerencia::cadastrar_ave(int id, string nome, string nome_cientifico, char sexo, float tamanho, string dieta, 
+							shared_ptr<Funcionario> veterinario, shared_ptr<Funcionario> tratador, string batismo)
+	{
+		int tamanho_dico, envergadura;
+		string aux;
+
+		cout << "\nTamanho do bico: ";
+		getline(cin, aux);
+		tamanho_dico = stoi(aux);
+
+		cout << "\nEnvergadura: ";
+		getline(cin, aux);
+		envergadura = stoi(aux);
+
+		shared_ptr<Animal> novoAnimal = make_shared<Ave>(id, "Ave", nome, nome_cientifico, sexo, tamanho, dieta, veterinario, tratador, batismo, tamanho_dico, envergadura);
+
+		m_lista_animal.insert(pair<int, shared_ptr<Animal>>(id, novoAnimal));
+
+	}
+
+	void Gerencia::cadastrar_mamifero(int id, string nome, string nome_cientifico, char sexo, float tamanho, string dieta, 
+							shared_ptr<Funcionario> veterinario, shared_ptr<Funcionario> tratador, string batismo)
+	{
+		string aux, cor;
+
+		cout << "\nCor predominante: ";
+		getline(cin, cor);
+
+		shared_ptr<Animal> novoAnimal = make_shared<Mamifero>(id, "Mamifero", nome, nome_cientifico, sexo, tamanho, dieta, veterinario, tratador, batismo, cor);
+
+		m_lista_animal.insert(pair<int, shared_ptr<Animal>>(id, novoAnimal));
+	}
+
+	void Gerencia::cadastrar_reptil(int id, string nome, string nome_cientifico, char sexo, float tamanho, string dieta, 
+							shared_ptr<Funcionario> veterinario, shared_ptr<Funcionario> tratador, string batismo)
+	{
+		string aux, venenoso, tipo_veneno;
+		bool eh_venenoso = false;
+
+		cout << "\nAnimal venenoso (sim ou não): ";
+		getline(cin, venenoso);
+
+		if(venenoso.compare("sim") == 0)
+		{
+			eh_venenoso = true;
+			cout << "\nTipo do veneno: ";
+			getline(cin, tipo_veneno);
+		}
+		else
+		{
+			tipo_veneno = "Nenhum";
+		}
+
+
+		shared_ptr<Animal> novoAnimal = make_shared<Reptil>(id, "Reptil", nome, nome_cientifico, sexo, tamanho, dieta, veterinario, tratador, batismo, eh_venenoso, tipo_veneno);
+
+		m_lista_animal.insert(pair<int, shared_ptr<Animal>>(id, novoAnimal));
+	}
+
 }

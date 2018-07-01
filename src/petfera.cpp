@@ -6,7 +6,6 @@ using namespace PetFera;
 int main(int argc, char const *argv[])
 {
 	/* code */
-    cout << "OK" << endl;
 
     Gerencia c;
     
@@ -14,10 +13,12 @@ int main(int argc, char const *argv[])
     
     // c.cadastrar_funcionario("Veterinario");
 
-    c.buscar_funcionario(3);
+    c.exibir_funcionario(3);
     c.remover_funcionario(3);
-    c.buscar_funcionario(3);
-    
+    c.exibir_funcionario(3);
+
+    c.cadastrar_animal("Mamifero");
+    // c.exibir_animal(1);
 
 	return 0;
 }
