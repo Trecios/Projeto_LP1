@@ -149,6 +149,11 @@ namespace PetFera{
 			* @params	Int id referente ao id de um animal cadastrado 
 			*/
 			void remover_animal(int id);
+
+			/**
+			* @brief	Método que exibe todos os funcionários cadastrados.
+			*/
+			void listar_funcionarios();
 	};
 }
 

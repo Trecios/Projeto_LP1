@@ -12,6 +12,7 @@ int main(int argc, char const *argv[])
     Gerencia c;
     
     c.ler_funcionarios();
+    c.listar_funcionarios();
 
     // do{
     //     cout << "+=============== Menu de Opções ==============+" << endl
@@ -51,14 +52,14 @@ int main(int argc, char const *argv[])
     
     // c.cadastrar_funcionario("Veterinario");
 
-    c.exibir_funcionario(3);
-    c.remover_funcionario(3);
-    c.exibir_funcionario(3);
+    // c.exibir_funcionario(3);
+    // c.remover_funcionario(3);
+    // c.exibir_funcionario(3);
 
-    c.cadastrar_animal("Mamifero");
-    c.exibir_animal(1);
-    c.remover_animal(1);
-    c.exibir_animal(1);
+    // c.cadastrar_animal("Mamifero");
+    // c.exibir_animal(1);
+    // c.remover_animal(1);
+    // c.exibir_animal(1);
 
 	return 0;
 }

@@ -435,4 +435,20 @@ namespace PetFera{
 		}
 	}
 
+	/**
+	* @brief	Método que exibe todos os funcionários cadastrados.
+	*/
+	void Gerencia::listar_funcionarios()
+	{
+		cout << "-----------------------------" << endl;
+		for(auto i  = m_lista_funcionario.begin(); i != m_lista_funcionario.end(); i++)
+		{
+			cout << "ID: " << (i->second)->getId() << endl 
+			<< "Nome: " << (i->second)->getNome() << endl
+			<< "Funcao: " << (i->second)->getFuncao() << endl
+			<< "Especialidade: " << (i->second)->getEspecialidade() << endl
+			<< "-----------------------------" << endl;
+		}
+	}
+
 }
