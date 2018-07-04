@@ -151,8 +151,8 @@ namespace PetFera{
         o << "Sexo" << setfill ('.') << setw (18) << "> " << a.m_sexo << endl;
         o << "Tamanho" << setfill ('.') << setw (15) << "> " << a.m_tamanho << endl;
         o << "Dieta" << setfill ('.') << setw (17) << "> " << a.m_dieta << endl;
-        o << "Tratador" << setfill ('.') << setw (14) << "> " << a.m_tratador << endl;
-        o << "Veterinário" << setfill ('.') << setw (11) << "> " << a.m_veterinario << endl;
+        o << "Tratador" << setfill ('.') << setw (14) << "> " << a.m_tratador->getNome() << endl;
+        o << "Veterinário" << setfill ('.') << setw (11) << "> " << a.m_veterinario->getNome() << endl;
         o << "Nome de batismo" << setfill ('.') << setw (7) << "> " << a.m_batismo << endl;
         o << endl;
 
