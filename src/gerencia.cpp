@@ -195,7 +195,7 @@ namespace PetFera{
         try{
             cout << "Numero de identificação do animal (ID): ";
             getline(cin, aux);
-            if(typeid(aux) != typeid(int)) throw ErroCadastro();
+            // if(typeid(aux) != typeid(int)) throw ErroCadastro();
             id = stoi(aux);
 
             cout << "\nNome do animal: ";
@@ -210,7 +210,7 @@ namespace PetFera{
 
             cout << "\nTamanho em metros do animal: ";
             getline(cin, aux);
-            if(typeid(aux) != typeid(float)) throw ErroCadastro();
+            // if(typeid(aux) != typeid(float)) throw ErroCadastro();
             tamanho = stof(aux);
 
             cout << "\nDieta predominante do animal: ";
@@ -222,7 +222,7 @@ namespace PetFera{
 
             cout << "\nTratador associado do animal: ";
             getline(cin, aux);
-            if(typeid(aux) != typeid(int)) throw ErroCadastro();
+            // if(typeid(aux) != typeid(int)) throw ErroCadastro();
             tratador_resp_id = stoi(aux);
 
             cout << "\nNome de batismo do animal: ";
@@ -263,7 +263,7 @@ namespace PetFera{
 			cadastrar_reptil(id, nome, nome_cientifico, sexo, tamanho, dieta, veterinario, tratador, batismo);
 		}
 
-		cout << "Cdastro realizado com sucesso." << endl;
+		cout << "Cadastro realizado com sucesso." << endl;
 
 	}
 
@@ -292,7 +292,7 @@ namespace PetFera{
 		cout << "\nData da ultima muda (dd/mm/aa): ";
 		getline(cin, ultima_muda);
 
-		shared_ptr<Animal> novoAnimal = make_shared<Anfibio>(id, "Anfibio", nome, nome_cientifico, sexo,
+		shared_ptr<Animal> novoAnimal = make_shared<Anfibio>(id, "Amphibia", nome, nome_cientifico, sexo,
                 tamanho, dieta, veterinario, tratador, batismo, total_mudas, ultima_muda);
 
 		m_lista_animal.insert(pair<int, shared_ptr<Animal>>(id, novoAnimal));
@@ -324,7 +324,7 @@ namespace PetFera{
 		getline(cin, aux);
 		envergadura = stoi(aux);
 
-		shared_ptr<Animal> novoAnimal = make_shared<Ave>(id, "Ave", nome, nome_cientifico, sexo, tamanho,
+		shared_ptr<Animal> novoAnimal = make_shared<Ave>(id, "Aves", nome, nome_cientifico, sexo, tamanho,
                 dieta, veterinario, tratador, batismo, tamanho_dico, envergadura);
 
 		m_lista_animal.insert(pair<int, shared_ptr<Animal>>(id, novoAnimal));
@@ -351,7 +351,7 @@ namespace PetFera{
 		cout << "\nCor predominante: ";
 		getline(cin, cor);
 
-		shared_ptr<Animal> novoAnimal = make_shared<Mamifero>(id, "Mamifero", nome, nome_cientifico, sexo,
+		shared_ptr<Animal> novoAnimal = make_shared<Mamifero>(id, "Mammalia", nome, nome_cientifico, sexo,
                 tamanho, dieta, veterinario, tratador, batismo, cor);
 
 		m_lista_animal.insert(pair<int, shared_ptr<Animal>>(id, novoAnimal));
@@ -389,7 +389,7 @@ namespace PetFera{
 			tipo_veneno = "Nenhum";
 		}
 
-		shared_ptr<Animal> novoAnimal = make_shared<Reptil>(id, "Reptil", nome, nome_cientifico, sexo,
+		shared_ptr<Animal> novoAnimal = make_shared<Reptil>(id, "Reptilia", nome, nome_cientifico, sexo,
                 tamanho, dieta, veterinario, tratador, batismo, eh_venenoso, tipo_veneno);
 
 		m_lista_animal.insert(pair<int, shared_ptr<Animal>>(id, novoAnimal));
@@ -448,6 +448,52 @@ namespace PetFera{
 			<< "Funcao: " << (i->second)->getFuncao() << endl
 			<< "Especialidade: " << (i->second)->getEspecialidade() << endl
 			<< "-----------------------------" << endl;
+		}
+	}
+
+	/**
+	* @brief	Método que consulta todos os animais de uma determinada classe
+	* @params	String classe referente a classe dos animais. 
+	*/
+	void Gerencia::consultar_animaisClasse(string classe)
+	{
+		string buscada = "";
+		bool achou = false;
+		if(classe.compare("Anfibio") == 0 || classe.compare("Amphibia") == 0)
+		{
+			buscada = "Amphibia";
+		}
+		else if(classe.compare("Ave") == 0 || classe.compare("Aves") == 0)
+		{
+			buscada = "Aves";
+		}
+		else if(classe.compare("Mamifero") == 0 || classe.compare("Mammalia") == 0)
+		{
+			buscada = "Mammalia";
+		}
+		else if(classe.compare("Reptil") == 0 ||classe.compare("Reptilia") == 0)
+		{
+			buscada = "Reptilia";
+		}
+		
+		if(!buscada.compare("") == 0)
+		{
+			achou = true;
+		}
+		
+		if(achou)
+		{
+			for(auto i  = m_lista_animal.begin(); i != m_lista_animal.end(); i++)
+			{
+				if((i->second)->getClasse().compare(buscada) == 0)
+				{
+					cout << *(i->second);
+				}
+			}
+		}
+		else
+		{
+			cout << "Erro! " << classe << " nao eh uma classe valida." << endl;
 		}
 	}
 

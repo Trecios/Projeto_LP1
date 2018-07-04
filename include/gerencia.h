@@ -154,6 +154,12 @@ namespace PetFera{
 			* @brief	Método que exibe todos os funcionários cadastrados.
 			*/
 			void listar_funcionarios();
+
+			/**
+			* @brief	Método que consulta todos os animais de uma determinada classe
+			* @params	String classe referente a classe dos animais. 
+			*/
+			void consultar_animaisClasse(string classe);
 	};
 }
 
