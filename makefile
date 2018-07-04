@@ -17,6 +17,8 @@ all: \
 
 include: \
 		$(BUILD)/anfibio.o \
+		$(BUILD)/anfibio_nativo.o \
+		$(BUILD)/anfibio_exotico.o \
 		$(BUILD)/exotico.o \
 		$(BUILD)/animal.o \
 		$(BUILD)/funcionario.o \
@@ -27,21 +29,27 @@ include: \
 		$(BUILD)/ave_nativa.o \
 		$(BUILD)/ave_exotica.o \
 		$(BUILD)/mamifero.o \
+		$(BUILD)/mamifero_nativo.o \
+		$(BUILD)/mamifero_exotico.o \
 		$(BUILD)/nativo.o \
 		$(BUILD)/reptil.o \
+		$(BUILD)/reptil_nativo.o \
+		$(BUILD)/reptil_exotico.o \
 		$(BUILD)/gerencia.o
 
 # Flag para gerar executável do Windows.
 windows: \
 		include \
 		lib_windows \
-		$(BIN)/petfera_windows.exe
+		$(BIN)/petfera_windows.exe \
+		$(BIN)/exportar
 
 # Flag para gerar executável do Linux.
 linux:\
 		include \
 		lib_linux \
-		$(BIN)/petfera_linux
+		$(BIN)/petfera_linux \
+		$(BIN)/exportar
 
 # Flag para gerar bibliotecas dinâmicas para o Windows.
 lib_windows: \
@@ -85,13 +93,17 @@ debug: all
 $(BUILD)/%.o: $(SRC)/%.cpp $(INCLUDE)/%.h
 	$(CC) -c $< -I $(INCLUDE) $(FLAGS) -fPIC -o $@ 
 
-# Gera os executável Linux.
+# Gera os executável PetFera para Linux.
 $(BIN)/petfera_linux: $(SRC)/petfera.cpp
 	$(CC) $< $(LIB)/*.so -I $(INCLUDE) $(FLAGS) -o $@
 
-# Gera os executável Windows.
+# Gera os executável PetFera para Windows.
 $(BIN)/petfera_windows.exe: $(SRC)/petfera.cpp
 	$(CC) $< $(LIB)/*.dll -I $(INCLUDE) $(FLAGS) -o $@
+
+# Gera executável genérico.
+$(BIN)/%: $(SRC)/%.cpp
+	$(CC) $< $(BUILD)/*.o -I $(INCLUDE) $(FLAGS) -o $@
 
 # Gera bibliotecas estática .a para Linux.
 $(LIB)/%.a: $(SRC)/%.cpp $(INCLUDE)/%.h
