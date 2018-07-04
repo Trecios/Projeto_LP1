@@ -1,0 +1,24 @@
+ID;Classe;Tipo;Nome;Nome Cientifico;Sexo;Tamanho;Dieta;Veterinario;Tratador;Batismo;Tamanho do Bico;Envergadura;Total Mudas;Ultima Muda;Cor do Pelo;Venenoso;Tipo Veneno;Ibama;UF / Pais;Autorizacao
+18;Amphibia;Domestico;Sapo-comum;Bufo bufo;M;0.1;Moscas;20;19;Godofredo;-;-;4;03/08/13;-;-;-;-;-;-;
+19;Amphibia;Nativo;Salamandra-comum;Salamandra salamandra gallaica;F;0.17;Insetos;20;19;Wanda;-;-;8;15/03/17;-;-;-;16797;RO;4674684;
+20;Amphibia;Domestico;Perereca;Hypochondrialis Phyllomedusa;M;0.04;Insetos;20;19;Ptolomeu;-;-;3;29/06/15;-;-;-;-;-;-;
+23;Amphibia;Nativo;Jia;Leptodactylus fuscus;F;0.28;Insetos;20;19;Kelly;-;-;4;08/12/2017;-;-;-;2357645;SP;79435816;
+43;Amphibia;Exotico;Ra;Ranius Skovisky;F;0.05;Insetos;20;19;Xaieni;-;-;3;23/04/1753;-;-;-;87467435486;Cuba;-;
+1;Mammalia;Exotico;Leao;Panthera leo;M;2;Carne;2;1;Simba;-;-;-;-;Dourado;-;-;75344;Congo;-;
+2;Mammalia;Nativo;Onca-pintada;Panthera onca;F;2;Carne;2;1;Fiona;-;-;-;-;Amarelo e Preto;-;-;4563783;AM;13764;
+3;Mammalia;Exotico;Leopardo;Panthera pardus;M;2;Carne;2;1;Leonardo;-;-;-;-;Amarelo e Preto;-;-;4537678;Congo;-;
+4;Mammalia;Exotico;Tigre;Panthera tigris;M;2;Carne;2;1;Timao;-;-;-;-;Amarelo e Preto;-;-;453786;China;-;
+5;Mammalia;Exotico;Canguru;Macropus rufus;M;2;Grama;4;3;Jack;-;-;-;-;Marrom;-;-;39645;Australia;-;
+14;Mammalia;Exotico;Arminho;Mustela erminea;M;0.33;Carne;14;13;Arnold;-;-;-;-;Marrom;-;-;698767;EUA;-;
+15;Mammalia;Exotico;Gerbo;Meriones unguiculatus;M;0.8;Sementes;16;15;Gregorio;-;-;-;-;Branco;-;-;7658;Russia;-;
+16;Mammalia;Exotico;Feneco;Vulpes zerda;F;0.4;Carne;14;13;Sthephany;-;-;-;-;Marrom;-;-;6398756;Espanha;-;
+53;Mammalia;Domestico;Gato;Gato Gato;M;1;Peixe do Alasca;2;1;Tico;-;-;-;-;Preto;-;-;-;-;-;
+10;Reptilia;Exotico;Tartaruga gigante de galapagos;Chelonoidis nigra;M;2;Folha;8;7;Harriet;-;-;-;-;-;Nao;Nenhuma;3453687;Equador;-;
+11;Reptilia;Exotico;Naja;Naja naja;M;2;Carne;10;9;Sebastiao;-;-;-;-;-;Sim;Neurotoxina;3896345;Egito;-;
+12;Reptilia;Exotico;Dragao-de-komodo;Varanus komodoensis;F;2.5;Carne;10;9;Maria;-;-;-;-;-;Sim;Neurotoxina;453983;Australia;-;
+13;Reptilia;Nativo;Camaleao;Chamaeleo zeylanicus;M;0.04;Insetos;12;11;Zayn;-;-;-;-;-;Nao;Nenhuma;7869453;RJ;45687;
+6;Aves;Nativo;Papagaio;Amazona aestiva;F;0.38;Frutas;6;5;Pandora;0;1;-;-;-;-;-;453783645;PA;456764;
+7;Aves;Exotico;Cacatua;Cacatua;F;0.42;Frutas;6;5;Clarice;0;1;-;-;-;-;-;4563456;Colombia;-;
+8;Aves;Domestico;Galinha;Gallus gallus domesticus;F;0.42;Milho;6;5;Pipa;0.07;1.42;-;-;-;-;-;-;-;-;
+9;Aves;Nativo;Urubu;Coragyps atratus;M;0.42;Carne;18;17;Willian;0;2;-;-;-;-;-;698345;RN;45637863;
+17;Aves;Exotico;Kiwi;Apteryx;M;0.36;Insetos;6;5;Kevin;0;0;-;-;-;-;-;456987;Nova Zelandia;-;
