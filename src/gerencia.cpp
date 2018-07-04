@@ -34,32 +34,39 @@ namespace PetFera{
 		short idade;
 		char fator_rh;
 
-		cout << "Numero de identificação do funcionário (ID): ";
-		getline(cin, aux);
-		id = stoi(aux);
+        try{
+            cout << "Numero de identificação do funcionário (ID): ";
+            getline(cin, aux);
+            if(typeid(aux) != typeid(int)) throw ErroCadastro();
+            id = stoi(aux);
 
-		cout << "\nNome do funcionário: ";
-		getline(cin, nome);
+            cout << "\nNome do funcionário: ";
+            getline(cin, nome);
 
-		cout << "\nCPF do funcionário: ";
-		getline(cin, cpf);
+            cout << "\nCPF do funcionário: ";
+            getline(cin, cpf);
 
 
-		cout << "\nIdade do funcionário: ";
-		getline(cin, aux);
-		idade = stoi(aux);
+            cout << "\nIdade do funcionário: ";
+            getline(cin, aux);
+            if(typeid(aux) != typeid(int)) throw ErroCadastro();
+            idade = stoi(aux);
 
-		cout << "\nTipo sanguíneo do funcionário: ";
-		getline(cin, tipo_sanguineo);
+            cout << "\nTipo sanguíneo do funcionário: ";
+            getline(cin, tipo_sanguineo);
 
-		cout << "\nFator RH: ";
-		getline(cin, aux);
-		fator_rh = aux[0];
+            cout << "\nFator RH: ";
+            getline(cin, aux);
+            fator_rh = aux[0];
 
-		cout << "\nEspecialidade do funcionário: ";
-		getline(cin, especialidade);
+            cout << "\nEspecialidade do funcionário: ";
+            getline(cin, especialidade);
+        }
+        catch(ErroCadastro &erro){
+            cout << erro.what() << endl;
+        }
 
-		shared_ptr<Funcionario> novoFuncionario;
+        shared_ptr<Funcionario> novoFuncionario;
 
 		if(funcao.compare("Tratador") == 0)
 		{
@@ -185,37 +192,45 @@ namespace PetFera{
 		char sexo;
 		double tamanho;
 
-		cout << "Numero de identificação do animal (ID): ";
-		getline(cin, aux);
-		id = stoi(aux);
+        try{
+            cout << "Numero de identificação do animal (ID): ";
+            getline(cin, aux);
+            if(typeid(aux) != typeid(int)) throw ErroCadastro();
+            id = stoi(aux);
 
-		cout << "\nNome do animal: ";
-		getline(cin, nome);
+            cout << "\nNome do animal: ";
+            getline(cin, nome);
 
-		cout << "\nNome científico do animal: ";
-		getline(cin, nome_cientifico);
+            cout << "\nNome científico do animal: ";
+            getline(cin, nome_cientifico);
 
-		cout << "\nSexo do animal: ";
-		getline(cin, aux);
-		sexo = aux[0];
+            cout << "\nSexo do animal: ";
+            getline(cin, aux);
+            sexo = aux[0];
 
-		cout << "\nTamanho em metros do animal: ";
-		getline(cin, aux);
-		tamanho = stof(aux);
+            cout << "\nTamanho em metros do animal: ";
+            getline(cin, aux);
+            if(typeid(aux) != typeid(float)) throw ErroCadastro();
+            tamanho = stof(aux);
 
-		cout << "\nDieta predominante do animal: ";
-		getline(cin, dieta);
+            cout << "\nDieta predominante do animal: ";
+            getline(cin, dieta);
 
-		cout << "\nVeterinário associado do animal: ";
-		getline(cin, aux);
-		veterinario_resp_id = stoi(aux);
+            cout << "\nVeterinário associado do animal: ";
+            getline(cin, aux);
+            veterinario_resp_id = stoi(aux);
 
-		cout << "\nTratador associado do animal: ";
-		getline(cin, aux);
-		tratador_resp_id = stoi(aux);
+            cout << "\nTratador associado do animal: ";
+            getline(cin, aux);
+            if(typeid(aux) != typeid(int)) throw ErroCadastro();
+            tratador_resp_id = stoi(aux);
 
-		cout << "\nNome de batismo do animal: ";
-		getline(cin, batismo);
+            cout << "\nNome de batismo do animal: ";
+            getline(cin, batismo);
+        }
+        catch(ErroCadastro &erro){
+            cout << erro.what() << endl;
+        }
 	
 		shared_ptr<Funcionario> veterinario = nullptr;
 		shared_ptr<Funcionario> tratador = nullptr;

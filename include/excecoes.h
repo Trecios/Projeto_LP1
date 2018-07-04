@@ -21,4 +21,9 @@ class ErroMenu: public invalid_argument{
         ErroMenu(): invalid_argument("\nERRO! Entrada invalida. \nVerifique o menu abaixo. \n\n") {}
 };
 
+class ErroCadastro: public invalid_argument{
+    public:
+        ErroCadastro(): invalid_argument("\nERRO! Entrada invalida. \nVerifique o valor de entrada. \n\n") {}
+};
+
 #endif
