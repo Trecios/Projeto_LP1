@@ -497,4 +497,21 @@ namespace PetFera{
 		}
 	}
 
+
+	/**
+	* @brief	Método que consulta todos os animais sob responsabilidade de 
+	* determinado funcionário, a consulta é pelo ID do funcionário.
+	* @params	Int id referente ao id do funcionário. 
+	*/
+	void Gerencia::consultar_animaisResp(int id)
+	{
+		for(auto i  = m_lista_animal.begin(); i != m_lista_animal.end(); i++)
+		{
+			if((i->second)->getVeterinario()->getId() == id || (i->second)->getTratador()->getId() == id)
+			{
+				cout << *(i->second);
+			}
+		}
+	}
+
 }

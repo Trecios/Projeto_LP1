@@ -59,8 +59,10 @@ int main(int argc, char const *argv[])
     c.cadastrar_animal("Mamifero");
     c.cadastrar_animal("Mamifero");
     c.cadastrar_animal("Ave");
-    c.consultar_animaisClasse("Mamifero");
-    c.consultar_animaisClasse("Ave");
+    c.consultar_animaisResp(2);
+    c.consultar_animaisResp(3);
+    // c.consultar_animaisClasse("Mamifero");
+    // c.consultar_animaisClasse("Ave");
     // c.exibir_animal(1);
     // c.remover_animal(1);
     // c.exibir_animal(1);

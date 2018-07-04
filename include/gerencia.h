@@ -160,6 +160,13 @@ namespace PetFera{
 			* @params	String classe referente a classe dos animais. 
 			*/
 			void consultar_animaisClasse(string classe);
+
+			/**
+			* @brief	Método que consulta todos os animais sob responsabilidade de 
+			* determinado funcionário, a consulta é pelo ID do funcionário.
+			* @params	Int id referente ao id do funcionário. 
+			*/
+			void consultar_animaisResp(int id);
 	};
 }
 
