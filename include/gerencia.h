@@ -86,8 +86,9 @@ namespace PetFera{
 			* @params	shared_ptr<Funcionario> tratador referente a tratador de um animal
 			* @params	String batismo referente a batismo de um animal
 			*/
-			void cadastrar_anfibio(int id, string nome, string nome_cientifico, char sexo, float tamanho, string dieta, 
-								shared_ptr<Funcionario> veterinario, shared_ptr<Funcionario> tratador, string batismo);
+			void cadastrar_anfibio(int id, string nome, string nome_cientifico, char sexo, float tamanho, 
+                    string dieta, shared_ptr<Funcionario> veterinario, shared_ptr<Funcionario> tratador,
+                    string batismo);
 
 			/**
 			* @brief	Método auxiliar que cadastra um animal do tipo ave
@@ -101,8 +102,9 @@ namespace PetFera{
 			* @params	shared_ptr<Funcionario> tratador referente a tratador de um animal
 			* @params	String batismo referente a batismo de um animal
 			*/
-			void cadastrar_ave(int id, string nome, string nome_cientifico, char sexo, float tamanho, string dieta, 
-								shared_ptr<Funcionario> veterinario, shared_ptr<Funcionario> tratador, string batismo);
+			void cadastrar_ave(int id, string nome, string nome_cientifico, char sexo, float tamanho,
+                    string dieta, shared_ptr<Funcionario> veterinario, shared_ptr<Funcionario> tratador,
+                    string batismo);
 
 			/**
 			* @brief	Método auxiliar que cadastra um animal do tipo mamifero
@@ -116,8 +118,9 @@ namespace PetFera{
 			* @params	shared_ptr<Funcionario> tratador referente a tratador de um animal
 			* @params	String batismo referente a batismo de um animal
 			*/
-			void cadastrar_mamifero(int id, string nome, string nome_cientifico, char sexo, float tamanho, string dieta, 
-								shared_ptr<Funcionario> veterinario, shared_ptr<Funcionario> tratador, string batismo);
+			void cadastrar_mamifero(int id, string nome, string nome_cientifico, char sexo, float tamanho,
+                    string dieta, shared_ptr<Funcionario> veterinario, shared_ptr<Funcionario> tratador,
+                    string batismo);
 
 			/**
 			* @brief	Método auxiliar que cadastra um animal do tipo reptil
@@ -131,8 +134,9 @@ namespace PetFera{
 			* @params	shared_ptr<Funcionario> tratador referente a tratador de um animal
 			* @params	String batismo referente a batismo de um animal
 			*/
-			void cadastrar_reptil(int id, string nome, string nome_cientifico, char sexo, float tamanho, string dieta, 
-								shared_ptr<Funcionario> veterinario, shared_ptr<Funcionario> tratador, string batismo);
+			void cadastrar_reptil(int id, string nome, string nome_cientifico, char sexo, float tamanho,
+                    string dieta, shared_ptr<Funcionario> veterinario, shared_ptr<Funcionario> tratador, 
+                    string batismo);
 
 			/**
 			* @brief	Método que exibe um animal pelo seu ID
@@ -147,6 +151,5 @@ namespace PetFera{
 			void remover_animal(int id);
 	};
 }
-
 
 #endif

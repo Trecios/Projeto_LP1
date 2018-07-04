@@ -35,8 +35,8 @@ namespace PetFera{
             /**
              * @brief Construtor da classe Funcionário.
              */
-            Funcionario(int id_, string funcao_, string nome_, string cpf_, short idade_, string tipo_sanguineo_, char fator_rh_, 
-                    string especialidade_);
+            Funcionario(int id_, string funcao_, string nome_, string cpf_, short idade_,
+                    string tipo_sanguineo_, char fator_rh_, string especialidade_);
 
             /**
              * @brief Destrutor da classe Funcionário.
@@ -91,10 +91,23 @@ namespace PetFera{
              */
             string getEspecialidade();
 
+            /**
+             * @brief Método set do atributo m_funcao.
+             */
+            void setFuncao(string funcao_);
+
+            /**
+             * @brief Método set do atributo m_idade.
+             */
+            void setIdade(short idade_);
+
+            /**
+             * @brief Método set do atributo m_especialidade.
+             */
+            void setEspecialidade(string especialidade_);
 
             /**
              * @brief Método operator<< sobrecarregado.
-             * @return ostream o.
              */
             friend ostream& operator<<(ostream &o, Funcionario const f);
     };

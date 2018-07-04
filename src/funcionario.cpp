@@ -19,8 +19,9 @@ namespace PetFera{
 
 	Funcionario::Funcionario(int id_, string funcao_, string nome_, string cpf_, short idade_,
                             string tipo_sanguineo_, char fator_rh_, string especialidade_):
-                            m_id(id_), m_funcao(funcao_), m_nome(nome_), m_cpf(cpf_), m_idade(idade_), m_tipo_sanguineo(tipo_sanguineo_), 
-                            m_fator_rh(fator_rh_), m_especialidade(especialidade_){}
+                            m_id(id_), m_funcao(funcao_), m_nome(nome_), m_cpf(cpf_), m_idade(idade_), 
+                            m_tipo_sanguineo(tipo_sanguineo_), m_fator_rh(fator_rh_),
+                            m_especialidade(especialidade_){}
 
     /**
      * @brief Destrutor da classe Funcionario.
@@ -89,6 +90,30 @@ namespace PetFera{
      */
     string Funcionario::getEspecialidade(){
     	return m_especialidade;
+    }
+
+    /**
+     * @brief Método set do atributo m_funcao.
+     * @details Altera o valor do atributo m_funcao.
+     */
+    void Funcionario::setFuncao(string funcao_){
+        m_funcao = funcao_;
+    }
+
+    /**
+     * @brief Método set do atributo m_idade.
+     * @details Altera o valor do atributo m_idade.
+     */
+    void Funcionario::setIdade(short idade_){
+        m_idade = idade_;
+    }
+
+    /**
+     * @brief Método set do atributo m_especialidade.
+     * @details Altera o valor do atributo m_especialidade.
+     */
+    void Funcionario::setEspecialidade(string especialidade_){
+        m_especialidade = especialidade_;
     }
 
     /**

@@ -45,4 +45,20 @@ namespace PetFera{
     int Ave::getEnvergadura(){
         return m_envergadura;
     }
+
+    /**
+     * @brief Método set do atributo m_tamanho_bico.
+     * @details Altera o valor do atributo m_tamanho_bico.
+     */
+    void Ave::setTamanhoBico(int tamanho_bico_){
+        m_tamanho_bico = tamanho_bico_;
+    }
+
+    /**
+     * @brief Método set do atributo m_envergadura.
+     * @details Altera o valor do atributo m_envergadura.
+     */
+    void Ave::setEnvergadura(int envergadura_){
+        m_envergadura = envergadura_;
+    }
 }

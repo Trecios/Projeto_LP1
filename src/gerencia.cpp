@@ -199,7 +199,7 @@ namespace PetFera{
 		getline(cin, aux);
 		sexo = aux[0];
 
-		cout << "\nTamanho em métros do animal: ";
+		cout << "\nTamanho em metros do animal: ";
 		getline(cin, aux);
 		tamanho = stof(aux);
 
@@ -253,19 +253,19 @@ namespace PetFera{
 	}
 
 	/**
-	* @brief	Método auxiliar que cadastra um animal do tipo anfibio
+	* @brief	Método auxiliar que cadastra um animal do tipo anfíbio
 	* @params	Int id referente a id de um animal
 	* @params	String nome referente a nome de um animal
 	* @params	String nome_cintifico referente a nome_cintifico de um animal
 	* @params	char sexo referente a sexo de um animal
 	* @params	float tamanho referente a tamanho de um animal
 	* @params	String dieta referente a dieta de um animal
-	* @params	shared_ptr<Funcionario> veterinario referente a veterinario de um animal
+	* @params	shared_ptr<Funcionario> veterinário referente a veterinário de um animal
 	* @params	shared_ptr<Funcionario> tratador referente a tratador de um animal
 	* @params	String batismo referente a batismo de um animal
 	*/
-	void Gerencia::cadastrar_anfibio(int id, string nome, string nome_cientifico, char sexo, float tamanho, string dieta, 
-							shared_ptr<Funcionario> veterinario, shared_ptr<Funcionario> tratador, string batismo)
+	void Gerencia::cadastrar_anfibio(int id, string nome, string nome_cientifico, char sexo, float tamanho,
+            string dieta, shared_ptr<Funcionario> veterinario, shared_ptr<Funcionario> tratador, string batismo)
 	{
 		int total_mudas;
 		string aux, ultima_muda;
@@ -277,7 +277,8 @@ namespace PetFera{
 		cout << "\nData da ultima muda (dd/mm/aa): ";
 		getline(cin, ultima_muda);
 
-		shared_ptr<Animal> novoAnimal = make_shared<Anfibio>(id, "Anfibio", nome, nome_cientifico, sexo, tamanho, dieta, veterinario, tratador, batismo, total_mudas, ultima_muda);
+		shared_ptr<Animal> novoAnimal = make_shared<Anfibio>(id, "Anfibio", nome, nome_cientifico, sexo,
+                tamanho, dieta, veterinario, tratador, batismo, total_mudas, ultima_muda);
 
 		m_lista_animal.insert(pair<int, shared_ptr<Animal>>(id, novoAnimal));
 	}
@@ -290,12 +291,12 @@ namespace PetFera{
 	* @params	char sexo referente a sexo de um animal
 	* @params	float tamanho referente a tamanho de um animal
 	* @params	String dieta referente a dieta de um animal
-	* @params	shared_ptr<Funcionario> veterinario referente a veterinario de um animal
+	* @params	shared_ptr<Funcionario> veterinário referente a veterinário de um animal
 	* @params	shared_ptr<Funcionario> tratador referente a tratador de um animal
 	* @params	String batismo referente a batismo de um animal
 	*/
-	void Gerencia::cadastrar_ave(int id, string nome, string nome_cientifico, char sexo, float tamanho, string dieta, 
-							shared_ptr<Funcionario> veterinario, shared_ptr<Funcionario> tratador, string batismo)
+	void Gerencia::cadastrar_ave(int id, string nome, string nome_cientifico, char sexo, float tamanho,
+            string dieta, shared_ptr<Funcionario> veterinario, shared_ptr<Funcionario> tratador, string batismo)
 	{
 		int tamanho_dico, envergadura;
 		string aux;
@@ -308,51 +309,53 @@ namespace PetFera{
 		getline(cin, aux);
 		envergadura = stoi(aux);
 
-		shared_ptr<Animal> novoAnimal = make_shared<Ave>(id, "Ave", nome, nome_cientifico, sexo, tamanho, dieta, veterinario, tratador, batismo, tamanho_dico, envergadura);
+		shared_ptr<Animal> novoAnimal = make_shared<Ave>(id, "Ave", nome, nome_cientifico, sexo, tamanho,
+                dieta, veterinario, tratador, batismo, tamanho_dico, envergadura);
 
 		m_lista_animal.insert(pair<int, shared_ptr<Animal>>(id, novoAnimal));
 
 	}
 
 	/**
-	* @brief	Método auxiliar que cadastra um animal do tipo mamifero
+	* @brief	Método auxiliar que cadastra um animal do tipo mamífero
 	* @params	Int id referente a id de um animal
 	* @params	String nome referente a nome de um animal
 	* @params	String nome_cintifico referente a nome_cintifico de um animal
 	* @params	char sexo referente a sexo de um animal
 	* @params	float tamanho referente a tamanho de um animal
 	* @params	String dieta referente a dieta de um animal
-	* @params	shared_ptr<Funcionario> veterinario referente a veterinario de um animal
+	* @params	shared_ptr<Funcionario> veterinário referente a veterinário de um animal
 	* @params	shared_ptr<Funcionario> tratador referente a tratador de um animal
 	* @params	String batismo referente a batismo de um animal
 	*/
-	void Gerencia::cadastrar_mamifero(int id, string nome, string nome_cientifico, char sexo, float tamanho, string dieta, 
-							shared_ptr<Funcionario> veterinario, shared_ptr<Funcionario> tratador, string batismo)
+	void Gerencia::cadastrar_mamifero(int id, string nome, string nome_cientifico, char sexo, float tamanho,
+            string dieta, shared_ptr<Funcionario> veterinario, shared_ptr<Funcionario> tratador, string batismo)
 	{
 		string aux, cor;
 
 		cout << "\nCor predominante: ";
 		getline(cin, cor);
 
-		shared_ptr<Animal> novoAnimal = make_shared<Mamifero>(id, "Mamifero", nome, nome_cientifico, sexo, tamanho, dieta, veterinario, tratador, batismo, cor);
+		shared_ptr<Animal> novoAnimal = make_shared<Mamifero>(id, "Mamifero", nome, nome_cientifico, sexo,
+                tamanho, dieta, veterinario, tratador, batismo, cor);
 
 		m_lista_animal.insert(pair<int, shared_ptr<Animal>>(id, novoAnimal));
 	}
 
 	/**
-	* @brief	Método auxiliar que cadastra um animal do tipo reptil
+	* @brief	Método auxiliar que cadastra um animal do tipo réptil
 	* @params	Int id referente a id de um animal
 	* @params	String nome referente a nome de um animal
 	* @params	String nome_cintifico referente a nome_cintifico de um animal
 	* @params	char sexo referente a sexo de um animal
 	* @params	float tamanho referente a tamanho de um animal
 	* @params	String dieta referente a dieta de um animal
-	* @params	shared_ptr<Funcionario> veterinario referente a veterinario de um animal
+	* @params	shared_ptr<Funcionario> veterinário referente a veterinário de um animal
 	* @params	shared_ptr<Funcionario> tratador referente a tratador de um animal
 	* @params	String batismo referente a batismo de um animal
 	*/
-	void Gerencia::cadastrar_reptil(int id, string nome, string nome_cientifico, char sexo, float tamanho, string dieta, 
-							shared_ptr<Funcionario> veterinario, shared_ptr<Funcionario> tratador, string batismo)
+	void Gerencia::cadastrar_reptil(int id, string nome, string nome_cientifico, char sexo, float tamanho,
+            string dieta, shared_ptr<Funcionario> veterinario, shared_ptr<Funcionario> tratador, string batismo)
 	{
 		string aux, venenoso, tipo_veneno;
 		bool eh_venenoso = false;
@@ -371,8 +374,8 @@ namespace PetFera{
 			tipo_veneno = "Nenhum";
 		}
 
-
-		shared_ptr<Animal> novoAnimal = make_shared<Reptil>(id, "Reptil", nome, nome_cientifico, sexo, tamanho, dieta, veterinario, tratador, batismo, eh_venenoso, tipo_veneno);
+		shared_ptr<Animal> novoAnimal = make_shared<Reptil>(id, "Reptil", nome, nome_cientifico, sexo,
+                tamanho, dieta, veterinario, tratador, batismo, eh_venenoso, tipo_veneno);
 
 		m_lista_animal.insert(pair<int, shared_ptr<Animal>>(id, novoAnimal));
 	}
@@ -408,14 +411,12 @@ namespace PetFera{
 
 		if(animal != m_lista_animal.end())
 		{
-	
 			m_lista_animal.erase(animal);
 			cout << "Removido com sucesso!" << endl;
-	
 		}
 		else
 		{
-			cout << "Animal não encontrado" << endl;
+            cout << "Animal não encontrado" << endl;
 		}
 	}
 

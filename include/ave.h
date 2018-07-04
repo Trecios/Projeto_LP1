@@ -48,6 +48,16 @@ namespace PetFera{
              * @return m_envergadura.
              */
             int getEnvergadura();
+
+            /**
+             * @brief Método set do atributo m_tamanho_bico.
+             */
+            void setTamanhoBico(int tamanho_bico_);
+
+            /**
+             * @brief Método set do atributo m_envergadura.
+             */
+            void setEnvergadura(int envergadura_);
     };
 }
 

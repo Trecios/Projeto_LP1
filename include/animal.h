@@ -127,6 +127,9 @@ namespace PetFera{
              */
             void setTratador(shared_ptr<Funcionario> tratador_);
 
+            /**
+             * @brief Sobrecarga de operador de extração.
+             */
             friend ostream& operator<<(ostream &o, Animal const a);
 
     };
