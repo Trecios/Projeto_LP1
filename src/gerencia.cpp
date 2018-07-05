@@ -1,6 +1,6 @@
 /**
- * @file cadastro.cpp
- * @brief Implementação da classe Cadastro e seus métodos.
+ * @file gerencia.cpp
+ * @brief Implementação da classe Gerencia e seus métodos.
  * @author Bryan Brito
  * @author Leonardo Matos
  */
@@ -13,100 +13,160 @@ using namespace std;
 namespace PetFera{
 
 	/**
-	* @brief Construtor padrão da classe Cadastrar
+	* @brief Construtor padrão da classe Gerencia.
 	*/
 	Gerencia::Gerencia(){}
 
 	/**
-	* @brief Destrutor padrão da classe Cadastrar
+	* @brief Destrutor padrão da classe Gerencia.
 	*/
 	Gerencia::~Gerencia(){}
 
 	/**
-	* @brief 	Método que cadastra funcionário pela sua função
-	* @params	String funcao referente a função do funcionário
+	* @brief 	Método que cadastra funcionário pela sua função.
+	* @params	String funcao referente a função do funcionário (Veterinário ou Tratador).
 	*/
 	void Gerencia::cadastrar_funcionario(string funcao)
 	{
-		string aux;
-		int id;
-		string nome, cpf, tipo_sanguineo, especialidade;
-		short idade;
-		char fator_rh;
+        string aux;
+	    int id;
+	    string nome, cpf, tipo_sanguineo, especialidade;
+	    short idade;
+	    char fator_rh;
+        bool flag;
 
-        try{
+        do{
             cout << "Numero de identificação do funcionário (ID): ";
             getline(cin, aux);
-            if(typeid(aux) != typeid(int)) throw ErroCadastro();
-            id = stoi(aux);
+            try{
+                id = stoi(aux);
+                flag = true;
+            }
+            catch(invalid_argument &erro){
+                cout << "Entrada invalida. Informe um valor inteiro." << endl << endl;
+                flag = false;
+            }
+        }while(!flag);
 
+        do{
             cout << "\nNome do funcionário: ";
             getline(cin, nome);
+            try{
+                if(nome.size() == 0) throw ErroCadastro();
+                flag = true;
+            }
+            catch(ErroCadastro &erro){
+                cout << erro.what();
+                flag = false;
+            }
+        }while(!flag);
 
+        do{
             cout << "\nCPF do funcionário: ";
             getline(cin, cpf);
+            try{
+                if(nome.size() == 0) throw ErroCadastro();
+                flag = true;
+            }
+            catch(ErroCadastro &erro){
+                cout << erro.what();
+                flag = false;
+            }
+        }while(!flag);
 
-
+        do{
             cout << "\nIdade do funcionário: ";
             getline(cin, aux);
-            if(typeid(aux) != typeid(int)) throw ErroCadastro();
-            idade = stoi(aux);
+            try{
+                idade = stoi(aux);
+                flag = true;
+            }
+            catch(invalid_argument &erro){
+                cout << "Entrada invalida. Informe um valor inteiro." << endl << endl;
+                cin.clear();
+                flag = false;
+            }
+        }while(!flag);
 
+        do{
             cout << "\nTipo sanguíneo do funcionário: ";
             getline(cin, tipo_sanguineo);
+            try{
+                if(tipo_sanguineo.size() == 0) throw ErroCadastro();
+                flag = true;
+            }
+            catch(ErroCadastro &erro){
+                cout << erro.what();
+                flag = false;
+            }
+        }while(!flag);
 
+        do{
             cout << "\nFator RH: ";
             getline(cin, aux);
             fator_rh = aux[0];
+            try{
+                if(sizeof(fator_rh) == 0) throw ErroCadastro();
+                flag = true;
+            }
+            catch(ErroCadastro &erro){
+                cout << erro.what();
+                flag = false;
+            }
+        }while(!flag);
 
+        do{
             cout << "\nEspecialidade do funcionário: ";
             getline(cin, especialidade);
-        }
-        catch(ErroCadastro &erro){
-            cout << erro.what() << endl;
-        }
+            try{
+                if(especialidade.size() == 0) throw ErroCadastro();
+                flag = true;
+            }
+            catch(ErroCadastro &erro){
+                cout << erro.what();
+                flag = false;
+            }
+        }while(!flag);
 
         shared_ptr<Funcionario> novoFuncionario;
 
-		if(funcao.compare("Tratador") == 0)
-		{
+        if(funcao.compare("Tratador") == 0)
+        {
+            cout << "idade: " << idade << endl;
+            cout << "funcao: " << funcao << endl;
 
-			cout << "idade: " << idade << endl;
-			cout << "funcao: " << funcao << endl;
-
-			novoFuncionario = make_shared<Tratador>(id, funcao, nome, cpf, idade, tipo_sanguineo,
+            novoFuncionario = make_shared<Tratador>(id, funcao, nome, cpf, idade, tipo_sanguineo,
                     fator_rh, especialidade);
 		}
-		else if(funcao.compare("Veterinario") == 0)
-		{
-			novoFuncionario = make_shared<Veterinario>(id, funcao, nome, cpf, idade, tipo_sanguineo, 
+        else if(funcao.compare("Veterinario") == 0)
+        {
+            novoFuncionario = make_shared<Veterinario>(id, funcao, nome, cpf, idade, tipo_sanguineo, 
                     fator_rh, especialidade);
-		}
+        }
 
-		m_lista_funcionario.insert(pair<int, shared_ptr<Funcionario>>(id, novoFuncionario));
+        m_lista_funcionario.insert(pair<int, shared_ptr<Funcionario>>(id, novoFuncionario));
 
-		cout << endl <<"Cadastro feito com sucesso!" << endl;
+        cout << endl <<"Cadastro feito com sucesso!" << endl;
 	}
 
 	/**
-	* @brief	Métodd que busca um funcionário pelo seu ID
-	* @params	Int id referente ao id de um funcionário cadastrado 
+	* @brief	Método que busca um funcionário pelo seu ID.
+	* @params	Int id referente ao id de um funcionário cadastrado .
 	*/
 	void Gerencia::exibir_funcionario(int id)
 	{
-		map<int, shared_ptr<Funcionario>>::iterator func = m_lista_funcionario.find(id);
+        map<int, shared_ptr<Funcionario>>::iterator func = m_lista_funcionario.find(id);
 		
-		cout << endl << m_lista_funcionario.size() << endl;
+	    cout << endl << m_lista_funcionario.size() << endl;
 
-		if(func != m_lista_funcionario.end())
-		{
-
-			cout << *(func -> second);
-		}
-		else
-		{
-			cout << "Funcionário não encontrado" << endl;
-		}
+	    if(func != m_lista_funcionario.end())
+	    {
+	        cout << *(func -> second);
+	    }
+	    else
+	    {
+	        cout << "Funcionário não encontrado" << endl;
+	    }
 	}
 	
 	/**
@@ -115,19 +175,17 @@ namespace PetFera{
 	*/
 	void Gerencia::remover_funcionario(int id)
 	{
-		map<int, shared_ptr<Funcionario>>::iterator func =  m_lista_funcionario.find(id);
+	    map<int, shared_ptr<Funcionario>>::iterator func =  m_lista_funcionario.find(id);
 
-		if(func != m_lista_funcionario.end())
-		{
-	
-			m_lista_funcionario.erase(func);
-			cout << "Removido com sucesso!" << endl;
-	
-		}
-		else
-		{
-			cout << "Funcionário não encontrado" << endl;
-		}
+	    if(func != m_lista_funcionario.end())
+	    {
+	        m_lista_funcionario.erase(func);
+	        cout << "Removido com sucesso!" << endl;
+	    }
+	    else
+	    {
+	        cout << "Funcionário não encontrado" << endl;
+	    }
 	}
 	
 	/**
@@ -186,84 +244,156 @@ namespace PetFera{
 	*/
 	void Gerencia::cadastrar_animal(string classe)
 	{
-		string aux;
-		int id, veterinario_resp_id, tratador_resp_id;
-		string nome, nome_cientifico, dieta, batismo;
-		char sexo;
-		double tamanho;
+	    string aux;
+	    int id, veterinario_resp_id, tratador_resp_id;
+	    string nome, nome_cientifico, dieta, batismo;
+	    char sexo;
+	    double tamanho;
+        bool flag;
 
-        try{
+        do{
             cout << "Numero de identificação do animal (ID): ";
             getline(cin, aux);
-            // if(typeid(aux) != typeid(int)) throw ErroCadastro();
-            id = stoi(aux);
+            try{
+                id = stoi(aux);
+                flag = true;
+            }
+            catch(invalid_argument &erro){
+                cout << "Entrada invalida. Informe um valor inteiro." << endl << endl;
+                cin.clear();
+                flag = false;
+            }
+        }while(!flag);
 
+        do{
             cout << "\nNome do animal: ";
             getline(cin, nome);
+            try{
+                if(nome.size() == 0) throw ErroCadastro();
+                    flag = true;
+            }
+            catch(ErroCadastro &erro){
+                cout << erro.what();
+                flag = false;
+            }
+        }while(!flag);
 
+        do{
             cout << "\nNome científico do animal: ";
             getline(cin, nome_cientifico);
+            try{
+                if(nome.size() == 0) throw ErroCadastro();
+                flag = true;
+            }
+            catch(ErroCadastro &erro){
+                cout << erro.what();
+                flag = false;
+            }
+        }while(!flag);
 
+        do{
             cout << "\nSexo do animal: ";
             getline(cin, aux);
             sexo = aux[0];
+            try{
+                if(aux.size() == 0) throw ErroCadastro();
+                flag = true;
+            }
+            catch(ErroCadastro &erro){
+                cout << erro.what();
+                flag = false;
+            }
+        }while(!flag);
 
+        do{
             cout << "\nTamanho em metros do animal: ";
             getline(cin, aux);
-            // if(typeid(aux) != typeid(float)) throw ErroCadastro();
-            tamanho = stof(aux);
+            try{
+                tamanho = stof(aux);
+                flag = true;
+            }
+            catch(invalid_argument &erro){
+                cout << "Entrada invalida. Informe um valor decimal ou inteiro." << endl;
+                cin.clear();
+                flag = false;
+            }
+        }while(!flag);
 
-            cout << "\nDieta predominante do animal: ";
-            getline(cin, dieta);
+        cout << "\nDieta predominante do animal: ";
+        getline(cin, dieta);
 
+        do{
             cout << "\nVeterinário associado do animal: ";
             getline(cin, aux);
-            veterinario_resp_id = stoi(aux);
+            try{
+                veterinario_resp_id = stoi(aux);
+                flag = true;
+            }
+            catch(invalid_argument &erro){
+                cout << "Entrada invalida. Informe um valor inteiro." << endl;
+                cin.clear();
+                flag = false;
+            }
+        }while(!flag);
 
+        do{
             cout << "\nTratador associado do animal: ";
             getline(cin, aux);
-            // if(typeid(aux) != typeid(int)) throw ErroCadastro();
-            tratador_resp_id = stoi(aux);
+            try{
+                tratador_resp_id = stoi(aux);
+                flag = true;
+            }
+            catch(invalid_argument &erro){
+                cout << "Entrada invalida. Informe um valor inteiro." << endl;
+                cin.clear();
+                flag = false;
+            }
+        }while(!flag);
 
+        do{
             cout << "\nNome de batismo do animal: ";
             getline(cin, batismo);
-        }
-        catch(ErroCadastro &erro){
-            cout << erro.what() << endl;
-        }
-	
-		shared_ptr<Funcionario> veterinario = nullptr;
+            try{
+                if(batismo.size() == 0) throw ErroCadastro();
+                flag = true;
+            }
+            catch(ErroCadastro &erro){
+                cout << erro.what();
+                flag = false;
+            }
+        }while(!flag);
+
+	    shared_ptr<Funcionario> veterinario = nullptr;
 		shared_ptr<Funcionario> tratador = nullptr;
 
-		if(m_lista_funcionario.find(veterinario_resp_id) != m_lista_funcionario.end())
-		{
-			veterinario = m_lista_funcionario[veterinario_resp_id];
-		}
+        if(m_lista_funcionario.find(veterinario_resp_id) != m_lista_funcionario.end())
+	    {
+	        veterinario = m_lista_funcionario[veterinario_resp_id];
+	    }
 
-		if(m_lista_funcionario.find(tratador_resp_id) != m_lista_funcionario.end())
-		{
-			tratador = m_lista_funcionario[tratador_resp_id];
-		}
+	    if(m_lista_funcionario.find(tratador_resp_id) != m_lista_funcionario.end())
+	    {
+	        tratador = m_lista_funcionario[tratador_resp_id];
+	    }
 
+        if(classe.compare("Anfibio") == 0)
+	    {
+	        cadastrar_anfibio(id, nome, nome_cientifico, sexo, tamanho, dieta, veterinario, tratador, batismo);
+	    }
+	    else if(classe.compare("Ave") == 0)
+	    {
+	        cadastrar_ave(id, nome, nome_cientifico, sexo, tamanho, dieta, veterinario, tratador, batismo);
+	    }
+	    else if(classe.compare("Mamifero") == 0)
+	    {
+	        cadastrar_mamifero(id, nome, nome_cientifico, sexo, tamanho, dieta, veterinario, tratador, batismo);
+	    }
+	    else if(classe.compare("Reptil") == 0)
+	    {
+	        cadastrar_reptil(id, nome, nome_cientifico, sexo, tamanho, dieta, veterinario, tratador, batismo);
+	    }
 
-		if(classe.compare("Anfibio") == 0)
-		{
-			cadastrar_anfibio(id, nome, nome_cientifico, sexo, tamanho, dieta, veterinario, tratador, batismo);
-		}
-		else if(classe.compare("Ave") == 0)
-		{
-			cadastrar_ave(id, nome, nome_cientifico, sexo, tamanho, dieta, veterinario, tratador, batismo);
-		}
-		else if(classe.compare("Mamifero") == 0)
-		{
-			cadastrar_mamifero(id, nome, nome_cientifico, sexo, tamanho, dieta, veterinario, tratador, batismo);
-		}
-		else if(classe.compare("Reptil") == 0)
-		{
-			cadastrar_reptil(id, nome, nome_cientifico, sexo, tamanho, dieta, veterinario, tratador, batismo);
-		}
-
-		cout << "Cadastro realizado com sucesso." << endl;
+	    cout << "Cadastro realizado com sucesso." << endl;
 
 	}
 
@@ -282,21 +412,21 @@ namespace PetFera{
 	void Gerencia::cadastrar_anfibio(int id, string nome, string nome_cientifico, char sexo, float tamanho,
             string dieta, shared_ptr<Funcionario> veterinario, shared_ptr<Funcionario> tratador, string batismo)
 	{
-		int total_mudas;
-		string aux, ultima_muda;
+	    int total_mudas;
+	    string aux, ultima_muda;
 
-		cout << "\nTotal de mudas: ";
-		getline(cin, aux);
-		total_mudas = stoi(aux);
+	    cout << "\nTotal de mudas: ";
+	    getline(cin, aux);
+	    total_mudas = stoi(aux);
 
-		cout << "\nData da ultima muda (dd/mm/aa): ";
-		getline(cin, ultima_muda);
+	    cout << "\nData da ultima muda (dd/mm/aa): ";
+	    getline(cin, ultima_muda);
 
-		shared_ptr<Animal> novoAnimal = make_shared<Anfibio>(id, "Amphibia", nome, nome_cientifico, sexo,
+	    shared_ptr<Animal> novoAnimal = make_shared<Anfibio>(id, "Amphibia", nome, nome_cientifico, sexo,
                 tamanho, dieta, veterinario, tratador, batismo, total_mudas, ultima_muda);
 
-		m_lista_animal.insert(pair<int, shared_ptr<Animal>>(id, novoAnimal));
-	}
+	    m_lista_animal.insert(pair<int, shared_ptr<Animal>>(id, novoAnimal));
+    }
 
 	/**
 	* @brief	Método auxiliar que cadastra um animal do tipo ave
@@ -313,21 +443,21 @@ namespace PetFera{
 	void Gerencia::cadastrar_ave(int id, string nome, string nome_cientifico, char sexo, float tamanho,
             string dieta, shared_ptr<Funcionario> veterinario, shared_ptr<Funcionario> tratador, string batismo)
 	{
-		int tamanho_dico, envergadura;
-		string aux;
+	    int tamanho_dico, envergadura;
+	    string aux;
 
-		cout << "\nTamanho do bico: ";
-		getline(cin, aux);
-		tamanho_dico = stoi(aux);
+	    cout << "\nTamanho do bico: ";
+	    getline(cin, aux);
+	    tamanho_dico = stoi(aux);
 
-		cout << "\nEnvergadura: ";
-		getline(cin, aux);
-		envergadura = stoi(aux);
+	    cout << "\nEnvergadura: ";
+	    getline(cin, aux);
+	    envergadura = stoi(aux);
 
-		shared_ptr<Animal> novoAnimal = make_shared<Ave>(id, "Aves", nome, nome_cientifico, sexo, tamanho,
+	    shared_ptr<Animal> novoAnimal = make_shared<Ave>(id, "Aves", nome, nome_cientifico, sexo, tamanho,
                 dieta, veterinario, tratador, batismo, tamanho_dico, envergadura);
 
-		m_lista_animal.insert(pair<int, shared_ptr<Animal>>(id, novoAnimal));
+	    m_lista_animal.insert(pair<int, shared_ptr<Animal>>(id, novoAnimal));
 
 	}
 
@@ -346,15 +476,15 @@ namespace PetFera{
 	void Gerencia::cadastrar_mamifero(int id, string nome, string nome_cientifico, char sexo, float tamanho,
             string dieta, shared_ptr<Funcionario> veterinario, shared_ptr<Funcionario> tratador, string batismo)
 	{
-		string aux, cor;
+	    string aux, cor;
 
-		cout << "\nCor predominante: ";
-		getline(cin, cor);
+	    cout << "\nCor predominante: ";
+	    getline(cin, cor);
 
-		shared_ptr<Animal> novoAnimal = make_shared<Mamifero>(id, "Mammalia", nome, nome_cientifico, sexo,
+	    shared_ptr<Animal> novoAnimal = make_shared<Mamifero>(id, "Mammalia", nome, nome_cientifico, sexo,
                 tamanho, dieta, veterinario, tratador, batismo, cor);
 
-		m_lista_animal.insert(pair<int, shared_ptr<Animal>>(id, novoAnimal));
+	    m_lista_animal.insert(pair<int, shared_ptr<Animal>>(id, novoAnimal));
 	}
 
 	/**
@@ -372,27 +502,27 @@ namespace PetFera{
 	void Gerencia::cadastrar_reptil(int id, string nome, string nome_cientifico, char sexo, float tamanho,
             string dieta, shared_ptr<Funcionario> veterinario, shared_ptr<Funcionario> tratador, string batismo)
 	{
-		string aux, venenoso, tipo_veneno;
-		bool eh_venenoso = false;
+	    string aux, venenoso, tipo_veneno;
+	    bool eh_venenoso = false;
 
-		cout << "\nAnimal venenoso (sim ou não): ";
-		getline(cin, venenoso);
+	    cout << "\nAnimal venenoso (sim ou não): ";
+	    getline(cin, venenoso);
 
-		if(venenoso.compare("sim") == 0)
-		{
-			eh_venenoso = true;
-			cout << "\nTipo do veneno: ";
-			getline(cin, tipo_veneno);
-		}
-		else
-		{
-			tipo_veneno = "Nenhum";
-		}
+	    if(venenoso.compare("sim") == 0)
+	    {
+	        eh_venenoso = true;
+	        cout << "\nTipo do veneno: ";
+            getline(cin, tipo_veneno);
+	    }
+	    else
+	    {
+	        tipo_veneno = "Nenhum";
+	    }
 
-		shared_ptr<Animal> novoAnimal = make_shared<Reptil>(id, "Reptilia", nome, nome_cientifico, sexo,
+	    shared_ptr<Animal> novoAnimal = make_shared<Reptil>(id, "Reptilia", nome, nome_cientifico, sexo,
                 tamanho, dieta, veterinario, tratador, batismo, eh_venenoso, tipo_veneno);
 
-		m_lista_animal.insert(pair<int, shared_ptr<Animal>>(id, novoAnimal));
+	    m_lista_animal.insert(pair<int, shared_ptr<Animal>>(id, novoAnimal));
 	}
 
 	/**
@@ -401,19 +531,18 @@ namespace PetFera{
 	*/
 	void Gerencia::exibir_animal(int id)
 	{
-		map<int, shared_ptr<Animal>>::iterator animal = m_lista_animal.find(id);
+        map<int, shared_ptr<Animal>>::iterator animal = m_lista_animal.find(id);
 		
-		cout << endl << m_lista_animal.size() << endl;
+	    cout << endl << m_lista_animal.size() << endl;
 
-		if(animal != m_lista_animal.end())
-		{
-
-			cout << *(animal -> second);
-		}
-		else
-		{
-			cout << "Animal nao encontrado" << endl;
-		}
+	    if(animal != m_lista_animal.end())
+	    {
+            cout << *(animal -> second);
+	    }
+	    else
+	    {
+	        cout << "Animal não encontrado" << endl;
+	    }
 	}
 
 	/**
@@ -422,17 +551,17 @@ namespace PetFera{
 	*/
 	void Gerencia::remover_animal(int id)
 	{
-		map<int, shared_ptr<Animal>>::iterator animal =  m_lista_animal.find(id);
+        map<int, shared_ptr<Animal>>::iterator animal =  m_lista_animal.find(id);
 
-		if(animal != m_lista_animal.end())
-		{
-			m_lista_animal.erase(animal);
-			cout << "Removido com sucesso!" << endl;
-		}
-		else
-		{
+	    if(animal != m_lista_animal.end())
+	    {
+	        m_lista_animal.erase(animal);
+	        cout << "Removido com sucesso!" << endl;
+        }
+	    else
+	    {
             cout << "Animal não encontrado" << endl;
-		}
+	    }
 	}
 
 	/**
@@ -440,15 +569,15 @@ namespace PetFera{
 	*/
 	void Gerencia::listar_funcionarios()
 	{
-		cout << "-----------------------------" << endl;
-		for(auto i  = m_lista_funcionario.begin(); i != m_lista_funcionario.end(); i++)
-		{
-			cout << "ID: " << (i->second)->getId() << endl 
-			<< "Nome: " << (i->second)->getNome() << endl
-			<< "Funcao: " << (i->second)->getFuncao() << endl
-			<< "Especialidade: " << (i->second)->getEspecialidade() << endl
-			<< "-----------------------------" << endl;
-		}
+	    cout << "-----------------------------" << endl;
+	    for(auto i  = m_lista_funcionario.begin(); i != m_lista_funcionario.end(); i++)
+	    {
+	        cout << "ID: " << (i->second)->getId() << endl 
+	        << "Nome: " << (i->second)->getNome() << endl
+	        << "Função: " << (i->second)->getFuncao() << endl
+	        << "Especialidade: " << (i->second)->getEspecialidade() << endl
+	        << "-----------------------------" << endl;
+	    }
 	}
 
 	/**
@@ -457,46 +586,49 @@ namespace PetFera{
 	*/
 	void Gerencia::consultar_animaisClasse(string classe)
 	{
-		string buscada = "";
-		bool achou = false;
-		if(classe.compare("Anfibio") == 0 || classe.compare("Amphibia") == 0)
-		{
-			buscada = "Amphibia";
-		}
-		else if(classe.compare("Ave") == 0 || classe.compare("Aves") == 0)
-		{
-			buscada = "Aves";
-		}
-		else if(classe.compare("Mamifero") == 0 || classe.compare("Mammalia") == 0)
-		{
-			buscada = "Mammalia";
-		}
-		else if(classe.compare("Reptil") == 0 ||classe.compare("Reptilia") == 0)
-		{
-			buscada = "Reptilia";
-		}
-		
-		if(!buscada.compare("") == 0)
-		{
-			achou = true;
-		}
-		
-		if(achou)
-		{
-			for(auto i  = m_lista_animal.begin(); i != m_lista_animal.end(); i++)
-			{
-				if((i->second)->getClasse().compare(buscada) == 0)
-				{
-					cout << *(i->second);
-				}
-			}
-		}
-		else
-		{
-			cout << "Erro! " << classe << " nao eh uma classe valida." << endl;
-		}
-	}
+	    string buscada = "";
+	    bool achou = false;
 
+        try{
+            if(classe.compare("Anfibio") == 0 || classe.compare("Amphibia") == 0)
+            {
+                buscada = "Amphibia";
+            }
+            else if(classe.compare("Ave") == 0 || classe.compare("Aves") == 0)
+            {
+                buscada = "Aves";
+            }
+            else if(classe.compare("Mamifero") == 0 || classe.compare("Mammalia") == 0)
+            {
+                buscada = "Mammalia";
+            }
+            else if(classe.compare("Reptil") == 0 ||classe.compare("Reptilia") == 0)
+            {
+                buscada = "Reptilia";
+            }
+            else throw ErroBuscaClasse();
+        }
+        catch(ErroBuscaClasse &erro){
+            cout << erro.what();
+        }
+
+	    if(!buscada.compare("") == 0)
+	    {
+	        achou = true;
+	    }
+		
+	    if(achou)
+        {
+	        for(auto i  = m_lista_animal.begin(); i != m_lista_animal.end(); i++)
+	        {
+	            if((i->second)->getClasse().compare(buscada) == 0)
+	            {
+	                cout << *(i->second);
+	            }
+	        }
+	    }
+
+	}
 
 	/**
 	* @brief	Método que consulta todos os animais sob responsabilidade de 
@@ -505,13 +637,13 @@ namespace PetFera{
 	*/
 	void Gerencia::consultar_animaisResp(int id)
 	{
-		for(auto i  = m_lista_animal.begin(); i != m_lista_animal.end(); i++)
-		{
-			if((i->second)->getVeterinario()->getId() == id || (i->second)->getTratador()->getId() == id)
-			{
-				cout << *(i->second);
-			}
-		}
+	    for(auto i  = m_lista_animal.begin(); i != m_lista_animal.end(); i++)
+	    {
+	        if((i->second)->getVeterinario()->getId() == id || (i->second)->getTratador()->getId() == id)
+	        {
+	            cout << *(i->second);
+	        }
+	    }
 	}
 
 }
