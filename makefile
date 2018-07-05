@@ -54,36 +54,48 @@ linux:\
 # Flag para gerar bibliotecas dinâmicas para o Windows.
 lib_windows: \
 		$(LIB)/anfibio.dll \
+		$(LIB)/anfibio_nativo.dll \
+		$(LIB)/anfibio_exotico.dll \
+		$(LIB)/exotico.dll \
 		$(LIB)/animal.dll \
+		$(LIB)/funcionario.dll \
+		$(LIB)/tratador.dll \
+		$(LIB)/veterinario.dll \
 		$(LIB)/animal_silvestre.dll \
 		$(LIB)/ave.dll \
 		$(LIB)/ave_nativa.dll \
 		$(LIB)/ave_exotica.dll \
-		$(LIB)/exotico.dll \
 		$(LIB)/mamifero.dll \
+		$(LIB)/mamifero_nativo.dll \
+		$(LIB)/mamifero_exotico.dll \
 		$(LIB)/nativo.dll \
 		$(LIB)/reptil.dll \
-		$(LIB)/tratador.dll \
-		$(LIB)/veterinario.dll \
-		$(LIB)/funcionario.dll \
+		$(LIB)/reptil_nativo.dll \
+		$(LIB)/reptil_exotico.dll \
 		$(LIB)/gerencia.dll
 
 # Flag para gerar bibliotecas dinâmicas para o Linux.
 lib_linux: \
 		$(LIB)/anfibio.so \
+		$(LIB)/anfibio_nativo.so \
+		$(LIB)/anfibio_exotico.so \
+		$(LIB)/exotico.so \
 		$(LIB)/animal.so \
+		$(LIB)/funcionario.so \
+		$(LIB)/tratador.so \
+		$(LIB)/veterinario.so \
 		$(LIB)/animal_silvestre.so \
 		$(LIB)/ave.so \
 		$(LIB)/ave_nativa.so \
 		$(LIB)/ave_exotica.so \
-		$(LIB)/exotico.so \
 		$(LIB)/mamifero.so \
+		$(LIB)/mamifero_nativo.so \
+		$(LIB)/mamifero_exotico.so \
 		$(LIB)/nativo.so \
 		$(LIB)/reptil.so \
-		$(LIB)/tratador.so \
-		$(LIB)/veterinario.so \
-		$(LIB)/funcionario.so \
-		$(LIB)/gerencia.so 
+		$(LIB)/reptil_nativo.so \
+		$(LIB)/reptil_exotico.so \
+		$(LIB)/gerencia.so
 
 debug: FLAGS += $(DEBUG)
 
