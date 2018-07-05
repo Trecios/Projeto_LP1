@@ -26,7 +26,7 @@ namespace PetFera{
 	* @brief 	Método que cadastra funcionário pela sua função.
 	* @params	String funcao referente a função do funcionário (Veterinário ou Tratador).
 	*/
-	void Gerencia::cadastrar_funcionario(string funcao)
+	void Gerencia::cadastrar_funcionario(string funcao_)
 	{
         string aux;
 	    int id;
@@ -130,17 +130,14 @@ namespace PetFera{
 
         shared_ptr<Funcionario> novoFuncionario;
 
-        if(funcao.compare("Tratador") == 0)
+        if(funcao_.compare("Tratador") == 0)
         {
-            cout << "idade: " << idade << endl;
-            cout << "funcao: " << funcao << endl;
-
-            novoFuncionario = make_shared<Tratador>(id, funcao, nome, cpf, idade, tipo_sanguineo,
+            novoFuncionario = make_shared<Tratador>(id, funcao_, nome, cpf, idade, tipo_sanguineo,
                     fator_rh, especialidade);
 		}
-        else if(funcao.compare("Veterinario") == 0)
+        else if(funcao_.compare("Veterinario") == 0)
         {
-            novoFuncionario = make_shared<Veterinario>(id, funcao, nome, cpf, idade, tipo_sanguineo, 
+            novoFuncionario = make_shared<Veterinario>(id, funcao_, nome, cpf, idade, tipo_sanguineo, 
                     fator_rh, especialidade);
         }
 
@@ -153,20 +150,20 @@ namespace PetFera{
 	* @brief	Método que busca um funcionário pelo seu ID.
 	* @params	Int id referente ao id de um funcionário cadastrado .
 	*/
-	void Gerencia::exibir_funcionario(int id)
+	void Gerencia::exibir_funcionario(int id_)
 	{
-        map<int, shared_ptr<Funcionario>>::iterator func = m_lista_funcionario.find(id);
+        map<int, shared_ptr<Funcionario>>::iterator func = m_lista_funcionario.find(id_);
 		
-	    cout << endl << m_lista_funcionario.size() << endl;
-
-	    if(func != m_lista_funcionario.end())
-	    {
-	        cout << *(func -> second);
+        try{
+    	    if(func != m_lista_funcionario.end())
+	        {
+	            cout << *(func -> second);
+	        }
+    	    else throw ErroBuscaFuncionario();
 	    }
-	    else
-	    {
-	        cout << "Funcionário não encontrado" << endl;
-	    }
+        catch(ErroBuscaFuncionario &erro){
+            cout << erro.what();
+        }
 	}
 	
 	/**
@@ -177,15 +174,17 @@ namespace PetFera{
 	{
 	    map<int, shared_ptr<Funcionario>>::iterator func =  m_lista_funcionario.find(id);
 
-	    if(func != m_lista_funcionario.end())
-	    {
-	        m_lista_funcionario.erase(func);
-	        cout << "Removido com sucesso!" << endl;
+        try{
+            if(func != m_lista_funcionario.end())
+	        {
+	            m_lista_funcionario.erase(func);
+	            cout << "Removido com sucesso!" << endl;
+            }
+    	    else throw ErroBuscaFuncionario();
 	    }
-	    else
-	    {
-	        cout << "Funcionário não encontrado" << endl;
-	    }
+        catch(ErroBuscaFuncionario &erro){
+            cout << erro.what();
+        }
 	}
 	
 	/**
@@ -376,21 +375,25 @@ namespace PetFera{
 	        tratador = m_lista_funcionario[tratador_resp_id];
 	    }
 
-        if(classe.compare("Anfibio") == 0)
+        if(classe.compare("anfibio_exotico") == 0 || classe.compare("anfibio_nativo") == 0)
 	    {
-	        cadastrar_anfibio(id, nome, nome_cientifico, sexo, tamanho, dieta, veterinario, tratador, batismo);
+	        cadastrar_anfibio(id, nome, nome_cientifico, sexo, tamanho, dieta, veterinario, tratador, 
+                    batismo, classe);
 	    }
-	    else if(classe.compare("Ave") == 0)
+	    else if(classe.compare("ave_exotica") == 0 || classe.compare("ave_nativa") == 0)
 	    {
-	        cadastrar_ave(id, nome, nome_cientifico, sexo, tamanho, dieta, veterinario, tratador, batismo);
+	        cadastrar_ave(id, nome, nome_cientifico, sexo, tamanho, dieta, veterinario, tratador, 
+                    batismo, classe);
 	    }
-	    else if(classe.compare("Mamifero") == 0)
+	    else if(classe.compare("mamifero_exotico") == 0 || classe.compare("mamifero_nativo") == 0)
 	    {
-	        cadastrar_mamifero(id, nome, nome_cientifico, sexo, tamanho, dieta, veterinario, tratador, batismo);
+	        cadastrar_mamifero(id, nome, nome_cientifico, sexo, tamanho, dieta, veterinario, tratador,
+                    batismo, classe);
 	    }
-	    else if(classe.compare("Reptil") == 0)
+	    else if(classe.compare("reptil_exotico") == 0 || classe.compare("reptil_nativo") == 0)
 	    {
-	        cadastrar_reptil(id, nome, nome_cientifico, sexo, tamanho, dieta, veterinario, tratador, batismo);
+	        cadastrar_reptil(id, nome, nome_cientifico, sexo, tamanho, dieta, veterinario, tratador,
+                        batismo, classe);
 	    }
 
 	    cout << "Cadastro realizado com sucesso." << endl;
@@ -409,23 +412,103 @@ namespace PetFera{
 	* @params	shared_ptr<Funcionario> tratador referente a tratador de um animal
 	* @params	String batismo referente a batismo de um animal
 	*/
-	void Gerencia::cadastrar_anfibio(int id, string nome, string nome_cientifico, char sexo, float tamanho,
-            string dieta, shared_ptr<Funcionario> veterinario, shared_ptr<Funcionario> tratador, string batismo)
+	void Gerencia::cadastrar_anfibio(int id_, string nome_, string nome_cientifico_, char sexo_, 
+            float tamanho_, string dieta_, shared_ptr<Funcionario> veterinario_, 
+            shared_ptr<Funcionario> tratador_, string batismo_, string classe_)
 	{
 	    int total_mudas;
-	    string aux, ultima_muda;
+	    string aux, ultima_muda, ibama;
+        bool flag;
 
-	    cout << "\nTotal de mudas: ";
-	    getline(cin, aux);
-	    total_mudas = stoi(aux);
+        do{
+            cout << "\nTotal de mudas: ";
+            getline(cin, aux);
+            try{
+                total_mudas = stoi(aux);
+                flag = true;
+            }
+            catch(invalid_argument &erro){
+                cout << "Entrada invalida. Informe um valor inteiro." << endl;
+                cin.clear();
+                flag = false;
+            }
+        }while(!flag);
 
 	    cout << "\nData da ultima muda (dd/mm/aa): ";
 	    getline(cin, ultima_muda);
 
-	    shared_ptr<Animal> novoAnimal = make_shared<Anfibio>(id, "Amphibia", nome, nome_cientifico, sexo,
-                tamanho, dieta, veterinario, tratador, batismo, total_mudas, ultima_muda);
+        do{
+            cout << "\nIbama: ";
+            getline(cin, ibama);
+            try{
+                if(ibama.size() == 0) throw ErroCadastro();
+                flag = true;
+            }
+            catch(ErroCadastro &erro){
+                cout << erro.what();
+                flag = false;
+            }
+        }while(!flag);
 
-	    m_lista_animal.insert(pair<int, shared_ptr<Animal>>(id, novoAnimal));
+        if(classe_.compare("anfibio_exotico") == 0){
+            string pais_origem;
+
+            do{
+                cout << "\nPais de Origem: ";
+                getline(cin, pais_origem);
+                try{
+                    if(pais_origem.size() == 0) throw ErroCadastro();
+                    flag = true;
+                }
+                catch(ErroCadastro &erro){
+                    cout << erro.what();
+                    flag = false;
+                }
+            }while(!flag);
+
+            shared_ptr<Animal> novoAnimal = make_shared<AnfibioExotico>(id_, "Amphibia", nome_,
+                nome_cientifico_, sexo_, tamanho_, dieta_, veterinario_, tratador_, batismo_,
+                total_mudas, ultima_muda, ibama, pais_origem);
+
+	        m_lista_animal.insert(pair<int, shared_ptr<Animal>>(id_, novoAnimal));
+        }
+
+        else if(classe_.compare("anfibio_nativo") == 0){
+            string uf_origem, autorizacao;
+
+            do{
+                cout << "\nUF de origem: ";
+                getline(cin, uf_origem);
+                try{
+                    if(uf_origem.size() == 0) throw ErroCadastro();
+                    flag = true;
+                }
+                catch(ErroCadastro &erro){
+                    cout << erro.what();
+                    flag = false;
+                }
+            }while(!flag);
+
+            do{
+                cout << "\nAutorização: ";
+                getline(cin, autorizacao);
+                try{
+                    if(autorizacao.size() == 0) throw ErroCadastro();
+                    flag = true;
+                }
+                catch(ErroCadastro &erro){
+                    cout << erro.what();
+                    flag = false;
+                }
+            }while(!flag);
+
+            shared_ptr<Animal> novoAnimal = make_shared<AnfibioNativo>(id_, "Amphibia", nome_,
+                nome_cientifico_, sexo_, tamanho_, dieta_, veterinario_, tratador_, batismo_,
+                total_mudas, ultima_muda, ibama, uf_origem, autorizacao);
+
+	        m_lista_animal.insert(pair<int, shared_ptr<Animal>>(id_, novoAnimal));
+        }
+
     }
 
 	/**
@@ -440,24 +523,113 @@ namespace PetFera{
 	* @params	shared_ptr<Funcionario> tratador referente a tratador de um animal
 	* @params	String batismo referente a batismo de um animal
 	*/
-	void Gerencia::cadastrar_ave(int id, string nome, string nome_cientifico, char sexo, float tamanho,
-            string dieta, shared_ptr<Funcionario> veterinario, shared_ptr<Funcionario> tratador, string batismo)
+	void Gerencia::cadastrar_ave(int id_, string nome_, string nome_cientifico_, char sexo_, float tamanho_,
+            string dieta_, shared_ptr<Funcionario> veterinario_, shared_ptr<Funcionario> tratador_,
+            string batismo_, string classe_)
 	{
-	    int tamanho_dico, envergadura;
-	    string aux;
+	    int tamanho_bico, envergadura;
+	    string aux, ibama;
+        bool flag;
 
-	    cout << "\nTamanho do bico: ";
-	    getline(cin, aux);
-	    tamanho_dico = stoi(aux);
+        do{
+            cout << "\nTamanho do bico: ";
+            getline(cin, aux);
+            try{
+	            tamanho_bico = stoi(aux);
+                flag = true;
+            }
+            catch(invalid_argument &erro){
+                cout << "Entrada invalida. Informe um valor inteiro." << endl;
+                cin.clear();
+                flag = false;
+            }
+        }while(!flag);
 
-	    cout << "\nEnvergadura: ";
-	    getline(cin, aux);
-	    envergadura = stoi(aux);
+        do{
+            cout << "\nEnvergadura: ";
+            getline(cin, aux);
+            try{
+    	        envergadura = stoi(aux);
+                flag = true;
+            }
+            catch(invalid_argument &erro){
+                cout << "Entrada invalida. Informe um valor inteiro." << endl;
+                cin.clear();
+                flag = false;
+            }
+        }while(!flag);
 
-	    shared_ptr<Animal> novoAnimal = make_shared<Ave>(id, "Aves", nome, nome_cientifico, sexo, tamanho,
-                dieta, veterinario, tratador, batismo, tamanho_dico, envergadura);
+        do{
+            cout << "\nIbama: ";
+            getline(cin, ibama);
+            try{
+                if(ibama.size() == 0) throw ErroCadastro();
+                flag = true;
+            }
+            catch(ErroCadastro &erro){
+                cout << erro.what();
+                flag = false;
+            }
+        }while(!flag);
 
-	    m_lista_animal.insert(pair<int, shared_ptr<Animal>>(id, novoAnimal));
+        if(classe_.compare("ave_exotico") == 0){
+            string pais_origem;
+
+            do{
+                cout << "\nPais de Origem: ";
+                getline(cin, pais_origem);
+                try{
+                    if(pais_origem.size() == 0) throw ErroCadastro();
+                    flag = true;
+                }
+                catch(ErroCadastro &erro){
+                    cout << erro.what();
+                    flag = false;
+                }
+            }while(!flag);
+
+            shared_ptr<Animal> novoAnimal = make_shared<AveExotica>(id_, "Ave", nome_,
+                nome_cientifico_, sexo_, tamanho_, dieta_, veterinario_, tratador_, batismo_,
+                tamanho_bico, envergadura, ibama, pais_origem);
+
+	        m_lista_animal.insert(pair<int, shared_ptr<Animal>>(id_, novoAnimal));
+        }
+
+        else if(classe_.compare("ave_nativo") == 0){
+            string uf_origem, autorizacao;
+
+            do{
+                cout << "\nUF de origem: ";
+                getline(cin, uf_origem);
+                try{
+                    if(uf_origem.size() == 0) throw ErroCadastro();
+                    flag = true;
+                }
+                catch(ErroCadastro &erro){
+                    cout << erro.what();
+                    flag = false;
+                }
+            }while(!flag);
+
+            do{
+                cout << "\nAutorização: ";
+                getline(cin, autorizacao);
+                try{
+                    if(autorizacao.size() == 0) throw ErroCadastro();
+                    flag = true;
+                }
+                catch(ErroCadastro &erro){
+                    cout << erro.what();
+                    flag = false;
+                }
+            }while(!flag);
+
+            shared_ptr<Animal> novoAnimal = make_shared<AveNativa>(id_, "Aves", nome_,
+                nome_cientifico_, sexo_, tamanho_, dieta_, veterinario_, tratador_, batismo_,
+                tamanho_bico, envergadura, ibama, uf_origem, autorizacao);
+
+	        m_lista_animal.insert(pair<int, shared_ptr<Animal>>(id_, novoAnimal));
+        }
 
 	}
 
@@ -473,18 +645,98 @@ namespace PetFera{
 	* @params	shared_ptr<Funcionario> tratador referente a tratador de um animal
 	* @params	String batismo referente a batismo de um animal
 	*/
-	void Gerencia::cadastrar_mamifero(int id, string nome, string nome_cientifico, char sexo, float tamanho,
-            string dieta, shared_ptr<Funcionario> veterinario, shared_ptr<Funcionario> tratador, string batismo)
+	void Gerencia::cadastrar_mamifero(int id_, string nome_, string nome_cientifico_, char sexo_, 
+            float tamanho_, string dieta_, shared_ptr<Funcionario> veterinario_, 
+            shared_ptr<Funcionario> tratador_, string batismo_, string classe_)
 	{
-	    string aux, cor;
+	    string aux, cor, ibama;
+        bool flag;
 
-	    cout << "\nCor predominante: ";
-	    getline(cin, cor);
+        do{
+            cout << "\nCor predominante: ";
+	        getline(cin, cor);
+            try{
+                if(ibama.size() == 0) throw ErroCadastro();
+                flag = true;
+            }
+            catch(ErroCadastro &erro){
+                cout << erro.what();
+                flag = false;
+            }
+        }while(!flag);
 
-	    shared_ptr<Animal> novoAnimal = make_shared<Mamifero>(id, "Mammalia", nome, nome_cientifico, sexo,
-                tamanho, dieta, veterinario, tratador, batismo, cor);
+        do{
+            cout << "\nIbama: ";
+            getline(cin, ibama);
+            try{
+                if(ibama.size() == 0) throw ErroCadastro();
+                flag = true;
+            }
+            catch(ErroCadastro &erro){
+                cout << erro.what();
+                flag = false;
+            }
+        }while(!flag);
 
-	    m_lista_animal.insert(pair<int, shared_ptr<Animal>>(id, novoAnimal));
+        if(classe_.compare("mamifero_exotico") == 0){
+            string pais_origem;
+
+            do{
+                cout << "\nPais de Origem: ";
+                getline(cin, pais_origem);
+                try{
+                    if(pais_origem.size() == 0) throw ErroCadastro();
+                    flag = true;
+                }
+                catch(ErroCadastro &erro){
+                    cout << erro.what();
+                    flag = false;
+                }
+            }while(!flag);
+
+            shared_ptr<Animal> novoAnimal = make_shared<MamiferoExotico>(id_, "Mammalia", nome_,
+                nome_cientifico_, sexo_, tamanho_, dieta_, veterinario_, tratador_, batismo_,
+                cor, ibama, pais_origem);
+
+	        m_lista_animal.insert(pair<int, shared_ptr<Animal>>(id_, novoAnimal));
+        }
+
+        else if(classe_.compare("mamifero_nativo") == 0){
+            string uf_origem, autorizacao;
+
+            do{
+                cout << "\nUF de origem: ";
+                getline(cin, uf_origem);
+                try{
+                    if(uf_origem.size() == 0) throw ErroCadastro();
+                    flag = true;
+                }
+                catch(ErroCadastro &erro){
+                    cout << erro.what();
+                    flag = false;
+                }
+            }while(!flag);
+
+            do{
+                cout << "\nAutorização: ";
+                getline(cin, autorizacao);
+                try{
+                    if(autorizacao.size() == 0) throw ErroCadastro();
+                    flag = true;
+                }
+                catch(ErroCadastro &erro){
+                    cout << erro.what();
+                    flag = false;
+                }
+            }while(!flag);
+
+            shared_ptr<Animal> novoAnimal = make_shared<MamiferoNativo>(id_, "Mammalia", nome_,
+                nome_cientifico_, sexo_, tamanho_, dieta_, veterinario_, tratador_, batismo_,
+                cor, ibama, uf_origem, autorizacao);
+
+	        m_lista_animal.insert(pair<int, shared_ptr<Animal>>(id_, novoAnimal));
+        }
+
 	}
 
 	/**
@@ -499,11 +751,12 @@ namespace PetFera{
 	* @params	shared_ptr<Funcionario> tratador referente a tratador de um animal
 	* @params	String batismo referente a batismo de um animal
 	*/
-	void Gerencia::cadastrar_reptil(int id, string nome, string nome_cientifico, char sexo, float tamanho,
-            string dieta, shared_ptr<Funcionario> veterinario, shared_ptr<Funcionario> tratador, string batismo)
+	void Gerencia::cadastrar_reptil(int id_, string nome_, string nome_cientifico_, char sexo_,
+            float tamanho_, string dieta_, shared_ptr<Funcionario> veterinario_,
+            shared_ptr<Funcionario> tratador_, string batismo_, string classe_)
 	{
-	    string aux, venenoso, tipo_veneno;
-	    bool eh_venenoso = false;
+	    string aux, venenoso, tipo_veneno, ibama;
+	    bool eh_venenoso = false, flag;
 
 	    cout << "\nAnimal venenoso (sim ou não): ";
 	    getline(cin, venenoso);
@@ -519,10 +772,78 @@ namespace PetFera{
 	        tipo_veneno = "Nenhum";
 	    }
 
-	    shared_ptr<Animal> novoAnimal = make_shared<Reptil>(id, "Reptilia", nome, nome_cientifico, sexo,
-                tamanho, dieta, veterinario, tratador, batismo, eh_venenoso, tipo_veneno);
+        do{
+            cout << "\nIbama: ";
+            getline(cin, ibama);
+            try{
+                if(ibama.size() == 0) throw ErroCadastro();
+                flag = true;
+            }
+            catch(ErroCadastro &erro){
+                cout << erro.what();
+                flag = false;
+            }
+        }while(!flag);
 
-	    m_lista_animal.insert(pair<int, shared_ptr<Animal>>(id, novoAnimal));
+        if(classe_.compare("reptil_exotico") == 0){
+            string pais_origem;
+
+            do{
+                cout << "\nPais de Origem: ";
+                getline(cin, pais_origem);
+                try{
+                    if(pais_origem.size() == 0) throw ErroCadastro();
+                    flag = true;
+                }
+                catch(ErroCadastro &erro){
+                    cout << erro.what();
+                    flag = false;
+                }
+            }while(!flag);
+    
+            shared_ptr<Animal> novoAnimal = make_shared<ReptilExotico>(id_, "Reptilia", nome_,
+                nome_cientifico_, sexo_, tamanho_, dieta_, veterinario_, tratador_, batismo_,
+                eh_venenoso, tipo_veneno, ibama, pais_origem);
+
+	        m_lista_animal.insert(pair<int, shared_ptr<Animal>>(id_, novoAnimal));
+        }
+
+        else if(classe_.compare("reptil_nativo") == 0){
+            string uf_origem, autorizacao;
+
+            do{
+                cout << "\nUF de origem: ";
+                getline(cin, uf_origem);
+                try{
+                    if(uf_origem.size() == 0) throw ErroCadastro();
+                    flag = true;
+                }
+                catch(ErroCadastro &erro){
+                    cout << erro.what();
+                    flag = false;
+                }
+            }while(!flag);
+
+            do{
+                cout << "\nAutorização: ";
+                getline(cin, autorizacao);
+                try{
+                    if(autorizacao.size() == 0) throw ErroCadastro();
+                    flag = true;
+                }
+                catch(ErroCadastro &erro){
+                    cout << erro.what();
+                    flag = false;
+                }
+            }while(!flag);
+
+            shared_ptr<Animal> novoAnimal = make_shared<ReptilNativo>(id_, "Reptilia", nome_,
+                nome_cientifico_, sexo_, tamanho_, dieta_, veterinario_, tratador_, batismo_,
+                eh_venenoso, tipo_veneno, ibama, uf_origem, autorizacao);
+
+	        m_lista_animal.insert(pair<int, shared_ptr<Animal>>(id_, novoAnimal));
+        }
+
 	}
 
 	/**
