@@ -31,4 +31,9 @@ class ErroBuscaClasse: public invalid_argument{
         ErroBuscaClasse(): invalid_argument("Erro! Classe não encontrada.\nVerifique a classe informada.\n") {}
 };
 
+class ErroBuscaFuncionario: public invalid_argument{
+    public:
+        ErroBuscaFuncionario(): invalid_argument("Funcionário não encontrado.\nVerifique se o ID esta correto.\n") {}
+};
+
 #endif
