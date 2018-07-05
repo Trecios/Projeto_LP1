@@ -23,7 +23,12 @@ class ErroMenu: public invalid_argument{
 
 class ErroCadastro: public invalid_argument{
     public:
-        ErroCadastro(): invalid_argument("\nERRO! Entrada invalida. \nVerifique o valor de entrada. \n\n") {}
+        ErroCadastro(): invalid_argument("ERRO! Este campo e obrigatório.\nEntre com um valor válido.\n") {}
+};
+
+class ErroBuscaClasse: public invalid_argument{
+    public:
+        ErroBuscaClasse(): invalid_argument("Erro! Classe não encontrada.\nVerifique a classe informada.\n") {}
 };
 
 #endif
