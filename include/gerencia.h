@@ -175,6 +175,11 @@ namespace PetFera{
 			* @params	Int id referente ao id do funcionário. 
 			*/
 			void consultar_animaisResp(int id_);
+
+            /**
+             * @brief   Método menu petfera.
+             */
+            void menu();
 	};
 }
 

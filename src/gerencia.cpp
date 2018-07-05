@@ -967,4 +967,62 @@ namespace PetFera{
 	    }
 	}
 
+    void Gerencia::menu(){
+        int op;
+    
+        do{
+            cout << "+=============== Menu de Opções ==============+" << endl
+                 << "| 1) Busca de Funcionário.                    |" << endl
+                 << "| 2) Busca de Animal.                         |" << endl
+                 << "| 3) Cadastro de Funcionário.                 |" << endl
+                 << "| 4) Cadastro de Animal.                      |" << endl
+                 << "| 0) Sair.                                    |" << endl
+                 << "+=============================================+" << endl
+                 << "\nDigite sua opção: "                            ;
+
+            try{
+                cin >> op;
+
+                if(op < 0 || op > 4) throw ErroMenu(); // Se for digitado letra, não acusa erro. Tentar tratar.
+
+                switch(op){
+                    case 1:
+                        // busca funcionário.
+                        break;
+                    case 2:
+                        // busca animal.
+                        break;
+                    case 3:
+                        int op_func;
+                        cout << "+========== Cadastro de Funcionário ===========+" << endl
+                             << "| 1) Veterinário.                              |" << endl
+                             << "| 2) Tratador.                                 |" << endl
+                             << "| 0) Sair.                                     |" << endl
+                             << "+==============================================+" << endl
+                             << "\nDigite sua opção: "                             ;
+                            cin >> op_func;
+                        switch(op_func){
+                            case 1:
+                                cadastrar_funcionario("Veterinario");
+                                break;
+                            case 2:
+                                cadastrar_funcionario("Tratador");
+                                break;
+                            case 0:
+                                break;
+                        }
+
+                        // cadastro funcionario.
+                        break;
+                    case 4:
+                        // cadastro animal.
+                        break;
+                }
+            }
+            catch(ErroMenu &erro){
+                cout << erro.what() << endl;
+            }
+
+        }while(op != 0);
+    }
 }
