@@ -84,6 +84,16 @@ namespace PetFera{
 			void ler_animais();
 
 			/**
+			* @brief	Método que escreve dados de funcionários em um aquivo .csv 
+			*/
+			void escrever_funcionarios();
+
+			/**
+		    * @brief	Método que escreve dados de funcionários em um aquivo .csv 
+		    */
+			void escrever_animais();
+
+			/**
 			* @brief	Método que cadastra um animal pela sua classe
 			* @params	String classe referente a classe de um animal
 			*/
