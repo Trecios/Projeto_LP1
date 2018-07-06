@@ -228,6 +228,7 @@ namespace PetFera{
                                     tipo_sang, fator_rh[0], especialidade)));
                     }
                 }
+                func.close();
             }
         }
         catch(ErroLeitura &erro){
@@ -376,9 +377,9 @@ namespace PetFera{
                                         nome_cientifico, sexo[0], stof(tamanho), dieta, 
                                         vet, trat, batismo, ehVenenoso, tipo_veneno, ibama, uf_pais, autorizacao)));
                        }
-                    }
-                    
+                    }  
                 }
+                func.close();
             }
         }
         catch(ErroLeitura &erro){
@@ -386,6 +387,28 @@ namespace PetFera{
             exit(1);
         }
 	}
+
+    /**
+    * @brief    Método que escreve dados de funcionários em um aquivo .csv 
+    */
+    void Gerencia::escrever_funcionarios()
+    {
+        ofstream func("data/funcionarios.csv", ios::trunc);
+
+        if(func.is_open())
+        {
+            func << "ID;Profissao;Nome;CPF;Idade;Tipo Sanguineo;Fator RH;Especialidade" << endl;
+            for(auto i = m_lista_funcionario.begin(); i != m_lista_funcionario.end(); i++)
+            {
+                func << (i->second)->getId() << ";" << (i->second)->getFuncao() << ";"
+                    << (i->second)->getNome() << ";" << (i->second)->getCpf() << ";"
+                    << (i->second)->getIdade() << ";"<< (i->second)->getTipoSanguineo() << ";"
+                    << (i->second)->getFatorRH() << ";"<< (i->second)->getEspecialidade() << ";" << endl;
+            }
+        }
+
+        func.close();
+    }
 
 
 	/**

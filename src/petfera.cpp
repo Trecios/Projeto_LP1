@@ -13,6 +13,8 @@ int main(int argc, char const *argv[])
 
     petfera.menu();
 
+    petfera.escrever_funcionarios();
+
 	return 0;
 }
     
