@@ -143,29 +143,57 @@ namespace PetFera{
 
         m_lista_funcionario.insert(pair<int, shared_ptr<Funcionario>>(id, novoFuncionario));
 
-        exibir_funcionario(id);
+        imprimir(buscar_funcionario(id));
 	}
 
-	/**
-	* @brief	Método que busca um funcionário pelo seu ID.
-	* @params	Int id referente ao id de um funcionário cadastrado .
-	*/
-	void Gerencia::exibir_funcionario(int id_)
-	{
-        map<int, shared_ptr<Funcionario>>::iterator func = m_lista_funcionario.find(id_);
-		
+    /**
+    * @brief	Método que busca um funcionário pelo seu ID.
+    * @params	Int id referente ao id de um funcionário cadastrado.
+    * @return   Map contendo o funcionário filtrado.
+    */
+    map<int, shared_ptr<Funcionario>> Gerencia::buscar_funcionario(int id_){
+        map<int, shared_ptr<Funcionario>> funcionario;
+
+        for(auto i  = m_lista_funcionario.begin(); i != m_lista_funcionario.end(); i++)
+        {
+            if((i->second)->getId() == id_ || (i->second)->getId() == id_)
+            {
+                funcionario.insert(pair<int, shared_ptr<Funcionario>>(i->first, i->second));
+            }
+        }
         try{
-    	    if(func != m_lista_funcionario.end())
-	        {
-	            cout << *(func -> second);
-	        }
-    	    else throw ErroBuscaFuncionario();
+    	    if(funcionario.empty()) throw ErroBuscaFuncionario();
 	    }
         catch(ErroBuscaFuncionario &erro){
             cout << erro.what();
         }
+
+        return funcionario;
 	}
-	
+
+    /**
+    * @brief	Método que busca um funcionário pelo seu ID.
+    * @params	Int id referente ao id de um funcionário cadastrado.
+    * @return   Map contendo o funcionário filtrado.
+    */
+    map<int, shared_ptr<Animal>> Gerencia::buscar_animal(int id_){
+        map<int, shared_ptr<Animal>> animal;
+
+        for(auto i  = m_lista_animal.begin(); i != m_lista_animal.end(); i++){
+            if((i->second)->getId() == id_ || (i->second)->getId() == id_){
+                animal.insert(pair<int, shared_ptr<Animal>>(i->first, i->second));
+            }
+        }
+        try{
+    	    if(animal.empty()) throw ErroBuscaAnimal();
+	    }
+        catch(ErroBuscaAnimal &erro){
+            cout << erro.what();
+        }
+
+        return animal;
+	}
+
 	/**
 	* @brief	Método que remove um funcionário pelo seu ID
 	* @params	Int id referente ao id de um funcionário cadastrado 
@@ -548,7 +576,7 @@ namespace PetFera{
 	    }
 
 	    cout << "Cadastro realizado com sucesso." << endl;
-        exibir_animal(id);
+        imprimir(buscar_animal(id));
 	}
 
 	/**
@@ -993,29 +1021,7 @@ namespace PetFera{
                 eh_venenoso, tipo_veneno, ibama, uf_origem, autorizacao);
 
 	        m_lista_animal.insert(pair<int, shared_ptr<Animal>>(id_, novoAnimal));
-
         }
-
-	}
-
-	/**
-	* @brief	Método que exibe um animal pelo seu ID
-	* @params	Int id referente ao id de um animal cadastrado 
-	*/
-	void Gerencia::exibir_animal(int id)
-	{
-        map<int, shared_ptr<Animal>>::iterator animal = m_lista_animal.find(id);
-		
-	    cout << endl << m_lista_animal.size() << endl;
-
-	    if(animal != m_lista_animal.end())
-	    {
-            cout << *(animal -> second);
-	    }
-	    else
-	    {
-	        cout << "Animal não encontrado" << endl;
-	    }
 	}
 
 	/**
@@ -1096,12 +1102,11 @@ namespace PetFera{
         }
         else
         {
-            cout << "Erro! " << classe << " nao eh uma classe valida." << endl;
+            cout << "Erro! " << classe << " não eh uma classe valida." << endl;
             //Tratar exceção de quando não encontrar nenhum animal da classe especificada
         }
         return lista;
     }
-
 
     /**
     * @brief    Método que consulta todos os animais sob responsabilidade de 
@@ -1133,7 +1138,8 @@ namespace PetFera{
                  << "| 3) Busca de Animal.                         |" << endl
                  << "| 4) Cadastro de Funcionário.                 |" << endl
                  << "| 5) Cadastro de Animal.                      |" << endl
-                 << "| 6) Remover Animal.                          |" << endl
+                 << "| 6) Editar Animal.                           |" << endl
+                 << "| 7) Remover Animal.                          |" << endl
                  << "| 0) Sair.                                    |" << endl
                  << "+=============================================+" << endl
                  << "\nDigite sua opção: "                            ;
@@ -1147,7 +1153,7 @@ namespace PetFera{
                     case 1:
                         cout << "Digite o ID do funcionário: ";
                         cin >> op_aux;
-                        exibir_funcionario(op_aux);
+                        imprimir(buscar_funcionario(op_aux));
                         break;
                     case 2:
                         cout << "Digite o ID do funcionário: ";
@@ -1175,7 +1181,7 @@ namespace PetFera{
                                 case 1:
                                     cout << "Digite o ID do animal: ";
                                     cin >> aux;
-                                    exibir_animal(aux);
+                                    imprimir(buscar_animal(aux));
                                     break;
                                 case 2:
                                     cout << "Digite a classe do animal: ";

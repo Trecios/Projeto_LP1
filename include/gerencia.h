@@ -56,12 +56,18 @@ namespace PetFera{
 			void cadastrar_funcionario(string funcao_);
 
 			/**
-			* @brief	Método que exibe um funcionário pelo seu ID
-			* @params	Int id referente ao id de um funcionário cadastrado 
+			* @brief	Método que busca um funcionário pelo seu ID.
+			* @params	Int id referente ao id de um funcionário cadastrado.
 			*/
-			void exibir_funcionario(int id_);
-			
+            map<int, shared_ptr<Funcionario>> buscar_funcionario(int id_);
+	
 			/**
+			* @brief	Método que busca um funcionário pelo seu ID.
+			* @params	Int id referente ao id de um funcionário cadastrado.
+			*/	
+            map<int, shared_ptr<Animal>> buscar_animal(int id_);
+
+            /**
 			* @brief	Método que remove um funcionário pelo seu ID
 			* @params	Int id referente ao id de um funcionário cadastrado 
 			*/
@@ -150,12 +156,6 @@ namespace PetFera{
 			void cadastrar_reptil(int id_, string nome_, string nome_cientifico_, char sexo_, float tamanho_,
                     string dieta_, shared_ptr<Funcionario> veterinario_, shared_ptr<Funcionario> tratador_,
                     string batismo_, string classe_);
-
-			/**
-			* @brief	Método que exibe um animal pelo seu ID
-			* @params	Int id referente ao id de um animal cadastrado 
-			*/
-			void exibir_animal(int id_);
 
 			/**
 			* @brief	Método que remove um animal pelo seu ID
