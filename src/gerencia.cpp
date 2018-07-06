@@ -235,6 +235,157 @@ namespace PetFera{
             exit(1);
         }
 	}
+	
+    /**
+    * @brief	Método que le dados de funcionários de um aquivo .csv 
+    */
+	void Gerencia::ler_animais()
+	{
+        ifstream func("data/animais.csv");
+
+        try{
+    	    if(!func.is_open()) throw ErroLeitura();
+
+            else{
+                string linha;
+                while(getline(func, linha))
+                {
+                    stringstream aux(linha);
+                    string id, classe, nome, nome_cientifico, sexo, tamanho, dieta, veterinario_id, tratador_id, batismo, ibama, uf_pais, autorizacao, 
+                        total_mudas, ultima_muda, tamanho_bico, envergadura, cor, venenoso, tipo_veneno;
+                    
+                    bool ehVenenoso = false; 
+                    
+                    getline(aux, id, ';');
+                    getline(aux, classe, ';');
+                    getline(aux, nome, ';');
+                    getline(aux, nome_cientifico, ';');
+                    getline(aux, sexo,';');
+                    getline(aux, tamanho, ';');
+                    getline(aux, dieta, ';');
+                    getline(aux, veterinario_id, ';');
+                    getline(aux, tratador_id, ';');
+                    getline(aux, batismo, ';');
+                    
+                    if(classe.compare("Amphibia") == 0)
+                    {
+                        getline(aux, total_mudas, ';');
+                        getline(aux, ultima_muda, ';');
+                    }
+                    else if(classe.compare("Aves") == 0)
+                    {
+                        getline(aux, tamanho_bico, ';');
+                        getline(aux, envergadura, ';');
+                    }
+                    else if(classe.compare("Mammalia") == 0)
+                    {
+                        getline(aux, cor, ';');
+                    }
+                    else
+                    {
+                        getline(aux, venenoso, ';');
+                        getline(aux, tipo_veneno, ';');
+                    }
+                    
+                    getline(aux, ibama, ';');
+                    getline(aux, uf_pais, ';');
+                    getline(aux, autorizacao, ';');
+                    
+                    shared_ptr<Funcionario> vet = nullptr;
+                    shared_ptr<Funcionario> trat = nullptr;
+                    
+                    if(m_lista_funcionario.find(stoi(veterinario_id)) != m_lista_funcionario.end())
+            	    {
+            	        vet = m_lista_funcionario[stoi(veterinario_id)];
+            	    }
+            
+            	    if(m_lista_funcionario.find(stoi(tratador_id)) != m_lista_funcionario.end())
+            	    {
+            	        trat = m_lista_funcionario[stoi(tratador_id)];
+            	    }
+                    
+                    if(classe.compare("Amphibia") == 0)
+                    {
+                       if(autorizacao.compare("-") == 0)
+                       {
+                            m_lista_animal.insert(pair<int, shared_ptr<Animal>>(stoi(id), 
+                                        make_shared<AnfibioExotico>(stoi(id), "Anfibio", nome, 
+                                        nome_cientifico, sexo[0], stof(tamanho), dieta, 
+                                        vet, trat, batismo, stoi(total_mudas), ultima_muda, ibama, uf_pais)));
+                       }
+                       else
+                       {
+                           m_lista_animal.insert(pair<int, shared_ptr<Animal>>(stoi(id), 
+                                        make_shared<AnfibioNativo>(stoi(id), "Anfibio", nome, 
+                                        nome_cientifico, sexo[0], stof(tamanho), dieta, 
+                                        vet, trat, batismo, stoi(total_mudas), ultima_muda, ibama, uf_pais, autorizacao)));
+                       }
+                    }
+                    else if(classe.compare("Aves") == 0)
+                    {
+                        if(autorizacao.compare("-") == 0)
+                       {
+                            m_lista_animal.insert(pair<int, shared_ptr<Animal>>(stoi(id), 
+                                        make_shared<AveExotica>(stoi(id), "Ave", nome, 
+                                        nome_cientifico, sexo[0], stof(tamanho), dieta, 
+                                        vet, trat, batismo, stoi(tamanho_bico), stoi(envergadura), ibama, uf_pais)));
+                       }
+                       else
+                       {
+                           m_lista_animal.insert(pair<int, shared_ptr<Animal>>(stoi(id), 
+                                        make_shared<AveNativa>(stoi(id), "Ave", nome, 
+                                        nome_cientifico, sexo[0], stof(tamanho), dieta, 
+                                        vet, trat, batismo, stoi(tamanho_bico), stoi(envergadura), ibama, uf_pais, autorizacao)));
+                       }
+                    }
+                    else if(classe.compare("Mammalia") == 0)
+                    {
+                       if(autorizacao.compare("-") == 0)
+                       {
+                            m_lista_animal.insert(pair<int, shared_ptr<Animal>>(stoi(id), 
+                                        make_shared<MamiferoExotico>(stoi(id), "Mamifero", nome, 
+                                        nome_cientifico, sexo[0], stof(tamanho), dieta, 
+                                        vet, trat, batismo, cor, ibama, uf_pais)));
+                       }
+                       else
+                       {
+                           m_lista_animal.insert(pair<int, shared_ptr<Animal>>(stoi(id), 
+                                        make_shared<MamiferoNativo>(stoi(id), "Mamifero", nome, 
+                                        nome_cientifico, sexo[0], stof(tamanho), dieta, 
+                                        vet, trat, batismo, cor, ibama, uf_pais, autorizacao)));
+                       }
+                    }
+                    else if(classe.compare("Reptilia") == 0)
+                    {
+                        if(venenoso.compare("Sim") == 0)
+                        {
+                            ehVenenoso = true;
+                        }
+                        
+                        if(autorizacao.compare("-") == 0)
+                       {
+                            m_lista_animal.insert(pair<int, shared_ptr<Animal>>(stoi(id), 
+                                        make_shared<ReptilExotico>(stoi(id), "Reptil", nome, 
+                                        nome_cientifico, sexo[0], stof(tamanho), dieta, 
+                                        vet, trat, batismo, ehVenenoso, tipo_veneno, ibama, uf_pais)));
+                       }
+                       else
+                       {
+                           m_lista_animal.insert(pair<int, shared_ptr<Animal>>(stoi(id), 
+                                        make_shared<ReptilNativo>(stoi(id), "Reptil", nome, 
+                                        nome_cientifico, sexo[0], stof(tamanho), dieta, 
+                                        vet, trat, batismo, ehVenenoso, tipo_veneno, ibama, uf_pais, autorizacao)));
+                       }
+                    }
+                    
+                }
+            }
+        }
+        catch(ErroLeitura &erro){
+            cerr << erro.what() << endl;
+            exit(1);
+        }
+	}
 
 
 	/**

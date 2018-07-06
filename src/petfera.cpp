@@ -9,7 +9,7 @@ int main(int argc, char const *argv[])
     Gerencia petfera;
     
     petfera.ler_funcionarios();
-//    petfera.ler_animal();
+    petfera.ler_animais();
 
     petfera.menu();
 
