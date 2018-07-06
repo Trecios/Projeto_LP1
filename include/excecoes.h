@@ -33,7 +33,12 @@ class ErroBuscaClasse: public invalid_argument{
 
 class ErroBuscaFuncionario: public invalid_argument{
     public:
-        ErroBuscaFuncionario(): invalid_argument("Funcionário não encontrado.\nVerifique se o ID esta correto.\n") {}
+        ErroBuscaFuncionario(): invalid_argument("Funcionário não encontrado.\nVerifique se o ID esta correto.\n\n") {}
+};
+
+class ErroBuscaAnimal: public invalid_argument{
+    public:
+        ErroBuscaAnimal(): invalid_argument("Animal não encontrado.\nVerifique se o ID esta correto.\n\n") {}
 };
 
 #endif
