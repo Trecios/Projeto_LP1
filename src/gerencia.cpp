@@ -36,7 +36,7 @@ namespace PetFera{
         bool flag;
 
         do{
-            cout << "Numero de identificação do funcionário (ID): ";
+            cout << "\nNumero de identificação do funcionário (ID): ";
             getline(cin, aux);
             try{
                 id = stoi(aux);
@@ -143,7 +143,7 @@ namespace PetFera{
 
         m_lista_funcionario.insert(pair<int, shared_ptr<Funcionario>>(id, novoFuncionario));
 
-        cout << endl <<"Cadastro feito com sucesso!" << endl;
+        exibir_funcionario(id);
 	}
 
 	/**
@@ -251,7 +251,7 @@ namespace PetFera{
         bool flag;
 
         do{
-            cout << "Numero de identificação do animal (ID): ";
+            cout << "\nNumero de identificação do animal (ID): ";
             getline(cin, aux);
             try{
                 id = stoi(aux);
@@ -397,7 +397,7 @@ namespace PetFera{
 	    }
 
 	    cout << "Cadastro realizado com sucesso." << endl;
-
+        exibir_animal(id);
 	}
 
 	/**
@@ -656,7 +656,7 @@ namespace PetFera{
             cout << "\nCor predominante: ";
 	        getline(cin, cor);
             try{
-                if(ibama.size() == 0) throw ErroCadastro();
+                if(cor.size() == 0) throw ErroCadastro();
                 flag = true;
             }
             catch(ErroCadastro &erro){
@@ -842,6 +842,7 @@ namespace PetFera{
                 eh_venenoso, tipo_veneno, ibama, uf_origem, autorizacao);
 
 	        m_lista_animal.insert(pair<int, shared_ptr<Animal>>(id_, novoAnimal));
+
         }
 
 	}
@@ -968,7 +969,7 @@ namespace PetFera{
 	}
 
     void Gerencia::menu(){
-        int op;
+        int op, op_aux;
     
         do{
             cout << "+=============== Menu de Opções ==============+" << endl
@@ -983,39 +984,100 @@ namespace PetFera{
             try{
                 cin >> op;
 
-                if(op < 0 || op > 4) throw ErroMenu(); // Se for digitado letra, não acusa erro. Tentar tratar.
+                    if((op < 0x47 && op > 0x58) || op > 4) throw ErroMenu();
 
                 switch(op){
                     case 1:
-                        // busca funcionário.
+                        cout << "Digite o ID do funcionário: ";
+                        cin >> op_aux;
+                        exibir_funcionario(op_aux);
                         break;
                     case 2:
-                        // busca animal.
+                        cout << "Digite o ID do animal: ";
+                        cin >> op_aux;
+                        exibir_animal(op_aux);
                         break;
                     case 3:
-                        int op_func;
-                        cout << "+========== Cadastro de Funcionário ===========+" << endl
-                             << "| 1) Veterinário.                              |" << endl
-                             << "| 2) Tratador.                                 |" << endl
-                             << "| 0) Sair.                                     |" << endl
-                             << "+==============================================+" << endl
-                             << "\nDigite sua opção: "                             ;
-                            cin >> op_func;
-                        switch(op_func){
-                            case 1:
-                                cadastrar_funcionario("Veterinario");
-                                break;
-                            case 2:
-                                cadastrar_funcionario("Tratador");
-                                break;
-                            case 0:
-                                break;
-                        }
+                        do{
+                            try{
+                                cout << "+========== Cadastro de Funcionário ===========+" << endl
+                                     << "| 1) Veterinário.                              |" << endl
+                                     << "| 2) Tratador.                                 |" << endl
+                                     << "| 0) Sair.                                     |" << endl
+                                     << "+==============================================+" << endl
+                                     << "\nDigite sua opção: "                             ;
+                                cin >> op_aux;
+                                cin.ignore(1, '\n'); 
+                                // Ignora o cach do cin, se não quando chamar o cadastro_funcionario
+                                // e assim apresenta erro de tecla invalida.
+                                if((op_aux < 0x47 && op_aux > 0x58) || op_aux > 2) throw ErroMenu();
+                            }
+                            catch(ErroMenu &erro){
+                                cout << erro.what();
+                            }
 
-                        // cadastro funcionario.
+                            switch(op_aux){
+                                case 1:
+                                    cadastrar_funcionario("Veterinario");
+                                    break;
+                                case 2:
+                                    cadastrar_funcionario("Tratador");
+                                    break;
+                                }
+                        }while(op_aux != 0);
                         break;
                     case 4:
-                        // cadastro animal.
+                        do{
+                            try{
+                                cout << "+============ Cadastro de Animal ==============+" << endl
+                                     << "| 1) Anfíbio Exótico.                          |" << endl
+                                     << "| 2) Anfíbio Nativo.                           |" << endl
+                                     << "| 3) Ave Exótica.                              |" << endl
+                                     << "| 4) Ave Nativa.                               |" << endl
+                                     << "| 5) Mamífero Exótico.                         |" << endl
+                                     << "| 6) Mamífero Nativo.                          |" << endl
+                                     << "| 7) Réptil Exótico.                           |" << endl
+                                     << "| 8) Réptil Nativo.                            |" << endl
+                                     << "| 0) Sair.                                     |" << endl
+                                     << "+==============================================+" << endl
+                                     << "\nDigite sua opção: "                             ;
+                                cin >> op_aux;
+                                cin.ignore(1, '\n'); 
+                                // Ignora o cach do cin, se não quando chamar o cadastro_animal
+                                // e assim apresenta erro de tecla invalida.
+                                if((op_aux < 0x47 && op_aux > 0x58) || op_aux > 8) throw ErroMenu();
+                            }
+                            catch(ErroMenu &erro){
+                                cout << erro.what();
+                            }
+
+                            switch(op_aux){
+                                case 1:
+                                    cadastrar_animal("anfibio_exotico");
+                                    break;
+                                case 2:
+                                    cadastrar_animal("anfibio_nativo");
+                                    break;
+                                case 3:
+                                    cadastrar_animal("ave_exotica");
+                                    break;
+                                case 4:
+                                    cadastrar_animal("ave_nativa");
+                                    break;
+                                case 5:
+                                    cadastrar_animal("mamifero_exotico");
+                                    break;
+                                case 6:
+                                    cadastrar_animal("mamifero_nativo");
+                                    break;
+                                case 7:
+                                    cadastrar_animal("reptil_exotico");
+                                    break;
+                                case 8:
+                                    cadastrar_animal("reptil_nativo");
+                                    break;
+                                }
+                        }while(op_aux != 0);
                         break;
                 }
             }
