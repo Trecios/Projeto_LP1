@@ -309,14 +309,14 @@ namespace PetFera{
                        if(autorizacao.compare("-") == 0)
                        {
                             m_lista_animal.insert(pair<int, shared_ptr<Animal>>(stoi(id), 
-                                        make_shared<AnfibioExotico>(stoi(id), "Anfibio", nome, 
+                                        make_shared<AnfibioExotico>(stoi(id), "Amphibia", nome, 
                                         nome_cientifico, sexo[0], stof(tamanho), dieta, 
                                         vet, trat, batismo, stoi(total_mudas), ultima_muda, ibama, uf_pais)));
                        }
                        else
                        {
                            m_lista_animal.insert(pair<int, shared_ptr<Animal>>(stoi(id), 
-                                        make_shared<AnfibioNativo>(stoi(id), "Anfibio", nome, 
+                                        make_shared<AnfibioNativo>(stoi(id), "Amphibia", nome, 
                                         nome_cientifico, sexo[0], stof(tamanho), dieta, 
                                         vet, trat, batismo, stoi(total_mudas), ultima_muda, ibama, uf_pais, autorizacao)));
                        }
@@ -326,14 +326,14 @@ namespace PetFera{
                         if(autorizacao.compare("-") == 0)
                        {
                             m_lista_animal.insert(pair<int, shared_ptr<Animal>>(stoi(id), 
-                                        make_shared<AveExotica>(stoi(id), "Ave", nome, 
+                                        make_shared<AveExotica>(stoi(id), "Aves", nome, 
                                         nome_cientifico, sexo[0], stof(tamanho), dieta, 
                                         vet, trat, batismo, stoi(tamanho_bico), stoi(envergadura), ibama, uf_pais)));
                        }
                        else
                        {
                            m_lista_animal.insert(pair<int, shared_ptr<Animal>>(stoi(id), 
-                                        make_shared<AveNativa>(stoi(id), "Ave", nome, 
+                                        make_shared<AveNativa>(stoi(id), "Aves", nome, 
                                         nome_cientifico, sexo[0], stof(tamanho), dieta, 
                                         vet, trat, batismo, stoi(tamanho_bico), stoi(envergadura), ibama, uf_pais, autorizacao)));
                        }
@@ -343,14 +343,14 @@ namespace PetFera{
                        if(autorizacao.compare("-") == 0)
                        {
                             m_lista_animal.insert(pair<int, shared_ptr<Animal>>(stoi(id), 
-                                        make_shared<MamiferoExotico>(stoi(id), "Mamifero", nome, 
+                                        make_shared<MamiferoExotico>(stoi(id), "Mammalia", nome, 
                                         nome_cientifico, sexo[0], stof(tamanho), dieta, 
                                         vet, trat, batismo, cor, ibama, uf_pais)));
                        }
                        else
                        {
                            m_lista_animal.insert(pair<int, shared_ptr<Animal>>(stoi(id), 
-                                        make_shared<MamiferoNativo>(stoi(id), "Mamifero", nome, 
+                                        make_shared<MamiferoNativo>(stoi(id), "Mammalia", nome, 
                                         nome_cientifico, sexo[0], stof(tamanho), dieta, 
                                         vet, trat, batismo, cor, ibama, uf_pais, autorizacao)));
                        }
@@ -365,14 +365,14 @@ namespace PetFera{
                         if(autorizacao.compare("-") == 0)
                        {
                             m_lista_animal.insert(pair<int, shared_ptr<Animal>>(stoi(id), 
-                                        make_shared<ReptilExotico>(stoi(id), "Reptil", nome, 
+                                        make_shared<ReptilExotico>(stoi(id), "Reptilia", nome, 
                                         nome_cientifico, sexo[0], stof(tamanho), dieta, 
                                         vet, trat, batismo, ehVenenoso, tipo_veneno, ibama, uf_pais)));
                        }
                        else
                        {
                            m_lista_animal.insert(pair<int, shared_ptr<Animal>>(stoi(id), 
-                                        make_shared<ReptilNativo>(stoi(id), "Reptil", nome, 
+                                        make_shared<ReptilNativo>(stoi(id), "Reptilia", nome, 
                                         nome_cientifico, sexo[0], stof(tamanho), dieta, 
                                         vet, trat, batismo, ehVenenoso, tipo_veneno, ibama, uf_pais, autorizacao)));
                        }
@@ -739,7 +739,7 @@ namespace PetFera{
                 }
             }while(!flag);
 
-            shared_ptr<Animal> novoAnimal = make_shared<AveExotica>(id_, "Ave", nome_,
+            shared_ptr<Animal> novoAnimal = make_shared<AveExotica>(id_, "Aves", nome_,
                 nome_cientifico_, sexo_, tamanho_, dieta_, veterinario_, tratador_, batismo_,
                 tamanho_bico, envergadura, ibama, pais_origem);
 
