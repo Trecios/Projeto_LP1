@@ -4,11 +4,11 @@
 #include "gerencia.h"
 
 using namespace std;
+using namespace PetFera;
 
 int main(int argc, char const *argv[]){
     Gerencia exportar;
     string classe, veterinario, tratador, saida;
-    Gerencia petfera;
     
     exportar.ler_funcionarios();
 //    exportar.ler_animal();

@@ -969,14 +969,17 @@ namespace PetFera{
 	}
 
     void Gerencia::menu(){
-        int op, op_aux;
-    
+        int op, op_aux, aux;
+        string classe;
+
         do{
             cout << "+=============== Menu de Opções ==============+" << endl
                  << "| 1) Busca de Funcionário.                    |" << endl
-                 << "| 2) Busca de Animal.                         |" << endl
-                 << "| 3) Cadastro de Funcionário.                 |" << endl
-                 << "| 4) Cadastro de Animal.                      |" << endl
+                 << "| 2) Remove Funcionário.                      |" << endl
+                 << "| 3) Busca de Animal.                         |" << endl
+                 << "| 4) Cadastro de Funcionário.                 |" << endl
+                 << "| 5) Cadastro de Animal.                      |" << endl
+                 << "| 6) Remover Animal.                          |" << endl
                  << "| 0) Sair.                                    |" << endl
                  << "+=============================================+" << endl
                  << "\nDigite sua opção: "                            ;
@@ -984,7 +987,7 @@ namespace PetFera{
             try{
                 cin >> op;
 
-                    if((op < 0x47 && op > 0x58) || op > 4) throw ErroMenu();
+                if((op < 0x47 && op > 0x58) || op > 6) throw ErroMenu();
 
                 switch(op){
                     case 1:
@@ -993,11 +996,52 @@ namespace PetFera{
                         exibir_funcionario(op_aux);
                         break;
                     case 2:
-                        cout << "Digite o ID do animal: ";
+                        cout << "Digite o ID do funcionário: ";
                         cin >> op_aux;
-                        exibir_animal(op_aux);
-                        break;
+                        remover_funcionario(op_aux);
+                        break;                       
                     case 3:
+                        do{
+                            try{
+                                cout << "+================ Menu Animal ================+" << endl
+                                     << "| 1) Busca por ID.                            |" << endl
+                                     << "| 2) Busca por classe.                        |" << endl
+                                     << "| 3) Buscar por Veterinário.                  |" << endl
+                                     << "| 4) Buscar por Tratador.                     |" << endl
+                                     << "| 0) Sair.                                    |" << endl
+                                     << "+=============================================+" << endl
+                                     << "\nDigite sua opção: "                            ;
+                                cin >> op_aux;
+                                if((op_aux < 0x47 && op_aux > 0x58) || op_aux > 4) throw ErroMenu();
+                            }
+                            catch(ErroMenu &erro){
+                                cout << erro.what();
+                            }
+                            switch(op_aux){
+                                case 1:
+                                    cout << "Digite o ID do animal: ";
+                                    cin >> aux;
+                                    exibir_animal(aux);
+                                    break;
+                                case 2:
+                                    cout << "Digite a classe do animal: ";
+                                    cin >> classe;
+                                    consultar_animaisClasse(classe);
+                                    break;
+                                case 3:
+                                    cout << "Digite o ID do Veterinário: ";
+                                    cin >> aux;
+                                    consultar_animaisResp(aux);
+                                    break;
+                                case 4:
+                                    cout << "Digite o ID do Tratador: ";
+                                    cin >> aux;
+                                    consultar_animaisResp(aux);
+                                    break;
+			                }
+                        }while(op_aux != 0);
+                        break;
+                    case 4:
                         do{
                             try{
                                 cout << "+========== Cadastro de Funcionário ===========+" << endl
@@ -1026,7 +1070,7 @@ namespace PetFera{
                                 }
                         }while(op_aux != 0);
                         break;
-                    case 4:
+                    case 5:
                         do{
                             try{
                                 cout << "+============ Cadastro de Animal ==============+" << endl
@@ -1077,7 +1121,13 @@ namespace PetFera{
                                     cadastrar_animal("reptil_nativo");
                                     break;
                                 }
+                                
                         }while(op_aux != 0);
+                        break;
+                    case 6:
+                        cout << "Digite o ID do animal: ";
+                        cin >> op_aux;
+                        remover_animal(op_aux);
                         break;
                 }
             }
