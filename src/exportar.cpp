@@ -1,11 +1,17 @@
 #include <iostream>
 #include <string>
 #include "excecoes.h"
+#include "gerencia.h"
 
 using namespace std;
 
 int main(int argc, char const *argv[]){
+    Gerencia exportar;
     string classe, veterinario, tratador, saida;
+    Gerencia petfera;
+    
+    exportar.ler_funcionarios();
+//    exportar.ler_animal();
 
     try{
         // Checa se não foi passado parâmetros ou se o único parâmetro foi o "-h"(help).
