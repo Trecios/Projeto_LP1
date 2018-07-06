@@ -1,4 +1,7 @@
 # Projeto - PetFera  :computer:
+![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg)
+![Packagist](https://img.shields.io/badge/languagem-c%2B%2B-yellowgreen.svg)
+
 *Cadastro de Animais de um Pet Shop*
 
 * :bust_in_silhouette: _Aluno: **Leonardo dos Santos Matos**
@@ -30,12 +33,12 @@ $ make run
 ```
 ## Objetivos
 
-[X] Cadastro de um novo animal a ser comercializado.
-[X] Remoção de um animal da lista após a sua comercialização.
-[] Alteração dos dados cadastrais de um animal.
-[X] Consulta aos dados cadastrais de um determinado animal ou por uma classe de animais.
-[X] Consulta de animais sob a responsabilidade de um determinado Veterinário ou Tratador.
-[X] Todas as atividades relacionadas ao cadastro de Veterinários e Tratadores.
+- [X] Cadastro de um novo animal a ser comercializado.
+- [X] Remoção de um animal da lista após a sua comercialização.
+- [ ] Alteração dos dados cadastrais de um animal.
+- [X] Consulta aos dados cadastrais de um determinado animal ou por uma classe de animais.
+- [X] Consulta de animais sob a responsabilidade de um determinado Veterinário ou Tratador.
+- [X] Todas as atividades relacionadas ao cadastro de Veterinários e Tratadores.
 
 ## Dificuldades
 1. Em construção...
