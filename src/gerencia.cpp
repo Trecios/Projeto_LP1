@@ -1054,70 +1054,73 @@ namespace PetFera{
 	}
 
 	/**
-	* @brief	Método que consulta todos os animais de uma determinada classe
-	* @params	String classe referente a classe dos animais. 
-	*/
-	void Gerencia::consultar_animaisClasse(string classe)
-	{
-	    string buscada = "";
-	    bool achou = false;
-
-        try{
-            if(classe.compare("Anfibio") == 0 || classe.compare("Amphibia") == 0)
-            {
-                buscada = "Amphibia";
-            }
-            else if(classe.compare("Ave") == 0 || classe.compare("Aves") == 0)
-            {
-                buscada = "Aves";
-            }
-            else if(classe.compare("Mamifero") == 0 || classe.compare("Mammalia") == 0)
-            {
-                buscada = "Mammalia";
-            }
-            else if(classe.compare("Reptil") == 0 ||classe.compare("Reptilia") == 0)
-            {
-                buscada = "Reptilia";
-            }
-            else throw ErroBuscaClasse();
-        }
-        catch(ErroBuscaClasse &erro){
-            cout << erro.what();
-        }
-
-	    if(!buscada.compare("") == 0)
-	    {
-	        achou = true;
-	    }
-		
-	    if(achou)
+    * @brief    Método que consulta todos os animais de uma determinada classe
+    * @params   String classe referente a classe dos animais. 
+    */
+    map<int, shared_ptr<Animal>> Gerencia::consultar_animaisClasse(string classe)
+    {
+        map<int, shared_ptr<Animal>> lista;
+        string buscada = "";
+        bool achou = false;
+        if(classe.compare("Anfibio") == 0 || classe.compare("Amphibia") == 0)
         {
-	        for(auto i  = m_lista_animal.begin(); i != m_lista_animal.end(); i++)
-	        {
-	            if((i->second)->getClasse().compare(buscada) == 0)
-	            {
-	                cout << *(i->second);
-	            }
-	        }
-	    }
+            buscada = "Amphibia";
+        }
+        else if(classe.compare("Ave") == 0 || classe.compare("Aves") == 0)
+        {
+            buscada = "Aves";
+        }
+        else if(classe.compare("Mamifero") == 0 || classe.compare("Mammalia") == 0)
+        {
+            buscada = "Mammalia";
+        }
+        else if(classe.compare("Reptil") == 0 ||classe.compare("Reptilia") == 0)
+        {
+            buscada = "Reptilia";
+        }
+        
+        if(!buscada.compare("") == 0)
+        {
+            achou = true;
+        }
+        
+        if(achou)
+        {
+            for(auto i  = m_lista_animal.begin(); i != m_lista_animal.end(); i++)
+            {
+                if((i->second)->getClasse().compare(buscada) == 0)
+                {
+                    lista.insert(pair<int, shared_ptr<Animal>>(i->first, i->second));
+                }
+            }
+        }
+        else
+        {
+            cout << "Erro! " << classe << " nao eh uma classe valida." << endl;
+            //Tratar exceção de quando não encontrar nenhum animal da classe especificada
+        }
+        return lista;
+    }
 
-	}
 
-	/**
-	* @brief	Método que consulta todos os animais sob responsabilidade de 
-	* determinado funcionário, a consulta é pelo ID do funcionário.
-	* @params	Int id referente ao id do funcionário. 
-	*/
-	void Gerencia::consultar_animaisResp(int id)
-	{
-	    for(auto i  = m_lista_animal.begin(); i != m_lista_animal.end(); i++)
-	    {
-	        if((i->second)->getVeterinario()->getId() == id || (i->second)->getTratador()->getId() == id)
-	        {
-	            cout << *(i->second);
-	        }
-	    }
-	}
+    /**
+    * @brief    Método que consulta todos os animais sob responsabilidade de 
+    * determinado funcionário, a consulta é pelo ID do funcionário.
+    * @params   Int id referente ao id do funcionário. 
+    */
+    map<int, shared_ptr<Animal>> Gerencia::consultar_animaisResp(int id)
+    {
+        map<int, shared_ptr<Animal>> lista;
+        for(auto i  = m_lista_animal.begin(); i != m_lista_animal.end(); i++)
+        {
+            if((i->second)->getVeterinario()->getId() == id || (i->second)->getTratador()->getId() == id)
+            {
+                lista.insert(pair<int, shared_ptr<Animal>>(i->first, i->second));
+            }
+        }
+        //Tratar exceção de quando não encontrar nenhum animal sob responsabilidade do funcionario especificado
+        return lista;
+    }
 
     void Gerencia::menu(){
         int op, op_aux, aux;
@@ -1177,17 +1180,17 @@ namespace PetFera{
                                 case 2:
                                     cout << "Digite a classe do animal: ";
                                     cin >> classe;
-                                    consultar_animaisClasse(classe);
+                                    imprimir(consultar_animaisClasse(classe));
                                     break;
                                 case 3:
                                     cout << "Digite o ID do Veterinário: ";
                                     cin >> aux;
-                                    consultar_animaisResp(aux);
+                                    imprimir(consultar_animaisResp(aux));
                                     break;
                                 case 4:
                                     cout << "Digite o ID do Tratador: ";
                                     cin >> aux;
-                                    consultar_animaisResp(aux);
+                                    imprimir(consultar_animaisResp(aux));
                                     break;
 			                }
                         }while(op_aux != 0);

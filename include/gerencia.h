@@ -172,14 +172,23 @@ namespace PetFera{
 			* @brief	Método que consulta todos os animais de uma determinada classe
 			* @params	String classe referente a classe dos animais. 
 			*/
-			void consultar_animaisClasse(string classe_);
+			map<int, shared_ptr<Animal>> consultar_animaisClasse(string classe);
 
 			/**
 			* @brief	Método que consulta todos os animais sob responsabilidade de 
 			* determinado funcionário, a consulta é pelo ID do funcionário.
 			* @params	Int id referente ao id do funcionário. 
 			*/
-			void consultar_animaisResp(int id_);
+			map<int, shared_ptr<Animal>> consultar_animaisResp(int id);
+
+			template <typename T, typename U>
+			void imprimir(map<T, shared_ptr<U>> lista)
+			{
+				for(auto i = lista.begin(); i != lista.end(); i++)
+				{
+					cout << *(i->second);
+				}
+			}
 
             /**
              * @brief   Método menu petfera.
