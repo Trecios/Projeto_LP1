@@ -28,6 +28,14 @@ No terminal, digite:
 ```bash
 $ make run
 ```
+## Objetivos
+
+[X] Cadastro de um novo animal a ser comercializado.
+[X] Remoção de um animal da lista após a sua comercialização.
+[] Alteração dos dados cadastrais de um animal.
+[X] Consulta aos dados cadastrais de um determinado animal ou por uma classe de animais.
+[X] Consulta de animais sob a responsabilidade de um determinado Veterinário ou Tratador.
+[X] Todas as atividades relacionadas ao cadastro de Veterinários e Tratadores.
 
 ## Dificuldades
 1. Em construção...
